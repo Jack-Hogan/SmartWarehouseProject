@@ -1,0 +1,43 @@
+syntax = "proto3";
+//proto specifying service
+
+option java_package = "ds.smartwarehouse.project.warehouseManagement"; //this option DOES change
+option java_multiple_files = true; //DOES NOT change
+option java_outer_classname = "NewWarehouseManagementImpl";
+
+service WarehouseManagment {
+
+	rpc productivityReport (ProductivityReportRequest) returns (ProductivityReportResponse){};
+
+	rpc demandForecast (stream DemandForecastRequest) returns (DemandForecastResponse){};
+
+	rpc realTimeOverview (stream RealTimeOverviewRequest) returns (stream RealTimeOverviewResponse) {};
+
+}
+
+message ProductivityReportRequest {
+	string prodReport = 1;
+	}
+
+message ProductivityReportResponse {
+	string prodReportService = 1;
+}
+
+message DemandForecastRequest {
+	string forecastMessage =1;
+}
+
+message DemandForecastResponse{
+	string forecastReview = 1;
+	int32 highDemand = 2;
+}
+
+message RealTimeOverviewRequest {
+	string overviewMessage = 1;
+
+}
+
+message RealTimeOverviewResponse {
+	string vehicleOverview = 1;
+	string warehouseOverview = 2;
+}

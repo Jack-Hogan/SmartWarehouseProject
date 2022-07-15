@@ -1,0 +1,42 @@
+syntax = "proto3";
+//proto specifying service
+
+option java_package = "ds.smartwarehouse.project.AGVSystem"; //this option DOES change
+option java_multiple_files = true; //DOES NOT change
+option java_outer_classname = "NewAGVSystemImpl";
+
+service AGVSystem {
+
+	rpc vehicleTracking (stream VehicleTrackingRequest) returns (stream VehicleTrackingResponse) {};
+
+	rpc agvProductivity (AGVProductivityRequest) returns (AGVProductivityResponse) {};
+
+	rpc agvDiag (AGVDiagRequest) returns (stream AGVDiagResponse){};
+
+}
+
+message VehicleTrackingRequest {
+	string AGVtype = 1;
+}
+
+message VehicleTrackingResponse {
+	string AGVtype = 1;
+	int32 AGVlocation = 2;
+}
+
+message AGVProductivityRequest {
+	string AGVreport = 1;
+}
+
+message AGVProductivityResponse {
+	string AGVreportReply = 1;
+}
+
+message AGVDiagRequest {
+	string AGVdiagRequest = 1;
+}
+
+message AGVDiagResponse {
+	string AGVdiagType = 1;
+	int32 systemPerformance =2;
+}
