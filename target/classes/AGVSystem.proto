@@ -7,10 +7,13 @@ option java_outer_classname = "NewAGVSystemImpl";
 
 service AGVSystem {
 
+	//Bi-Directional Streaming
 	rpc vehicleTracking (stream VehicleTrackingRequest) returns (stream VehicleTrackingResponse) {};
 
+	//Unary
 	rpc agvProductivity (AGVProductivityRequest) returns (AGVProductivityResponse) {};
 
+	//Server Streaming
 	rpc agvDiag (AGVDiagRequest) returns (stream AGVDiagResponse){};
 
 }
@@ -34,6 +37,7 @@ message AGVProductivityResponse {
 
 message AGVDiagRequest {
 	string AGVdiagRequest = 1;
+	int32 AGVfrequency = 2;
 }
 
 message AGVDiagResponse {

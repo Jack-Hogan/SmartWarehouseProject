@@ -58,17 +58,17 @@ public final class NewAGVSystemImpl {
       "esponse\022\017\n\007AGVtype\030\001 \001(\t\022\023\n\013AGVlocation\030" +
       "\002 \001(\005\"+\n\026AGVProductivityRequest\022\021\n\tAGVre" +
       "port\030\001 \001(\t\"1\n\027AGVProductivityResponse\022\026\n" +
-      "\016AGVreportReply\030\001 \001(\t\"(\n\016AGVDiagRequest\022" +
-      "\026\n\016AGVdiagRequest\030\001 \001(\t\"A\n\017AGVDiagRespon" +
-      "se\022\023\n\013AGVdiagType\030\001 \001(\t\022\031\n\021systemPerform" +
-      "ance\030\002 \001(\0052\321\001\n\tAGVSystem\022J\n\017vehicleTrack" +
-      "ing\022\027.VehicleTrackingRequest\032\030.VehicleTr" +
-      "ackingResponse\"\000(\0010\001\022F\n\017agvProductivity\022" +
-      "\027.AGVProductivityRequest\032\030.AGVProductivi" +
-      "tyResponse\"\000\0220\n\007agvDiag\022\017.AGVDiagRequest" +
-      "\032\020.AGVDiagResponse\"\0000\001B9\n#ds.smartwareho" +
-      "use.project.AGVSystemB\020NewAGVSystemImplP" +
-      "\001b\006proto3"
+      "\016AGVreportReply\030\001 \001(\t\">\n\016AGVDiagRequest\022" +
+      "\026\n\016AGVdiagRequest\030\001 \001(\t\022\024\n\014AGVfrequency\030" +
+      "\002 \001(\005\"A\n\017AGVDiagResponse\022\023\n\013AGVdiagType\030" +
+      "\001 \001(\t\022\031\n\021systemPerformance\030\002 \001(\0052\321\001\n\tAGV" +
+      "System\022J\n\017vehicleTracking\022\027.VehicleTrack" +
+      "ingRequest\032\030.VehicleTrackingResponse\"\000(\001" +
+      "0\001\022F\n\017agvProductivity\022\027.AGVProductivityR" +
+      "equest\032\030.AGVProductivityResponse\"\000\0220\n\007ag" +
+      "vDiag\022\017.AGVDiagRequest\032\020.AGVDiagResponse" +
+      "\"\0000\001B9\n#ds.smartwarehouse.project.AGVSys" +
+      "temB\020NewAGVSystemImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -111,7 +111,7 @@ public final class NewAGVSystemImpl {
     internal_static_AGVDiagRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AGVDiagRequest_descriptor,
-        new java.lang.String[] { "AGVdiagRequest", });
+        new java.lang.String[] { "AGVdiagRequest", "AGVfrequency", });
     internal_static_AGVDiagResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_AGVDiagResponse_fieldAccessorTable = new

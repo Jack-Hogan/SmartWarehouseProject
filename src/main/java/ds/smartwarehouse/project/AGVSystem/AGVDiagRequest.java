@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private AGVDiagRequest() {
     aGVdiagRequest_ = "";
+    aGVfrequency_ = 0;
   }
 
   @java.lang.Override
@@ -47,6 +48,11 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             aGVdiagRequest_ = s;
+            break;
+          }
+          case 16: {
+
+            aGVfrequency_ = input.readInt32();
             break;
           }
           default: {
@@ -115,6 +121,15 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int AGVFREQUENCY_FIELD_NUMBER = 2;
+  private int aGVfrequency_;
+  /**
+   * <code>int32 AGVfrequency = 2;</code>
+   */
+  public int getAGVfrequency() {
+    return aGVfrequency_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +147,9 @@ private static final long serialVersionUID = 0L;
     if (!getAGVdiagRequestBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, aGVdiagRequest_);
     }
+    if (aGVfrequency_ != 0) {
+      output.writeInt32(2, aGVfrequency_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -143,6 +161,10 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!getAGVdiagRequestBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, aGVdiagRequest_);
+    }
+    if (aGVfrequency_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, aGVfrequency_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -162,6 +184,8 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getAGVdiagRequest()
         .equals(other.getAGVdiagRequest());
+    result = result && (getAGVfrequency()
+        == other.getAGVfrequency());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -175,6 +199,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + AGVDIAGREQUEST_FIELD_NUMBER;
     hash = (53 * hash) + getAGVdiagRequest().hashCode();
+    hash = (37 * hash) + AGVFREQUENCY_FIELD_NUMBER;
+    hash = (53 * hash) + getAGVfrequency();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,6 +336,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       aGVdiagRequest_ = "";
 
+      aGVfrequency_ = 0;
+
       return this;
     }
 
@@ -337,6 +365,7 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.AGVSystem.AGVDiagRequest buildPartial() {
       ds.smartwarehouse.project.AGVSystem.AGVDiagRequest result = new ds.smartwarehouse.project.AGVSystem.AGVDiagRequest(this);
       result.aGVdiagRequest_ = aGVdiagRequest_;
+      result.aGVfrequency_ = aGVfrequency_;
       onBuilt();
       return result;
     }
@@ -388,6 +417,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getAGVdiagRequest().isEmpty()) {
         aGVdiagRequest_ = other.aGVdiagRequest_;
         onChanged();
+      }
+      if (other.getAGVfrequency() != 0) {
+        setAGVfrequency(other.getAGVfrequency());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -483,6 +515,32 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       aGVdiagRequest_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int aGVfrequency_ ;
+    /**
+     * <code>int32 AGVfrequency = 2;</code>
+     */
+    public int getAGVfrequency() {
+      return aGVfrequency_;
+    }
+    /**
+     * <code>int32 AGVfrequency = 2;</code>
+     */
+    public Builder setAGVfrequency(int value) {
+      
+      aGVfrequency_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 AGVfrequency = 2;</code>
+     */
+    public Builder clearAGVfrequency() {
+      
+      aGVfrequency_ = 0;
       onChanged();
       return this;
     }

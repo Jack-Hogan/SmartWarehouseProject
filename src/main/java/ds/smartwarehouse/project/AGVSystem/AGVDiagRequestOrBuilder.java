@@ -16,4 +16,9 @@ public interface AGVDiagRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAGVdiagRequestBytes();
+
+  /**
+   * <code>int32 AGVfrequency = 2;</code>
+   */
+  int getAGVfrequency();
 }

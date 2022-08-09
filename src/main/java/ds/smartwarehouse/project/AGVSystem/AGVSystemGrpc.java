@@ -151,6 +151,9 @@ public final class AGVSystemGrpc {
   public static abstract class AGVSystemImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *Bi-Directional Streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.VehicleTrackingRequest> vehicleTracking(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse> responseObserver) {
@@ -158,6 +161,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public void agvProductivity(ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse> responseObserver) {
@@ -165,6 +171,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Server Streaming
+     * </pre>
      */
     public void agvDiag(ds.smartwarehouse.project.AGVSystem.AGVDiagRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.AGVDiagResponse> responseObserver) {
@@ -217,6 +226,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Bi-Directional Streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.VehicleTrackingRequest> vehicleTracking(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse> responseObserver) {
@@ -225,6 +237,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public void agvProductivity(ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse> responseObserver) {
@@ -233,6 +248,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Server Streaming
+     * </pre>
      */
     public void agvDiag(ds.smartwarehouse.project.AGVSystem.AGVDiagRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.AGVSystem.AGVDiagResponse> responseObserver) {
@@ -260,6 +278,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse agvProductivity(ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest request) {
       return blockingUnaryCall(
@@ -267,6 +288,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Server Streaming
+     * </pre>
      */
     public java.util.Iterator<ds.smartwarehouse.project.AGVSystem.AGVDiagResponse> agvDiag(
         ds.smartwarehouse.project.AGVSystem.AGVDiagRequest request) {
@@ -294,6 +318,9 @@ public final class AGVSystemGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse> agvProductivity(
         ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest request) {
