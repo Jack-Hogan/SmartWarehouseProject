@@ -76,14 +76,16 @@ public class AGVServer extends AGVSystemImplBase {
 			@Override
 			public void onNext(VehicleTrackingRequest value) {
 				 Date date = new Date(); 
+				 Random rand = new Random();
+
 				 
 				 String type = value.getAGVtype();
 				 
-				 System.out.println("Vehicle tracking request for " + type + " AGV.");
+				 System.out.println("Vehicle tracking request for " + type + " AGV at: " + date);
 				 
 				 VehicleTrackingResponse response = VehicleTrackingResponse.newBuilder()
 						 .setAGVtype(type)
-						 .setAGVlocation(8562495)
+						 .setAGVlocation(rand.nextInt())
 						 .build();
 				 
 				 responseObserver.onNext(response);
@@ -120,7 +122,7 @@ public class AGVServer extends AGVSystemImplBase {
 		//build response
 		
 		AGVProductivityResponse response = AGVProductivityResponse.newBuilder()
-				.setAGVreportReply("Report " + counter + " for AGV is as follows: ")
+				.setAGVreportReply("Report  for AGV is as follows: ")//" + counter + "
 				.build();
 		
 		//send response message
@@ -186,7 +188,7 @@ public class AGVServer extends AGVSystemImplBase {
 	            ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description);
 	            jmdns.registerService(serviceInfo);
 	            
-	            System.out.printf("registrering service with type %s and name %s \n", service_type, service_name);
+	            System.out.printf("Registering new AGV service with type %s and name %s \n", service_type, service_name);
 	            
 	            // Wait a bit
 	            Thread.sleep(1000);

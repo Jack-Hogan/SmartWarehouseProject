@@ -15,7 +15,7 @@ private static final long serialVersionUID = 0L;
   private VehicleTrackingResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  VehicleTrackingResponse() {
+  private VehicleTrackingResponse() {
     aGVtype_ = "";
     aGVlocation_ = 0;
   }
