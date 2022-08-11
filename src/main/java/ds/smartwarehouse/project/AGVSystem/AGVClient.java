@@ -3,7 +3,9 @@ package ds.smartwarehouse.project.AGVSystem;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
@@ -26,7 +28,6 @@ public class AGVClient {
 	
 	private static AGVSystemBlockingStub blockingStub;
 	private static AGVSystemStub asyncStub;
-	
 	
 	
 	private ServiceInfo AGVInfo;
@@ -121,12 +122,33 @@ public class AGVClient {
 		
 	}
 	
+	public String AGVarray() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Automated Guided Carts");
+		list.add("Heavy Burden Carriers");
+		list.add("Autonomous Mobile Robots");
+		list.add("Vision Guided Tow Tractor");
+		list.add("Lazor Guided Conveyor");
+		
+		String RandomAGV;
+		Random rand = new Random();
+		int index = rand.nextInt(list.size()-1);
+		
+		RandomAGV = list.get(index);
+		return RandomAGV;
+		
+		//for ()
+		
+	}
 
 	// *** BIDIRECTIONAL RPC ***
 	public static void vehicleTracking() {
 		
+		AGVClient test = new AGVClient();
+		test.AGVarray();
+		
 		// Display a message to show what method has been called
-		System.out.println("total() has been called:");
+		System.out.println("Vehicle Tracking() has been called:");
 		
 		StreamObserver<VehicleTrackingResponse> responseObserver = new StreamObserver<VehicleTrackingResponse>() {
 
@@ -134,7 +156,7 @@ public class AGVClient {
 			public void onNext(VehicleTrackingResponse value) {
 
 				// Display received number
-				System.out.println(value.getAGVlocation());
+				System.out.println(value.getAGVtype() + " Location Locked on at :"+ value.getAGVlocation());
 			}
 
 			@Override
@@ -146,7 +168,7 @@ public class AGVClient {
 			public void onCompleted() {
 
 				// Bidirectional-streaming is completed
-				System.out.println("total() bidirectional-streaming has finished");	
+				System.out.println("Bidirectional Vehicle Tracking streaming has finished.\n");	
 			}
 			
 		};
@@ -157,7 +179,6 @@ public class AGVClient {
 		try {
 			
 			// Style #1
-			int num = 50;
 			
 			VehicleTrackingRequest request = VehicleTrackingRequest.newBuilder()
 					.setAGVtype("Automated Guided Carts")
@@ -206,10 +227,11 @@ public class AGVClient {
 		
 		System.out.println("AGV Productivity Called!");
 		
+		
 		//array of vehicles to go here 
 		
 		AGVProductivityRequest request = AGVProductivityRequest.newBuilder()
-				.setAGVreport("Report for stacking vechicles")//put vehicle inside request
+				.setAGVreport("AGV Productivity Report for SmartWarehouses")//put vehicle inside request
 				.build();
 		
 		// Send the message via the blocking stub and store the response
@@ -223,11 +245,15 @@ public class AGVClient {
 	
 	//Server Streaming
 	public static void agvDiag() {
-		
+		Scanner input = new Scanner(System.in);
+
 		System.out.println("AGV Diagnosis Called!");
+		System.out.println("How many Vehicles would you like to check diagnostics for? ");
+		int freq = input.nextInt();
 		
 		AGVDiagRequest request = AGVDiagRequest.newBuilder()
 				.setAGVdiagRequest("Fuel and effciency call")
+				.setAGVfrequency(freq)
 				.build();
 		
 		StreamObserver<AGVDiagResponse> responseObserver = new StreamObserver<AGVDiagResponse>() {

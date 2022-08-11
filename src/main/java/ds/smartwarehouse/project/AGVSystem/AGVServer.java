@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -62,6 +63,25 @@ public class AGVServer extends AGVSystemImplBase {
 //		server.awaitTermination();
 //
 //	}
+	
+	public String AGVarray() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Automated Guided Carts");
+		list.add("Heavy Burden Carriers");
+		list.add("Autonomous Mobile Robots");
+		list.add("Vision Guided Tow Tractor");
+		list.add("Lazor Guided Conveyor");
+		
+		String RandomAGV;
+		Random rand = new Random();
+		int index = rand.nextInt((4) + 1);
+		
+		RandomAGV = list.get(index);
+		return RandomAGV;
+		
+
+		
+	}
 
 	//Bi-Directional
 	@Override
@@ -116,13 +136,20 @@ public class AGVServer extends AGVSystemImplBase {
 	public void agvProductivity(AGVProductivityRequest request,
 			StreamObserver<AGVProductivityResponse> responseObserver) {
 		int counter = 1;
+		Random rand = new Random();
+		
+		
+		int id = rand.nextInt((1000-500)+1);
+		boolean perform = rand.nextBoolean();
+		String AGV = AGVarray();
 		//receiving report request
-		System.out.println("Report message: " + request.getAGVreport());
+		System.out.println("Request Message: " + request.getAGVreport());
 
 		//build response
 		
 		AGVProductivityResponse response = AGVProductivityResponse.newBuilder()
-				.setAGVreportReply("Report  for AGV is as follows: ")//" + counter + "
+				.setAGVreportReply("Report " + id + " for AGV is as follows: "
+						+ "Performance Over 85%: " + perform + ".\n Most Effcient AGV: "+AGV)//" + counter + "
 				.build();
 		
 		//send response message
@@ -138,21 +165,35 @@ public class AGVServer extends AGVSystemImplBase {
 	@Override
 	public void agvDiag(AGVDiagRequest request, StreamObserver<AGVDiagResponse> responseObserver) {
 
-		System.out.println("Recieving request message from Client: " + request.getAGVdiagRequest());
+		System.out.println("Receiving request message from Client: " + request.getAGVdiagRequest());
 		
 		int requestAmount = request.getAGVfrequency();
 		int counter = 1;
 		Random rand = new Random();
+		AGVServer agv = new AGVServer();
 		
-		for(int i = 0; i <= requestAmount; i++) {
+		for(int i = 0; i < requestAmount; i++) {
 			
-			int random = rand.nextInt(60-100);
-			
-			System.out.println("Request " + counter + " process. All systems stable. AGV diagnosis online. System at " + random + "% capacity.");
+			int random = rand.nextInt(((100 - 60)+1)+60);
+			String AGV = agv.AGVarray();
+			String status = "";
+			if(random<20) {
+				status = "Critical!";
+			}
+			else if(random <40) {
+				status = "Warning!";
+			}
+			else if(random <60) {
+				status = "Okay";
+			}
+			else {
+				status = "Optimal";
+			}
+			System.out.println("Request " + counter + " process. AGV diagnosis online. " + AGV + " System at " + random + "% capacity. Status: " + status);
 			counter++;
 			
 			AGVDiagResponse response = AGVDiagResponse.newBuilder()
-					.setAGVdiagType("Vehicle Diasgnostics")
+					.setAGVdiagType(AGV + " Vehicle Diagnostics Incoming")
 					.setSystemPerformance(random)
 					.build();
 			
@@ -189,6 +230,11 @@ public class AGVServer extends AGVSystemImplBase {
 	            jmdns.registerService(serviceInfo);
 	            
 	            System.out.printf("Registering new AGV service with type %s and name %s \n", service_type, service_name);
+	            System.out.printf("Service Type: " + service_type + "\n");
+	            System.out.printf("Service Name: "+  service_name + "\n");
+	            System.out.printf("Service Port: "+  service_port + "\n");
+	            System.out.printf("Service Description: "+  service_description +"\n");
+	            
 	            
 	            // Wait a bit
 	            Thread.sleep(1000);
