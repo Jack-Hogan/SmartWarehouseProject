@@ -18,7 +18,12 @@ public interface VehicleTrackingResponseOrBuilder extends
       getAGVtypeBytes();
 
   /**
-   * <code>int32 AGVlocation = 2;</code>
+   * <code>double AGVlatitude = 2;</code>
    */
-  int getAGVlocation();
+  double getAGVlatitude();
+
+  /**
+   * <code>double AGVlongitude = 3;</code>
+   */
+  double getAGVlongitude();
 }

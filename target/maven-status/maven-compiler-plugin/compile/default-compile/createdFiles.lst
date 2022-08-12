@@ -1,8 +1,10 @@
 ds\smartwarehouse\project\warehouseManagement\RealTimeOverviewRequest$1.class
 ds\smartwarehouse\project\AGVSystem\AGVProductivityResponseOrBuilder.class
 ds\smartwarehouse\project\warehouseManagement\RealTimeOverviewResponseOrBuilder.class
+ds\smartwarehouse\project\AGVSystem\AGVClient$2.class
 ds\smartwarehouse\project\AGVSystem\AGVProductivityRequest$1.class
 ds\smartwarehouse\project\orderManagement\StockReplenishRequestOrBuilder.class
+ds\smartwarehouse\project\AGVSystem\AGVClient.class
 ds\smartwarehouse\project\orderManagement\StockReplenishResponse$1.class
 ds\smartwarehouse\project\orderManagment\StockReplenishRequest.class
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc$AGVSystemStub.class
@@ -47,7 +49,6 @@ ds\smartwarehouse\project\orderManagment\StockReplenishResponse.class
 ds\smartwarehouse\project\AGVSystem\VehicleTrackingRequest$1.class
 ds\smartwarehouse\project\warehouseManagement\WarehouseManagmentGrpc$WarehouseManagmentBaseDescriptorSupplier.class
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc$AGVSystemMethodDescriptorSupplier.class
-ds\smartwarehouse\project\orderManagement\OrderManagementServer$OrderManagementServerImpl.class
 ds\smartwarehouse\project\warehouseManagement\RealTimeOverviewRequestOrBuilder.class
 ds\smartwarehouse\project\orderManagement\OrderManagementGrpc$OrderManagementStub.class
 ds\smartwarehouse\project\AGVSystem\AGVServer.class
@@ -57,6 +58,7 @@ ds\smartwarehouse\project\warehouseManagement\NewWarehouseManagementImpl.class
 ds\smartwarehouse\project\warehouseManagement\ProductivityReportRequest$1.class
 ds\smartwarehouse\project\warehouseManagement\ProductivityReportResponseOrBuilder.class
 ds\smartwarehouse\project\orderManagement\OrderTrackingResponseOrBuilder.class
+ds\smartwarehouse\project\orderManagement\OrderManagementClient.class
 ds\smartwarehouse\project\orderManagement\StockReplenishRequest.class
 ds\smartwarehouse\project\orderManagement\OrderTrackingRequest$Builder.class
 ds\smartwarehouse\project\orderManagment\OrderTrackingRequest$1.class
@@ -99,11 +101,13 @@ ds\smartwarehouse\project\orderManagement\OrderManagementGrpc$OrderManagementMet
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc$AGVSystemBaseDescriptorSupplier.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastResponse$Builder.class
 ds\smartwarehouse\project\AGVSystem\AGVProductivityRequestOrBuilder.class
+ds\smartwarehouse\project\AGVSystem\AGVServer$1.class
 ds\smartwarehouse\project\AGVSystem\AGVDiagRequest$1.class
 ds\smartwarehouse\project\AGVSystem\NewAGVSystemImpl.class
 ds\smartwarehouse\project\orderManagment\NewOrderManagementImpl$1.class
 ds\smartwarehouse\project\warehouseManagement\RealTimeOverviewRequest.class
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc.class
+ds\smartwarehouse\project\AGVSystem\AGVClient$1.class
 ds\smartwarehouse\project\orderManagement\StockReplenishResponseOrBuilder.class
 ds\smartwarehouse\project\orderManagement\StockReplenishRequest$Builder.class
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc$AGVSystemFileDescriptorSupplier.class
@@ -119,6 +123,7 @@ ds\smartwarehouse\project\warehouseManagement\ProductivityReportResponse.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastResponse.class
 ds\smartwarehouse\project\orderManagement\OrderManagementGrpc$OrderManagementBlockingStub.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastResponseOrBuilder.class
+ds\smartwarehouse\project\orderManagement\OrderManagementClient$1.class
 ds\smartwarehouse\project\AGVSystem\VehicleTrackingRequest$Builder.class
 ds\smartwarehouse\project\orderManagment\OrderManagementGrpc$MethodHandlers.class
 ds\smartwarehouse\project\orderManagement\StockResponse$1.class
@@ -128,6 +133,7 @@ ds\smartwarehouse\project\orderManagment\OrderTrackingRequest.class
 ds\smartwarehouse\project\orderManagement\OrderTrackingResponse.class
 ds\smartwarehouse\project\orderManagment\OrderTrackingResponseOrBuilder.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastResponse$1.class
+ds\smartwarehouse\project\AGVSystem\AGVClient$3.class
 ds\smartwarehouse\project\orderManagement\OrderManagementGrpc.class
 ds\smartwarehouse\project\orderManagment\StockReplenishRequest$1.class
 ds\smartwarehouse\project\AGVSystem\AGVDiagRequest$Builder.class
@@ -138,10 +144,12 @@ ds\smartwarehouse\project\orderManagment\OrderManagementGrpc$1.class
 ds\smartwarehouse\project\AGVSystem\AGVProductivityRequest.class
 ds\smartwarehouse\project\orderManagement\OrderManagementServer.class
 ds\smartwarehouse\project\warehouseManagement\RealTimeOverviewResponse$1.class
+ds\smartwarehouse\project\orderManagement\OrderManagementClient$2.class
 ds\smartwarehouse\project\orderManagment\StockReplenishResponse$Builder.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastRequest.class
 ds\smartwarehouse\project\AGVSystem\VehicleTrackingResponseOrBuilder.class
 ds\smartwarehouse\project\orderManagment\StockResponse.class
+ds\smartwarehouse\project\orderManagement\OrderManagementServer$1.class
 ds\smartwarehouse\project\AGVSystem\AGVSystemGrpc$AGVSystemBlockingStub.class
 ds\smartwarehouse\project\orderManagment\OrderManagementGrpc$OrderManagementBaseDescriptorSupplier.class
 ds\smartwarehouse\project\orderManagement\OrderManagementGrpc$1.class

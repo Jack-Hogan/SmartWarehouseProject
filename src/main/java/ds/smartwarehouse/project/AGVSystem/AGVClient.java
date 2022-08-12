@@ -2,10 +2,12 @@ package ds.smartwarehouse.project.AGVSystem;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
@@ -37,7 +39,8 @@ public class AGVClient {
 		AGVClient AGVclient = new AGVClient();
 		
 		// Discover the jmDNS service
-		String service_type = "_AGVSystem._tcp.local.";
+		//String service_type = "_AGVSystem._tcp.local.";
+		String service_type = "_http._tcp.local.";
 		AGVclient.discoverAGV(service_type);
 		
 		ManagedChannel channel = ManagedChannelBuilder
@@ -58,7 +61,12 @@ public class AGVClient {
 		
 		agvDiag();
 		
-		
+		try {
+			channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
@@ -143,7 +151,7 @@ public class AGVClient {
 
 	// *** BIDIRECTIONAL RPC ***
 	public static void vehicleTracking() {
-		
+		Random rand = new Random();
 		AGVClient test = new AGVClient();
 		test.AGVarray();
 		
@@ -155,8 +163,16 @@ public class AGVClient {
 			@Override
 			public void onNext(VehicleTrackingResponse value) {
 
+				int agvSerial = rand.nextInt(400);
+ 
 				// Display received number
-				System.out.println(value.getAGVtype() + " Location Locked on at :"+ value.getAGVlocation());
+				System.out.println(value.getAGVtype() + " no." + agvSerial +" Location Locked on at : Latitude: "+ value.getAGVlatitude() +" Longitude: " + value.getAGVlongitude() +"\n");
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			@Override
@@ -178,7 +194,7 @@ public class AGVClient {
 		
 		try {
 			
-			// Style #1
+			// Sending 1st
 			
 			VehicleTrackingRequest request = VehicleTrackingRequest.newBuilder()
 					.setAGVtype("Automated Guided Carts")
@@ -186,17 +202,17 @@ public class AGVClient {
 			
 			requestObserver.onNext(request);
 			
-			 // Style #2
+			 //2nd
 			request = VehicleTrackingRequest.newBuilder()
 				.setAGVtype("Heavy Burden Carriers")
 				.build();
 			
 			requestObserver.onNext(request);
 			
-			// Style #3
-			requestObserver.onNext(VehicleTrackingRequest.newBuilder()
+			//3rd
+			request = VehicleTrackingRequest.newBuilder()
 					.setAGVtype("Autonomous Mobile Robots")
-					.build());
+					.build();
 			requestObserver.onNext(request);
 			
 			// End the requests
@@ -225,13 +241,18 @@ public class AGVClient {
 	//Unary
 	public static void agvProductivity() {
 		
-		System.out.println("AGV Productivity Called!");
-		
+		System.out.println("AGV Productivity Unary Called!");
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//array of vehicles to go here 
 		
 		AGVProductivityRequest request = AGVProductivityRequest.newBuilder()
-				.setAGVreport("AGV Productivity Report for SmartWarehouses")//put vehicle inside request
+				.setAGVreport("Full AGV Productivity Report for Smartwarehouse")//put vehicle inside request
 				.build();
 		
 		// Send the message via the blocking stub and store the response
@@ -239,7 +260,7 @@ public class AGVClient {
 
 		// Display the result
 		System.out.println("Report is as follows: " + response.getAGVreportReply() + "\n\n");
-		System.out.println("Productivity Report Unary call has finished");
+		System.out.println("Productivity Report Unary call has finished.\n");
 		
 	}
 	
@@ -252,7 +273,7 @@ public class AGVClient {
 		int freq = input.nextInt();
 		
 		AGVDiagRequest request = AGVDiagRequest.newBuilder()
-				.setAGVdiagRequest("Fuel and effciency call")
+				.setAGVdiagRequest("Full diagnosis required")
 				.setAGVfrequency(freq)
 				.build();
 		
@@ -262,7 +283,7 @@ public class AGVClient {
 			public void onNext(AGVDiagResponse value) {
 
 				// Display received number
-				System.out.println(value.getAGVdiagType());
+				System.out.println("Diagnosis: " + value.getAGVdiagType());
 			}
 
 			@Override
@@ -288,6 +309,7 @@ public class AGVClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 	}
 	

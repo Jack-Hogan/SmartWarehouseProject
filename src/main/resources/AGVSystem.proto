@@ -24,7 +24,8 @@ message VehicleTrackingRequest {
 
 message VehicleTrackingResponse {
 	string AGVtype = 1;
-	int32 AGVlocation = 2;
+	double AGVlatitude = 2;
+	double AGVlongitude = 3;
 }
 
 message AGVProductivityRequest {

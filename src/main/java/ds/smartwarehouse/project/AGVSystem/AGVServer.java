@@ -20,8 +20,6 @@ import io.grpc.stub.StreamObserver;
 
 public class AGVServer extends AGVSystemImplBase {
 	
-	//import Server class
-	//private Server server;
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
@@ -38,31 +36,13 @@ public class AGVServer extends AGVSystemImplBase {
 				.build()
 				.start();
 		
-		System.out.println("New AGV server started listening on port: " + port);
+		System.out.println("New AGV server started listening on port: " + port +"\n");
 		
 		server.awaitTermination();
 		
 
 	}
 
-//	private void start() throws IOException, InterruptedException {
-//
-//		//write print out at start of important method to test and check 
-//		System.out.println("Starting grpc server");
-//		
-//		//create grpc server and specify port 
-//		int port = 50051;
-//		server = ServerBuilder.forPort(port)
-//				.addService(new AGVServer())
-//				.build()
-//				.start(); //builder to determine port and add specific service declared in .proto
-//		
-//		System.out.println("Server running on port: " + port);
-//		
-//		//awaitTermination
-//		server.awaitTermination();
-//
-//	}
 	
 	public String AGVarray() {
 		ArrayList<String> list = new ArrayList<>();
@@ -101,15 +81,27 @@ public class AGVServer extends AGVSystemImplBase {
 				 
 				 String type = value.getAGVtype();
 				 
-				 System.out.println("Vehicle tracking request for " + type + " AGV at: " + date);
+				 System.out.println("Vehicle tracking request for " + type + " AGV at: " + date + "\n");
+				 
+				    double minLat = -90.00;
+				    double maxLat = 90.00;      
+				    double latitude = minLat + (double)(Math.random() * ((maxLat - minLat) + 1));
+				    double minLon = 0.00;
+				    double maxLon = 180.00;     
+				    double longitude = minLon + (double)(Math.random() * ((maxLon - minLon) + 1));
 				 
 				 VehicleTrackingResponse response = VehicleTrackingResponse.newBuilder()
 						 .setAGVtype(type)
-						 .setAGVlocation(rand.nextInt())
+						 .setAGVlatitude(latitude)
+						 .setAGVlongitude(longitude)
 						 .build();
 				 
 				 responseObserver.onNext(response);
-				 
+				 try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				
 			}
 
@@ -122,7 +114,7 @@ public class AGVServer extends AGVSystemImplBase {
 			@Override
 			public void onCompleted() {
 
-				System.out.println("Finished Bi-Directional!");
+				System.out.println("Finished Bi-Directional vehicle tracking service.\n");
 				responseObserver.onCompleted();
 			
 			}
@@ -137,19 +129,29 @@ public class AGVServer extends AGVSystemImplBase {
 			StreamObserver<AGVProductivityResponse> responseObserver) {
 		int counter = 1;
 		Random rand = new Random();
+		Date date = new Date();
 		
-		
+		//Report Variables
 		int id = rand.nextInt((1000-500)+1);
+		int agvSerial = rand.nextInt(400);
+		int agvSerial2 = rand.nextInt(400);
 		boolean perform = rand.nextBoolean();
+		boolean stock = rand.nextBoolean();
+		String AGV2 = AGVarray();
 		String AGV = AGVarray();
+		
+		
+		
 		//receiving report request
-		System.out.println("Request Message: " + request.getAGVreport());
+		System.out.println("Request Message from Client: " + request.getAGVreport());
 
 		//build response
 		
 		AGVProductivityResponse response = AGVProductivityResponse.newBuilder()
-				.setAGVreportReply("Report " + id + " for AGV is as follows: "
-						+ "Performance Over 85%: " + perform + ".\n Most Effcient AGV: "+AGV)//" + counter + "
+				.setAGVreportReply("\nReport no." + id + " for " + date + " for AGV is as follows: \n"
+						+ "Performance Over 85%: " + perform + ".\nMost Effcient AGV: "+AGV +" no." +agvSerial2 +"\n"
+						+ "Low Stock Capacity Alert: " + stock +"\n"
+						+ "Maintence team working on software update for: " + AGV2 + " no." + agvSerial)//" + counter + "
 				.build();
 		
 		//send response message
@@ -157,7 +159,12 @@ public class AGVServer extends AGVSystemImplBase {
 		
 		//completed
 		responseObserver.onCompleted();
-		
+		try {
+			Thread.sleep(2000);
+		}
+		catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -165,7 +172,7 @@ public class AGVServer extends AGVSystemImplBase {
 	@Override
 	public void agvDiag(AGVDiagRequest request, StreamObserver<AGVDiagResponse> responseObserver) {
 
-		System.out.println("Receiving request message from Client: " + request.getAGVdiagRequest());
+		System.out.println("\nReceiving request message from Client: " + request.getAGVdiagRequest());
 		
 		int requestAmount = request.getAGVfrequency();
 		int counter = 1;
@@ -189,15 +196,17 @@ public class AGVServer extends AGVSystemImplBase {
 			else {
 				status = "Optimal";
 			}
-			System.out.println("Request " + counter + " process. AGV diagnosis online. " + AGV + " System at " + random + "% capacity. Status: " + status);
-			counter++;
+			System.out.println("Requesting Diagnois Test:" + counter + ".Sending AGV diagnosis for " + AGV + ". Testing capacity status. Streaming messges to client...");
+			
 			
 			AGVDiagResponse response = AGVDiagResponse.newBuilder()
-					.setAGVdiagType(AGV + " Vehicle Diagnostics Incoming")
+					//.setAGVdiagType(AGV + " Vehicle Diagnostics Incoming")
+					.setAGVdiagType("Request " + counter + " process. AGV diagnosis online. " + AGV + " System at " + random + "% capacity. Status: " + status)
 					.setSystemPerformance(random)
 					.build();
-			
+			counter++;
 			responseObserver.onNext(response);
+			
 			
 			try {
 				Thread.sleep(2000);
@@ -217,7 +226,7 @@ public class AGVServer extends AGVSystemImplBase {
 	            // Create a JmDNS instance
 	            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 	            
-	            String service_type = "_AGVSystem._tcp.local.";//"_http._tcp.local.";
+	            String service_type = "_http._tcp.local.";//"_http._tcp.local.";
 	            String service_name = "AGV System Server";// "example";
 	            int service_port = 50051;
 	            //int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50051;

@@ -15,6 +15,7 @@ C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\s
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagment\OrderTrackingRequestOrBuilder.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagment\OrderTrackingRequest.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\StockReplenishResponse.java
+C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\OrderManagementClient.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\StockResponseOrBuilder.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\StockReplenishRequest.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\StockReplenishRequestOrBuilder.java
@@ -24,6 +25,7 @@ C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\s
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\OrderTrackingResponse.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagment\OrderTrackingResponseOrBuilder.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\AGVSystem\VehicleTrackingResponse.java
+C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\AGVSystem\AGVClient.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\orderManagement\OrderTrackingRequest.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\AGVSystem\AGVProductivityRequest.java
 C:\Users\jackh\Documents\NCI\Distributed Systems\Project\SmartWarehouseProject\src\main\java\ds\smartwarehouse\project\warehouseManagement\DemandForecastResponseOrBuilder.java

@@ -17,7 +17,8 @@ private static final long serialVersionUID = 0L;
   }
   private VehicleTrackingResponse() {
     aGVtype_ = "";
-    aGVlocation_ = 0;
+    aGVlatitude_ = 0D;
+    aGVlongitude_ = 0D;
   }
 
   @java.lang.Override
@@ -50,9 +51,14 @@ private static final long serialVersionUID = 0L;
             aGVtype_ = s;
             break;
           }
-          case 16: {
+          case 17: {
 
-            aGVlocation_ = input.readInt32();
+            aGVlatitude_ = input.readDouble();
+            break;
+          }
+          case 25: {
+
+            aGVlongitude_ = input.readDouble();
             break;
           }
           default: {
@@ -121,13 +127,22 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AGVLOCATION_FIELD_NUMBER = 2;
-  private int aGVlocation_;
+  public static final int AGVLATITUDE_FIELD_NUMBER = 2;
+  private double aGVlatitude_;
   /**
-   * <code>int32 AGVlocation = 2;</code>
+   * <code>double AGVlatitude = 2;</code>
    */
-  public int getAGVlocation() {
-    return aGVlocation_;
+  public double getAGVlatitude() {
+    return aGVlatitude_;
+  }
+
+  public static final int AGVLONGITUDE_FIELD_NUMBER = 3;
+  private double aGVlongitude_;
+  /**
+   * <code>double AGVlongitude = 3;</code>
+   */
+  public double getAGVlongitude() {
+    return aGVlongitude_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -147,8 +162,11 @@ private static final long serialVersionUID = 0L;
     if (!getAGVtypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, aGVtype_);
     }
-    if (aGVlocation_ != 0) {
-      output.writeInt32(2, aGVlocation_);
+    if (aGVlatitude_ != 0D) {
+      output.writeDouble(2, aGVlatitude_);
+    }
+    if (aGVlongitude_ != 0D) {
+      output.writeDouble(3, aGVlongitude_);
     }
     unknownFields.writeTo(output);
   }
@@ -162,9 +180,13 @@ private static final long serialVersionUID = 0L;
     if (!getAGVtypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, aGVtype_);
     }
-    if (aGVlocation_ != 0) {
+    if (aGVlatitude_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, aGVlocation_);
+        .computeDoubleSize(2, aGVlatitude_);
+    }
+    if (aGVlongitude_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(3, aGVlongitude_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -184,8 +206,14 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getAGVtype()
         .equals(other.getAGVtype());
-    result = result && (getAGVlocation()
-        == other.getAGVlocation());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getAGVlatitude())
+        == java.lang.Double.doubleToLongBits(
+            other.getAGVlatitude()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getAGVlongitude())
+        == java.lang.Double.doubleToLongBits(
+            other.getAGVlongitude()));
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -199,8 +227,12 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + AGVTYPE_FIELD_NUMBER;
     hash = (53 * hash) + getAGVtype().hashCode();
-    hash = (37 * hash) + AGVLOCATION_FIELD_NUMBER;
-    hash = (53 * hash) + getAGVlocation();
+    hash = (37 * hash) + AGVLATITUDE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getAGVlatitude()));
+    hash = (37 * hash) + AGVLONGITUDE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getAGVlongitude()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -336,7 +368,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       aGVtype_ = "";
 
-      aGVlocation_ = 0;
+      aGVlatitude_ = 0D;
+
+      aGVlongitude_ = 0D;
 
       return this;
     }
@@ -365,7 +399,8 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse buildPartial() {
       ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse result = new ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse(this);
       result.aGVtype_ = aGVtype_;
-      result.aGVlocation_ = aGVlocation_;
+      result.aGVlatitude_ = aGVlatitude_;
+      result.aGVlongitude_ = aGVlongitude_;
       onBuilt();
       return result;
     }
@@ -418,8 +453,11 @@ private static final long serialVersionUID = 0L;
         aGVtype_ = other.aGVtype_;
         onChanged();
       }
-      if (other.getAGVlocation() != 0) {
-        setAGVlocation(other.getAGVlocation());
+      if (other.getAGVlatitude() != 0D) {
+        setAGVlatitude(other.getAGVlatitude());
+      }
+      if (other.getAGVlongitude() != 0D) {
+        setAGVlongitude(other.getAGVlongitude());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -519,28 +557,54 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int aGVlocation_ ;
+    private double aGVlatitude_ ;
     /**
-     * <code>int32 AGVlocation = 2;</code>
+     * <code>double AGVlatitude = 2;</code>
      */
-    public int getAGVlocation() {
-      return aGVlocation_;
+    public double getAGVlatitude() {
+      return aGVlatitude_;
     }
     /**
-     * <code>int32 AGVlocation = 2;</code>
+     * <code>double AGVlatitude = 2;</code>
      */
-    public Builder setAGVlocation(int value) {
+    public Builder setAGVlatitude(double value) {
       
-      aGVlocation_ = value;
+      aGVlatitude_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 AGVlocation = 2;</code>
+     * <code>double AGVlatitude = 2;</code>
      */
-    public Builder clearAGVlocation() {
+    public Builder clearAGVlatitude() {
       
-      aGVlocation_ = 0;
+      aGVlatitude_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double aGVlongitude_ ;
+    /**
+     * <code>double AGVlongitude = 3;</code>
+     */
+    public double getAGVlongitude() {
+      return aGVlongitude_;
+    }
+    /**
+     * <code>double AGVlongitude = 3;</code>
+     */
+    public Builder setAGVlongitude(double value) {
+      
+      aGVlongitude_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double AGVlongitude = 3;</code>
+     */
+    public Builder clearAGVlongitude() {
+      
+      aGVlongitude_ = 0D;
       onChanged();
       return this;
     }

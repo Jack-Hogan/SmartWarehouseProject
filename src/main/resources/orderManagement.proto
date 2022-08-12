@@ -10,10 +10,10 @@ service OrderManagement {
 	//unary
 	rpc stockCheck(StockRequest) returns (StockResponse) {};
 
-	//server-to-client streaming
+	//server streaming
 	rpc replenishStock(StockReplenishRequest) returns(stream StockReplenishResponse) {};
 
-	//client-to-server streaming
+	//client streaming
 	rpc orderTracking (stream OrderTrackingRequest) returns (OrderTrackingResponse){};
 
 
@@ -26,6 +26,7 @@ message StockRequest {
 message StockResponse {
 	int32 stockNumber = 1;
 	string stockType = 2;
+	string notFoundMsg = 3;
 }
 
 message StockReplenishRequest {
@@ -36,7 +37,7 @@ message StockReplenishResponse {
 	string replenishType = 1;
 	int32 lowStock = 2;
 	int32 highStock = 3;
-	string stockReplenished = 4;
+	bool stockReplenished = 4;
 }
 
 message OrderTrackingRequest {
