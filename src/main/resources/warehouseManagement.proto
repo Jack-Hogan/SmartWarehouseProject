@@ -17,14 +17,29 @@ service WarehouseManagment {
 
 message ProductivityReportRequest {
 	string prodReport = 1;
+	double Q1earning = 2;
+	double Q2earning = 3;
+	double Q3earning = 4;
+	double Q4earning = 5;
+
 	}
 
 message ProductivityReportResponse {
 	string prodReportService = 1;
+	int32 AGVperformance = 2;
+	int32 EmployeeCount =3;
+	double Q1earning = 4;
+	double Q2earning = 5;
+	double Q3earning = 6;
+	double Q4earning = 7;
+	double QuartAvg = 8;
+	double AnnualAvgEarning = 9;
+	double totalEarning =10;
 }
 
 message DemandForecastRequest {
 	string forecastMessage =1;
+	int32 itemsSold = 2;
 }
 
 message DemandForecastResponse{

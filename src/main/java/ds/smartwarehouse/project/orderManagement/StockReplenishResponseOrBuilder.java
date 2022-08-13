@@ -28,12 +28,7 @@ public interface StockReplenishResponseOrBuilder extends
   int getHighStock();
 
   /**
-   * <code>string stockReplenished = 4;</code>
+   * <code>bool stockReplenished = 4;</code>
    */
-  java.lang.String getStockReplenished();
-  /**
-   * <code>string stockReplenished = 4;</code>
-   */
-  com.google.protobuf.ByteString
-      getStockReplenishedBytes();
+  boolean getStockReplenished();
 }

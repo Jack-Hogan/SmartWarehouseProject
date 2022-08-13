@@ -17,6 +17,10 @@ private static final long serialVersionUID = 0L;
   }
   private ProductivityReportRequest() {
     prodReport_ = "";
+    q1Earning_ = 0D;
+    q2Earning_ = 0D;
+    q3Earning_ = 0D;
+    q4Earning_ = 0D;
   }
 
   @java.lang.Override
@@ -47,6 +51,26 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             prodReport_ = s;
+            break;
+          }
+          case 17: {
+
+            q1Earning_ = input.readDouble();
+            break;
+          }
+          case 25: {
+
+            q2Earning_ = input.readDouble();
+            break;
+          }
+          case 33: {
+
+            q3Earning_ = input.readDouble();
+            break;
+          }
+          case 41: {
+
+            q4Earning_ = input.readDouble();
             break;
           }
           default: {
@@ -115,6 +139,42 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int Q1EARNING_FIELD_NUMBER = 2;
+  private double q1Earning_;
+  /**
+   * <code>double Q1earning = 2;</code>
+   */
+  public double getQ1Earning() {
+    return q1Earning_;
+  }
+
+  public static final int Q2EARNING_FIELD_NUMBER = 3;
+  private double q2Earning_;
+  /**
+   * <code>double Q2earning = 3;</code>
+   */
+  public double getQ2Earning() {
+    return q2Earning_;
+  }
+
+  public static final int Q3EARNING_FIELD_NUMBER = 4;
+  private double q3Earning_;
+  /**
+   * <code>double Q3earning = 4;</code>
+   */
+  public double getQ3Earning() {
+    return q3Earning_;
+  }
+
+  public static final int Q4EARNING_FIELD_NUMBER = 5;
+  private double q4Earning_;
+  /**
+   * <code>double Q4earning = 5;</code>
+   */
+  public double getQ4Earning() {
+    return q4Earning_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +192,18 @@ private static final long serialVersionUID = 0L;
     if (!getProdReportBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prodReport_);
     }
+    if (q1Earning_ != 0D) {
+      output.writeDouble(2, q1Earning_);
+    }
+    if (q2Earning_ != 0D) {
+      output.writeDouble(3, q2Earning_);
+    }
+    if (q3Earning_ != 0D) {
+      output.writeDouble(4, q3Earning_);
+    }
+    if (q4Earning_ != 0D) {
+      output.writeDouble(5, q4Earning_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -143,6 +215,22 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!getProdReportBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prodReport_);
+    }
+    if (q1Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(2, q1Earning_);
+    }
+    if (q2Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(3, q2Earning_);
+    }
+    if (q3Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(4, q3Earning_);
+    }
+    if (q4Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(5, q4Earning_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -162,6 +250,22 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getProdReport()
         .equals(other.getProdReport());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ1Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ1Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ2Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ2Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ3Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ3Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ4Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ4Earning()));
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -175,6 +279,18 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + PRODREPORT_FIELD_NUMBER;
     hash = (53 * hash) + getProdReport().hashCode();
+    hash = (37 * hash) + Q1EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ1Earning()));
+    hash = (37 * hash) + Q2EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ2Earning()));
+    hash = (37 * hash) + Q3EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ3Earning()));
+    hash = (37 * hash) + Q4EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ4Earning()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,6 +426,14 @@ private static final long serialVersionUID = 0L;
       super.clear();
       prodReport_ = "";
 
+      q1Earning_ = 0D;
+
+      q2Earning_ = 0D;
+
+      q3Earning_ = 0D;
+
+      q4Earning_ = 0D;
+
       return this;
     }
 
@@ -337,6 +461,10 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest buildPartial() {
       ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest result = new ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest(this);
       result.prodReport_ = prodReport_;
+      result.q1Earning_ = q1Earning_;
+      result.q2Earning_ = q2Earning_;
+      result.q3Earning_ = q3Earning_;
+      result.q4Earning_ = q4Earning_;
       onBuilt();
       return result;
     }
@@ -388,6 +516,18 @@ private static final long serialVersionUID = 0L;
       if (!other.getProdReport().isEmpty()) {
         prodReport_ = other.prodReport_;
         onChanged();
+      }
+      if (other.getQ1Earning() != 0D) {
+        setQ1Earning(other.getQ1Earning());
+      }
+      if (other.getQ2Earning() != 0D) {
+        setQ2Earning(other.getQ2Earning());
+      }
+      if (other.getQ3Earning() != 0D) {
+        setQ3Earning(other.getQ3Earning());
+      }
+      if (other.getQ4Earning() != 0D) {
+        setQ4Earning(other.getQ4Earning());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -483,6 +623,110 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       prodReport_ = value;
+      onChanged();
+      return this;
+    }
+
+    private double q1Earning_ ;
+    /**
+     * <code>double Q1earning = 2;</code>
+     */
+    public double getQ1Earning() {
+      return q1Earning_;
+    }
+    /**
+     * <code>double Q1earning = 2;</code>
+     */
+    public Builder setQ1Earning(double value) {
+      
+      q1Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q1earning = 2;</code>
+     */
+    public Builder clearQ1Earning() {
+      
+      q1Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q2Earning_ ;
+    /**
+     * <code>double Q2earning = 3;</code>
+     */
+    public double getQ2Earning() {
+      return q2Earning_;
+    }
+    /**
+     * <code>double Q2earning = 3;</code>
+     */
+    public Builder setQ2Earning(double value) {
+      
+      q2Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q2earning = 3;</code>
+     */
+    public Builder clearQ2Earning() {
+      
+      q2Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q3Earning_ ;
+    /**
+     * <code>double Q3earning = 4;</code>
+     */
+    public double getQ3Earning() {
+      return q3Earning_;
+    }
+    /**
+     * <code>double Q3earning = 4;</code>
+     */
+    public Builder setQ3Earning(double value) {
+      
+      q3Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q3earning = 4;</code>
+     */
+    public Builder clearQ3Earning() {
+      
+      q3Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q4Earning_ ;
+    /**
+     * <code>double Q4earning = 5;</code>
+     */
+    public double getQ4Earning() {
+      return q4Earning_;
+    }
+    /**
+     * <code>double Q4earning = 5;</code>
+     */
+    public Builder setQ4Earning(double value) {
+      
+      q4Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q4earning = 5;</code>
+     */
+    public Builder clearQ4Earning() {
+      
+      q4Earning_ = 0D;
       onChanged();
       return this;
     }

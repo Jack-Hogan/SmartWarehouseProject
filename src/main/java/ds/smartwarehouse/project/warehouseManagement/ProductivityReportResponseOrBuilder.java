@@ -16,4 +16,49 @@ public interface ProductivityReportResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getProdReportServiceBytes();
+
+  /**
+   * <code>int32 AGVperformance = 2;</code>
+   */
+  int getAGVperformance();
+
+  /**
+   * <code>int32 EmployeeCount = 3;</code>
+   */
+  int getEmployeeCount();
+
+  /**
+   * <code>double Q1earning = 4;</code>
+   */
+  double getQ1Earning();
+
+  /**
+   * <code>double Q2earning = 5;</code>
+   */
+  double getQ2Earning();
+
+  /**
+   * <code>double Q3earning = 6;</code>
+   */
+  double getQ3Earning();
+
+  /**
+   * <code>double Q4earning = 7;</code>
+   */
+  double getQ4Earning();
+
+  /**
+   * <code>double QuartAvg = 8;</code>
+   */
+  double getQuartAvg();
+
+  /**
+   * <code>double AnnualAvgEarning = 9;</code>
+   */
+  double getAnnualAvgEarning();
+
+  /**
+   * <code>double totalEarning = 10;</code>
+   */
+  double getTotalEarning();
 }

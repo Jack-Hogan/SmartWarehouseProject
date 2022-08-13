@@ -53,25 +53,32 @@ public final class NewWarehouseManagementImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\031warehouseManagement.proto\"/\n\031Productiv" +
-      "ityReportRequest\022\022\n\nprodReport\030\001 \001(\t\"7\n\032" +
-      "ProductivityReportResponse\022\031\n\021prodReport" +
-      "Service\030\001 \001(\t\"0\n\025DemandForecastRequest\022\027" +
-      "\n\017forecastMessage\030\001 \001(\t\"D\n\026DemandForecas" +
-      "tResponse\022\026\n\016forecastReview\030\001 \001(\t\022\022\n\nhig" +
-      "hDemand\030\002 \001(\005\"2\n\027RealTimeOverviewRequest" +
-      "\022\027\n\017overviewMessage\030\001 \001(\t\"N\n\030RealTimeOve" +
-      "rviewResponse\022\027\n\017vehicleOverview\030\001 \001(\t\022\031" +
-      "\n\021warehouseOverview\030\002 \001(\t2\373\001\n\022WarehouseM" +
-      "anagment\022O\n\022productivityReport\022\032.Product" +
-      "ivityReportRequest\032\033.ProductivityReportR" +
-      "esponse\"\000\022E\n\016demandForecast\022\026.DemandFore" +
-      "castRequest\032\027.DemandForecastResponse\"\000(\001" +
-      "\022M\n\020realTimeOverview\022\030.RealTimeOverviewR" +
-      "equest\032\031.RealTimeOverviewResponse\"\000(\0010\001B" +
-      "M\n-ds.smartwarehouse.project.warehouseMa" +
-      "nagementB\032NewWarehouseManagementImplP\001b\006" +
-      "proto3"
+      "\n\031warehouseManagement.proto\"{\n\031Productiv" +
+      "ityReportRequest\022\022\n\nprodReport\030\001 \001(\t\022\021\n\t" +
+      "Q1earning\030\002 \001(\001\022\021\n\tQ2earning\030\003 \001(\001\022\021\n\tQ3" +
+      "earning\030\004 \001(\001\022\021\n\tQ4earning\030\005 \001(\001\"\364\001\n\032Pro" +
+      "ductivityReportResponse\022\031\n\021prodReportSer" +
+      "vice\030\001 \001(\t\022\026\n\016AGVperformance\030\002 \001(\005\022\025\n\rEm" +
+      "ployeeCount\030\003 \001(\005\022\021\n\tQ1earning\030\004 \001(\001\022\021\n\t" +
+      "Q2earning\030\005 \001(\001\022\021\n\tQ3earning\030\006 \001(\001\022\021\n\tQ4" +
+      "earning\030\007 \001(\001\022\020\n\010QuartAvg\030\010 \001(\001\022\030\n\020Annua" +
+      "lAvgEarning\030\t \001(\001\022\024\n\014totalEarning\030\n \001(\001\"" +
+      "C\n\025DemandForecastRequest\022\027\n\017forecastMess" +
+      "age\030\001 \001(\t\022\021\n\titemsSold\030\002 \001(\005\"D\n\026DemandFo" +
+      "recastResponse\022\026\n\016forecastReview\030\001 \001(\t\022\022" +
+      "\n\nhighDemand\030\002 \001(\005\"2\n\027RealTimeOverviewRe" +
+      "quest\022\027\n\017overviewMessage\030\001 \001(\t\"N\n\030RealTi" +
+      "meOverviewResponse\022\027\n\017vehicleOverview\030\001 " +
+      "\001(\t\022\031\n\021warehouseOverview\030\002 \001(\t2\373\001\n\022Wareh" +
+      "ouseManagment\022O\n\022productivityReport\022\032.Pr" +
+      "oductivityReportRequest\032\033.ProductivityRe" +
+      "portResponse\"\000\022E\n\016demandForecast\022\026.Deman" +
+      "dForecastRequest\032\027.DemandForecastRespons" +
+      "e\"\000(\001\022M\n\020realTimeOverview\022\030.RealTimeOver" +
+      "viewRequest\032\031.RealTimeOverviewResponse\"\000" +
+      "(\0010\001BM\n-ds.smartwarehouse.project.wareho" +
+      "useManagementB\032NewWarehouseManagementImp" +
+      "lP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -90,19 +97,19 @@ public final class NewWarehouseManagementImpl {
     internal_static_ProductivityReportRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductivityReportRequest_descriptor,
-        new java.lang.String[] { "ProdReport", });
+        new java.lang.String[] { "ProdReport", "Q1Earning", "Q2Earning", "Q3Earning", "Q4Earning", });
     internal_static_ProductivityReportResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ProductivityReportResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductivityReportResponse_descriptor,
-        new java.lang.String[] { "ProdReportService", });
+        new java.lang.String[] { "ProdReportService", "AGVperformance", "EmployeeCount", "Q1Earning", "Q2Earning", "Q3Earning", "Q4Earning", "QuartAvg", "AnnualAvgEarning", "TotalEarning", });
     internal_static_DemandForecastRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_DemandForecastRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DemandForecastRequest_descriptor,
-        new java.lang.String[] { "ForecastMessage", });
+        new java.lang.String[] { "ForecastMessage", "ItemsSold", });
     internal_static_DemandForecastResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_DemandForecastResponse_fieldAccessorTable = new

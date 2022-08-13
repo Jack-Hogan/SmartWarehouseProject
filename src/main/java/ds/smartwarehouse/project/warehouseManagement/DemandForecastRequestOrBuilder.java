@@ -16,4 +16,9 @@ public interface DemandForecastRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getForecastMessageBytes();
+
+  /**
+   * <code>int32 itemsSold = 2;</code>
+   */
+  int getItemsSold();
 }

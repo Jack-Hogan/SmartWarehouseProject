@@ -16,4 +16,24 @@ public interface ProductivityReportRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getProdReportBytes();
+
+  /**
+   * <code>double Q1earning = 2;</code>
+   */
+  double getQ1Earning();
+
+  /**
+   * <code>double Q2earning = 3;</code>
+   */
+  double getQ2Earning();
+
+  /**
+   * <code>double Q3earning = 4;</code>
+   */
+  double getQ3Earning();
+
+  /**
+   * <code>double Q4earning = 5;</code>
+   */
+  double getQ4Earning();
 }

@@ -172,31 +172,36 @@ public class AGVServer extends AGVSystemImplBase {
 	@Override
 	public void agvDiag(AGVDiagRequest request, StreamObserver<AGVDiagResponse> responseObserver) {
 
-		System.out.println("\nReceiving request message from Client: " + request.getAGVdiagRequest());
 		
 		int requestAmount = request.getAGVfrequency();
 		int counter = 1;
 		Random rand = new Random();
 		AGVServer agv = new AGVServer();
 		
+		System.out.println("\nReceiving request message from Client: " + request.getAGVdiagRequest() + " for " +requestAmount +" vehicles. Request Recieved Successfully");
+
+		
 		for(int i = 0; i < requestAmount; i++) {
 			
 			int random = rand.nextInt(((100 - 60)+1)+60);
 			String AGV = agv.AGVarray();
 			String status = "";
-			if(random<20) {
+			if(random<10) {
+				status = "Offline!";
+			}
+			else if(random<20) {
 				status = "Critical!";
 			}
 			else if(random <40) {
 				status = "Warning!";
 			}
 			else if(random <60) {
-				status = "Okay";
+				status = "Suffcient";
 			}
 			else {
 				status = "Optimal";
 			}
-			System.out.println("Requesting Diagnois Test:" + counter + ".Sending AGV diagnosis for " + AGV + ". Testing capacity status. Streaming messges to client...");
+			//System.out.println("Requesting Diagnois Test:" + counter + ".Sending AGV diagnosis for " + AGV + ". Testing capacity status. Streaming messges to client...");
 			
 			
 			AGVDiagResponse response = AGVDiagResponse.newBuilder()

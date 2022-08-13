@@ -17,6 +17,15 @@ private static final long serialVersionUID = 0L;
   }
   private ProductivityReportResponse() {
     prodReportService_ = "";
+    aGVperformance_ = 0;
+    employeeCount_ = 0;
+    q1Earning_ = 0D;
+    q2Earning_ = 0D;
+    q3Earning_ = 0D;
+    q4Earning_ = 0D;
+    quartAvg_ = 0D;
+    annualAvgEarning_ = 0D;
+    totalEarning_ = 0D;
   }
 
   @java.lang.Override
@@ -47,6 +56,51 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             prodReportService_ = s;
+            break;
+          }
+          case 16: {
+
+            aGVperformance_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            employeeCount_ = input.readInt32();
+            break;
+          }
+          case 33: {
+
+            q1Earning_ = input.readDouble();
+            break;
+          }
+          case 41: {
+
+            q2Earning_ = input.readDouble();
+            break;
+          }
+          case 49: {
+
+            q3Earning_ = input.readDouble();
+            break;
+          }
+          case 57: {
+
+            q4Earning_ = input.readDouble();
+            break;
+          }
+          case 65: {
+
+            quartAvg_ = input.readDouble();
+            break;
+          }
+          case 73: {
+
+            annualAvgEarning_ = input.readDouble();
+            break;
+          }
+          case 81: {
+
+            totalEarning_ = input.readDouble();
             break;
           }
           default: {
@@ -115,6 +169,87 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int AGVPERFORMANCE_FIELD_NUMBER = 2;
+  private int aGVperformance_;
+  /**
+   * <code>int32 AGVperformance = 2;</code>
+   */
+  public int getAGVperformance() {
+    return aGVperformance_;
+  }
+
+  public static final int EMPLOYEECOUNT_FIELD_NUMBER = 3;
+  private int employeeCount_;
+  /**
+   * <code>int32 EmployeeCount = 3;</code>
+   */
+  public int getEmployeeCount() {
+    return employeeCount_;
+  }
+
+  public static final int Q1EARNING_FIELD_NUMBER = 4;
+  private double q1Earning_;
+  /**
+   * <code>double Q1earning = 4;</code>
+   */
+  public double getQ1Earning() {
+    return q1Earning_;
+  }
+
+  public static final int Q2EARNING_FIELD_NUMBER = 5;
+  private double q2Earning_;
+  /**
+   * <code>double Q2earning = 5;</code>
+   */
+  public double getQ2Earning() {
+    return q2Earning_;
+  }
+
+  public static final int Q3EARNING_FIELD_NUMBER = 6;
+  private double q3Earning_;
+  /**
+   * <code>double Q3earning = 6;</code>
+   */
+  public double getQ3Earning() {
+    return q3Earning_;
+  }
+
+  public static final int Q4EARNING_FIELD_NUMBER = 7;
+  private double q4Earning_;
+  /**
+   * <code>double Q4earning = 7;</code>
+   */
+  public double getQ4Earning() {
+    return q4Earning_;
+  }
+
+  public static final int QUARTAVG_FIELD_NUMBER = 8;
+  private double quartAvg_;
+  /**
+   * <code>double QuartAvg = 8;</code>
+   */
+  public double getQuartAvg() {
+    return quartAvg_;
+  }
+
+  public static final int ANNUALAVGEARNING_FIELD_NUMBER = 9;
+  private double annualAvgEarning_;
+  /**
+   * <code>double AnnualAvgEarning = 9;</code>
+   */
+  public double getAnnualAvgEarning() {
+    return annualAvgEarning_;
+  }
+
+  public static final int TOTALEARNING_FIELD_NUMBER = 10;
+  private double totalEarning_;
+  /**
+   * <code>double totalEarning = 10;</code>
+   */
+  public double getTotalEarning() {
+    return totalEarning_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +267,33 @@ private static final long serialVersionUID = 0L;
     if (!getProdReportServiceBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prodReportService_);
     }
+    if (aGVperformance_ != 0) {
+      output.writeInt32(2, aGVperformance_);
+    }
+    if (employeeCount_ != 0) {
+      output.writeInt32(3, employeeCount_);
+    }
+    if (q1Earning_ != 0D) {
+      output.writeDouble(4, q1Earning_);
+    }
+    if (q2Earning_ != 0D) {
+      output.writeDouble(5, q2Earning_);
+    }
+    if (q3Earning_ != 0D) {
+      output.writeDouble(6, q3Earning_);
+    }
+    if (q4Earning_ != 0D) {
+      output.writeDouble(7, q4Earning_);
+    }
+    if (quartAvg_ != 0D) {
+      output.writeDouble(8, quartAvg_);
+    }
+    if (annualAvgEarning_ != 0D) {
+      output.writeDouble(9, annualAvgEarning_);
+    }
+    if (totalEarning_ != 0D) {
+      output.writeDouble(10, totalEarning_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -143,6 +305,42 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!getProdReportServiceBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prodReportService_);
+    }
+    if (aGVperformance_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, aGVperformance_);
+    }
+    if (employeeCount_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, employeeCount_);
+    }
+    if (q1Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(4, q1Earning_);
+    }
+    if (q2Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(5, q2Earning_);
+    }
+    if (q3Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(6, q3Earning_);
+    }
+    if (q4Earning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(7, q4Earning_);
+    }
+    if (quartAvg_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(8, quartAvg_);
+    }
+    if (annualAvgEarning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(9, annualAvgEarning_);
+    }
+    if (totalEarning_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(10, totalEarning_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -162,6 +360,38 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getProdReportService()
         .equals(other.getProdReportService());
+    result = result && (getAGVperformance()
+        == other.getAGVperformance());
+    result = result && (getEmployeeCount()
+        == other.getEmployeeCount());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ1Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ1Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ2Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ2Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ3Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ3Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQ4Earning())
+        == java.lang.Double.doubleToLongBits(
+            other.getQ4Earning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getQuartAvg())
+        == java.lang.Double.doubleToLongBits(
+            other.getQuartAvg()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getAnnualAvgEarning())
+        == java.lang.Double.doubleToLongBits(
+            other.getAnnualAvgEarning()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getTotalEarning())
+        == java.lang.Double.doubleToLongBits(
+            other.getTotalEarning()));
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -175,6 +405,31 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + PRODREPORTSERVICE_FIELD_NUMBER;
     hash = (53 * hash) + getProdReportService().hashCode();
+    hash = (37 * hash) + AGVPERFORMANCE_FIELD_NUMBER;
+    hash = (53 * hash) + getAGVperformance();
+    hash = (37 * hash) + EMPLOYEECOUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getEmployeeCount();
+    hash = (37 * hash) + Q1EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ1Earning()));
+    hash = (37 * hash) + Q2EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ2Earning()));
+    hash = (37 * hash) + Q3EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ3Earning()));
+    hash = (37 * hash) + Q4EARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQ4Earning()));
+    hash = (37 * hash) + QUARTAVG_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getQuartAvg()));
+    hash = (37 * hash) + ANNUALAVGEARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getAnnualAvgEarning()));
+    hash = (37 * hash) + TOTALEARNING_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getTotalEarning()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,6 +565,24 @@ private static final long serialVersionUID = 0L;
       super.clear();
       prodReportService_ = "";
 
+      aGVperformance_ = 0;
+
+      employeeCount_ = 0;
+
+      q1Earning_ = 0D;
+
+      q2Earning_ = 0D;
+
+      q3Earning_ = 0D;
+
+      q4Earning_ = 0D;
+
+      quartAvg_ = 0D;
+
+      annualAvgEarning_ = 0D;
+
+      totalEarning_ = 0D;
+
       return this;
     }
 
@@ -337,6 +610,15 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse buildPartial() {
       ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse result = new ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse(this);
       result.prodReportService_ = prodReportService_;
+      result.aGVperformance_ = aGVperformance_;
+      result.employeeCount_ = employeeCount_;
+      result.q1Earning_ = q1Earning_;
+      result.q2Earning_ = q2Earning_;
+      result.q3Earning_ = q3Earning_;
+      result.q4Earning_ = q4Earning_;
+      result.quartAvg_ = quartAvg_;
+      result.annualAvgEarning_ = annualAvgEarning_;
+      result.totalEarning_ = totalEarning_;
       onBuilt();
       return result;
     }
@@ -388,6 +670,33 @@ private static final long serialVersionUID = 0L;
       if (!other.getProdReportService().isEmpty()) {
         prodReportService_ = other.prodReportService_;
         onChanged();
+      }
+      if (other.getAGVperformance() != 0) {
+        setAGVperformance(other.getAGVperformance());
+      }
+      if (other.getEmployeeCount() != 0) {
+        setEmployeeCount(other.getEmployeeCount());
+      }
+      if (other.getQ1Earning() != 0D) {
+        setQ1Earning(other.getQ1Earning());
+      }
+      if (other.getQ2Earning() != 0D) {
+        setQ2Earning(other.getQ2Earning());
+      }
+      if (other.getQ3Earning() != 0D) {
+        setQ3Earning(other.getQ3Earning());
+      }
+      if (other.getQ4Earning() != 0D) {
+        setQ4Earning(other.getQ4Earning());
+      }
+      if (other.getQuartAvg() != 0D) {
+        setQuartAvg(other.getQuartAvg());
+      }
+      if (other.getAnnualAvgEarning() != 0D) {
+        setAnnualAvgEarning(other.getAnnualAvgEarning());
+      }
+      if (other.getTotalEarning() != 0D) {
+        setTotalEarning(other.getTotalEarning());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -483,6 +792,240 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       prodReportService_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int aGVperformance_ ;
+    /**
+     * <code>int32 AGVperformance = 2;</code>
+     */
+    public int getAGVperformance() {
+      return aGVperformance_;
+    }
+    /**
+     * <code>int32 AGVperformance = 2;</code>
+     */
+    public Builder setAGVperformance(int value) {
+      
+      aGVperformance_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 AGVperformance = 2;</code>
+     */
+    public Builder clearAGVperformance() {
+      
+      aGVperformance_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int employeeCount_ ;
+    /**
+     * <code>int32 EmployeeCount = 3;</code>
+     */
+    public int getEmployeeCount() {
+      return employeeCount_;
+    }
+    /**
+     * <code>int32 EmployeeCount = 3;</code>
+     */
+    public Builder setEmployeeCount(int value) {
+      
+      employeeCount_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 EmployeeCount = 3;</code>
+     */
+    public Builder clearEmployeeCount() {
+      
+      employeeCount_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private double q1Earning_ ;
+    /**
+     * <code>double Q1earning = 4;</code>
+     */
+    public double getQ1Earning() {
+      return q1Earning_;
+    }
+    /**
+     * <code>double Q1earning = 4;</code>
+     */
+    public Builder setQ1Earning(double value) {
+      
+      q1Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q1earning = 4;</code>
+     */
+    public Builder clearQ1Earning() {
+      
+      q1Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q2Earning_ ;
+    /**
+     * <code>double Q2earning = 5;</code>
+     */
+    public double getQ2Earning() {
+      return q2Earning_;
+    }
+    /**
+     * <code>double Q2earning = 5;</code>
+     */
+    public Builder setQ2Earning(double value) {
+      
+      q2Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q2earning = 5;</code>
+     */
+    public Builder clearQ2Earning() {
+      
+      q2Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q3Earning_ ;
+    /**
+     * <code>double Q3earning = 6;</code>
+     */
+    public double getQ3Earning() {
+      return q3Earning_;
+    }
+    /**
+     * <code>double Q3earning = 6;</code>
+     */
+    public Builder setQ3Earning(double value) {
+      
+      q3Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q3earning = 6;</code>
+     */
+    public Builder clearQ3Earning() {
+      
+      q3Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double q4Earning_ ;
+    /**
+     * <code>double Q4earning = 7;</code>
+     */
+    public double getQ4Earning() {
+      return q4Earning_;
+    }
+    /**
+     * <code>double Q4earning = 7;</code>
+     */
+    public Builder setQ4Earning(double value) {
+      
+      q4Earning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double Q4earning = 7;</code>
+     */
+    public Builder clearQ4Earning() {
+      
+      q4Earning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double quartAvg_ ;
+    /**
+     * <code>double QuartAvg = 8;</code>
+     */
+    public double getQuartAvg() {
+      return quartAvg_;
+    }
+    /**
+     * <code>double QuartAvg = 8;</code>
+     */
+    public Builder setQuartAvg(double value) {
+      
+      quartAvg_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double QuartAvg = 8;</code>
+     */
+    public Builder clearQuartAvg() {
+      
+      quartAvg_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double annualAvgEarning_ ;
+    /**
+     * <code>double AnnualAvgEarning = 9;</code>
+     */
+    public double getAnnualAvgEarning() {
+      return annualAvgEarning_;
+    }
+    /**
+     * <code>double AnnualAvgEarning = 9;</code>
+     */
+    public Builder setAnnualAvgEarning(double value) {
+      
+      annualAvgEarning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double AnnualAvgEarning = 9;</code>
+     */
+    public Builder clearAnnualAvgEarning() {
+      
+      annualAvgEarning_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double totalEarning_ ;
+    /**
+     * <code>double totalEarning = 10;</code>
+     */
+    public double getTotalEarning() {
+      return totalEarning_;
+    }
+    /**
+     * <code>double totalEarning = 10;</code>
+     */
+    public Builder setTotalEarning(double value) {
+      
+      totalEarning_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double totalEarning = 10;</code>
+     */
+    public Builder clearTotalEarning() {
+      
+      totalEarning_ = 0D;
       onChanged();
       return this;
     }

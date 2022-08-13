@@ -14,6 +14,7 @@ import javax.jmdns.ServiceInfo;
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class OrderManagementServer extends OrderManagementImplBase{
@@ -85,8 +86,12 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		list.add("Laptops");
 		list.add("Monitors");
 		list.add("Cables");
-		list.add("SoundSystems");
+		list.add("Speakers");
 		list.add("TVs");
+		list.add("Washing Machines");
+		list.add("Fridges");
+		list.add("Wearables");
+		list.add("Smartphones");
 		
 		return list;
 	}
@@ -95,7 +100,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		
 		
 		Random rand = new Random();
-		int index = rand.nextInt(4);
+		int index = rand.nextInt(8);
 		
 		return array().get(index);
 	}
@@ -114,9 +119,9 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		//receive request
 		
 		//String type = stockType();
-		boolean itemFound = false;
 		
-		System.out.println("Request Message from Client: " );
+		System.out.println("Request Message from Client: " + request.getStockMessage());
+		boolean itemFound = false;
 
 		try {
 			StockResponse response;
@@ -136,22 +141,33 @@ public class OrderManagementServer extends OrderManagementImplBase{
 				//complete
 				responseObserver.onCompleted();
 			}
-
-		}
-		if(itemFound = false) {
-			System.out.println("We do not stock: " + request.getStockMessage()+" of that type. Please try again.");
+			else {
+				System.out.println("Client item does not match stock number:" + i+1 + ".");
 			}
-		}
-		catch(IllegalFormatException ex) {
-			System.out.println(ex);
 
 		}
+		if(itemFound == false) {
+//	           Status status = Status.FAILED_PRECONDITION.withDescription("Not between 2 and 20");
+//	            responseObserver.onError(status.asRuntimeException());
+//	            //return;
+			response = StockResponse.newBuilder()
+					.setNotFoundMsg("Item not found, please try again!!")
+					.build();
+			
+			//send response
+			responseObserver.onNext(response);
+
+			//complete
+			responseObserver.onCompleted();
+		}
+		}
+		catch (Exception e){
+		    Status status = Status.fromThrowable(e);
+		    System.out.println(status.getCode() + " : " + status.getDescription());
+		}
+
 		
 		//build response
-		
-
-		
-		/* Client: do while(scanner) if (input = stocktype) display stock num*/
 		
 
 
@@ -163,40 +179,31 @@ public class OrderManagementServer extends OrderManagementImplBase{
 	public void replenishStock(StockReplenishRequest request, StreamObserver<StockReplenishResponse> responseObserver) {
 
 		Random rand = new Random();
-		boolean stockReplen = rand.nextBoolean();
 		//receive request
 		System.out.println("\nReceiving request message from Client: " + request.getReplenishMessage());
 		
 		//build response 
 		for(int i = 0 ; i <array().size(); i++) {
 			
-		
+		boolean stockReplen = rand.nextBoolean();
+
 		StockReplenishResponse response = StockReplenishResponse.newBuilder()
 				.setLowStock(randomNum())
 				.setHighStock(randomNum())
 				.setReplenishType(array().get(i))
-				.setStockReplenished("Yes")
+				.setStockReplenished(stockReplen)
 				.build();
-		try {
-			Thread.sleep(2000);
-		}
-		catch(InterruptedException e) {
-			e.printStackTrace();
-		}
+
+			responseObserver.onNext(response);
+			try {
+				Thread.sleep(1200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
-		
-		//send response 
-		responseObserver.onNext(response);
-		}
-		//complete		
-		
-		try {
-			Thread.sleep(2000);
-		}
-		catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		}	
+			
 		responseObserver.onCompleted();
 		
 	}
@@ -205,24 +212,28 @@ public class OrderManagementServer extends OrderManagementImplBase{
 	//Client Streaming
 	@Override
 	public StreamObserver<OrderTrackingRequest> orderTracking(StreamObserver<OrderTrackingResponse> responseObserver) {
+		
 		return new StreamObserver<OrderTrackingRequest>(){
 
 
 			Date date = new Date();
+			
+			ArrayList <Integer> list = new ArrayList<>();
+			String[] status = new String[]{"Delivered","Undelivered", "Leaving Warehouse", "Out For Delivery","Ready for Collection"};
+			Random rand = new Random();
+			String delivery = status[rand.nextInt(4)];
+			
+			int orderNo;
+
 			 
 			@Override
 			public void onNext(OrderTrackingRequest value) {
+				
 
-				 int orderNo = value.getOrderNumber();
+				 orderNo = value.getOrderNumber();
 				 
-				 System.out.println("Order tracking request for order: " + orderNo + " "+ date + "\n");
-
-				 OrderTrackingResponse response = OrderTrackingResponse.newBuilder()
-						 .setOrderNumber(orderNo)
-						 .setOrderStatus("true")
-						 .build();
+				 System.out.println("Order tracking request for order: " + value.getOrderNumber() + " "+ date + "\n");
 				 
-				 responseObserver.onNext(response);
 				 try {
 					Thread.sleep(1500);
 				} catch (InterruptedException e) {
@@ -239,8 +250,19 @@ public class OrderManagementServer extends OrderManagementImplBase{
 
 			@Override
 			public void onCompleted() {
+				
 
+
+				System.out.println("List: " + list);
+				 OrderTrackingResponse response = OrderTrackingResponse.newBuilder()
+						.setOrderNumber(orderNo)
+						.setOrderStatus(delivery)
+						.build();
+				 
+					responseObserver.onNext(response);
+	 
 				System.out.println("Finished Bi-Directional order tracking service.\n");
+							
 				responseObserver.onCompleted();
 			
 			}

@@ -21,4 +21,14 @@ public interface StockResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getStockTypeBytes();
+
+  /**
+   * <code>string notFoundMsg = 3;</code>
+   */
+  java.lang.String getNotFoundMsg();
+  /**
+   * <code>string notFoundMsg = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getNotFoundMsgBytes();
 }

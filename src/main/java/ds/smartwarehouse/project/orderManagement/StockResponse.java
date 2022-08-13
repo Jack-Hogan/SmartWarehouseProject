@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private StockResponse() {
     stockNumber_ = 0;
     stockType_ = "";
+    notFoundMsg_ = "";
   }
 
   @java.lang.Override
@@ -53,6 +54,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             stockType_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            notFoundMsg_ = s;
             break;
           }
           default: {
@@ -130,6 +137,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int NOTFOUNDMSG_FIELD_NUMBER = 3;
+  private volatile java.lang.Object notFoundMsg_;
+  /**
+   * <code>string notFoundMsg = 3;</code>
+   */
+  public java.lang.String getNotFoundMsg() {
+    java.lang.Object ref = notFoundMsg_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      notFoundMsg_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string notFoundMsg = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getNotFoundMsgBytes() {
+    java.lang.Object ref = notFoundMsg_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      notFoundMsg_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -150,6 +191,9 @@ private static final long serialVersionUID = 0L;
     if (!getStockTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stockType_);
     }
+    if (!getNotFoundMsgBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, notFoundMsg_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -165,6 +209,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getStockTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stockType_);
+    }
+    if (!getNotFoundMsgBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, notFoundMsg_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -186,6 +233,8 @@ private static final long serialVersionUID = 0L;
         == other.getStockNumber());
     result = result && getStockType()
         .equals(other.getStockType());
+    result = result && getNotFoundMsg()
+        .equals(other.getNotFoundMsg());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -201,6 +250,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStockNumber();
     hash = (37 * hash) + STOCKTYPE_FIELD_NUMBER;
     hash = (53 * hash) + getStockType().hashCode();
+    hash = (37 * hash) + NOTFOUNDMSG_FIELD_NUMBER;
+    hash = (53 * hash) + getNotFoundMsg().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -316,7 +367,7 @@ private static final long serialVersionUID = 0L;
               ds.smartwarehouse.project.orderManagement.StockResponse.class, ds.smartwarehouse.project.orderManagement.StockResponse.Builder.class);
     }
 
-    // Construct using ds.smartwarehouse.project.orderManagment.StockResponse.newBuilder()
+    // Construct using ds.smartwarehouse.project.orderManagement.StockResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -337,6 +388,8 @@ private static final long serialVersionUID = 0L;
       stockNumber_ = 0;
 
       stockType_ = "";
+
+      notFoundMsg_ = "";
 
       return this;
     }
@@ -366,6 +419,7 @@ private static final long serialVersionUID = 0L;
       ds.smartwarehouse.project.orderManagement.StockResponse result = new ds.smartwarehouse.project.orderManagement.StockResponse(this);
       result.stockNumber_ = stockNumber_;
       result.stockType_ = stockType_;
+      result.notFoundMsg_ = notFoundMsg_;
       onBuilt();
       return result;
     }
@@ -419,6 +473,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getStockType().isEmpty()) {
         stockType_ = other.stockType_;
+        onChanged();
+      }
+      if (!other.getNotFoundMsg().isEmpty()) {
+        notFoundMsg_ = other.notFoundMsg_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -541,6 +599,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       stockType_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object notFoundMsg_ = "";
+    /**
+     * <code>string notFoundMsg = 3;</code>
+     */
+    public java.lang.String getNotFoundMsg() {
+      java.lang.Object ref = notFoundMsg_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        notFoundMsg_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string notFoundMsg = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNotFoundMsgBytes() {
+      java.lang.Object ref = notFoundMsg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        notFoundMsg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string notFoundMsg = 3;</code>
+     */
+    public Builder setNotFoundMsg(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      notFoundMsg_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string notFoundMsg = 3;</code>
+     */
+    public Builder clearNotFoundMsg() {
+      
+      notFoundMsg_ = getDefaultInstance().getNotFoundMsg();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string notFoundMsg = 3;</code>
+     */
+    public Builder setNotFoundMsgBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      notFoundMsg_ = value;
       onChanged();
       return this;
     }

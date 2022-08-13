@@ -265,7 +265,7 @@ private static final long serialVersionUID = 0L;
               ds.smartwarehouse.project.orderManagement.OrderTrackingRequest.class, ds.smartwarehouse.project.orderManagement.OrderTrackingRequest.Builder.class);
     }
 
-    // Construct using ds.smartwarehouse.project.orderManagment.OrderTrackingRequest.newBuilder()
+    // Construct using ds.smartwarehouse.project.orderManagement.OrderTrackingRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }

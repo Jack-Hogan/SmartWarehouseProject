@@ -19,7 +19,7 @@ private static final long serialVersionUID = 0L;
     replenishType_ = "";
     lowStock_ = 0;
     highStock_ = 0;
-    stockReplenished_ = "";
+    stockReplenished_ = false;
   }
 
   @java.lang.Override
@@ -62,10 +62,9 @@ private static final long serialVersionUID = 0L;
             highStock_ = input.readInt32();
             break;
           }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 32: {
 
-            stockReplenished_ = s;
+            stockReplenished_ = input.readBool();
             break;
           }
           default: {
@@ -153,37 +152,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int STOCKREPLENISHED_FIELD_NUMBER = 4;
-  private volatile java.lang.Object stockReplenished_;
+  private boolean stockReplenished_;
   /**
-   * <code>string stockReplenished = 4;</code>
+   * <code>bool stockReplenished = 4;</code>
    */
-  public java.lang.String getStockReplenished() {
-    java.lang.Object ref = stockReplenished_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      stockReplenished_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string stockReplenished = 4;</code>
-   */
-  public com.google.protobuf.ByteString
-      getStockReplenishedBytes() {
-    java.lang.Object ref = stockReplenished_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      stockReplenished_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public boolean getStockReplenished() {
+    return stockReplenished_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -209,8 +183,8 @@ private static final long serialVersionUID = 0L;
     if (highStock_ != 0) {
       output.writeInt32(3, highStock_);
     }
-    if (!getStockReplenishedBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, stockReplenished_);
+    if (stockReplenished_ != false) {
+      output.writeBool(4, stockReplenished_);
     }
     unknownFields.writeTo(output);
   }
@@ -232,8 +206,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, highStock_);
     }
-    if (!getStockReplenishedBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, stockReplenished_);
+    if (stockReplenished_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(4, stockReplenished_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -257,8 +232,8 @@ private static final long serialVersionUID = 0L;
         == other.getLowStock());
     result = result && (getHighStock()
         == other.getHighStock());
-    result = result && getStockReplenished()
-        .equals(other.getStockReplenished());
+    result = result && (getStockReplenished()
+        == other.getStockReplenished());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -277,7 +252,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + HIGHSTOCK_FIELD_NUMBER;
     hash = (53 * hash) + getHighStock();
     hash = (37 * hash) + STOCKREPLENISHED_FIELD_NUMBER;
-    hash = (53 * hash) + getStockReplenished().hashCode();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getStockReplenished());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -393,7 +369,7 @@ private static final long serialVersionUID = 0L;
               ds.smartwarehouse.project.orderManagement.StockReplenishResponse.class, ds.smartwarehouse.project.orderManagement.StockReplenishResponse.Builder.class);
     }
 
-    // Construct using ds.smartwarehouse.project.orderManagment.StockReplenishResponse.newBuilder()
+    // Construct using ds.smartwarehouse.project.orderManagement.StockReplenishResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -417,7 +393,7 @@ private static final long serialVersionUID = 0L;
 
       highStock_ = 0;
 
-      stockReplenished_ = "";
+      stockReplenished_ = false;
 
       return this;
     }
@@ -507,9 +483,8 @@ private static final long serialVersionUID = 0L;
       if (other.getHighStock() != 0) {
         setHighStock(other.getHighStock());
       }
-      if (!other.getStockReplenished().isEmpty()) {
-        stockReplenished_ = other.stockReplenished_;
-        onChanged();
+      if (other.getStockReplenished() != false) {
+        setStockReplenished(other.getStockReplenished());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -661,71 +636,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object stockReplenished_ = "";
+    private boolean stockReplenished_ ;
     /**
-     * <code>string stockReplenished = 4;</code>
+     * <code>bool stockReplenished = 4;</code>
      */
-    public java.lang.String getStockReplenished() {
-      java.lang.Object ref = stockReplenished_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        stockReplenished_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public boolean getStockReplenished() {
+      return stockReplenished_;
     }
     /**
-     * <code>string stockReplenished = 4;</code>
+     * <code>bool stockReplenished = 4;</code>
      */
-    public com.google.protobuf.ByteString
-        getStockReplenishedBytes() {
-      java.lang.Object ref = stockReplenished_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        stockReplenished_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string stockReplenished = 4;</code>
-     */
-    public Builder setStockReplenished(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setStockReplenished(boolean value) {
+      
       stockReplenished_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string stockReplenished = 4;</code>
+     * <code>bool stockReplenished = 4;</code>
      */
     public Builder clearStockReplenished() {
       
-      stockReplenished_ = getDefaultInstance().getStockReplenished();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string stockReplenished = 4;</code>
-     */
-    public Builder setStockReplenishedBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      stockReplenished_ = value;
+      stockReplenished_ = false;
       onChanged();
       return this;
     }

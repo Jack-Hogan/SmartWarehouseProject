@@ -290,7 +290,7 @@ private static final long serialVersionUID = 0L;
               ds.smartwarehouse.project.orderManagement.StockReplenishRequest.class, ds.smartwarehouse.project.orderManagement.StockReplenishRequest.Builder.class);
     }
 
-    // Construct using ds.smartwarehouse.project.orderManagment.StockReplenishRequest.newBuilder()
+    // Construct using ds.smartwarehouse.project.orderManagement.StockReplenishRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }

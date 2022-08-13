@@ -54,22 +54,23 @@ public final class NewOrderManagementImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\025orderManagement.proto\"$\n\014StockRequest\022" +
-      "\024\n\014stockMessage\030\001 \001(\t\"7\n\rStockResponse\022\023" +
-      "\n\013stockNumber\030\001 \001(\005\022\021\n\tstockType\030\002 \001(\t\"1" +
-      "\n\025StockReplenishRequest\022\030\n\020replenishMess" +
-      "age\030\001 \001(\t\"n\n\026StockReplenishResponse\022\025\n\rr" +
-      "eplenishType\030\001 \001(\t\022\020\n\010lowStock\030\002 \001(\005\022\021\n\t" +
-      "highStock\030\003 \001(\005\022\030\n\020stockReplenished\030\004 \001(" +
-      "\t\"+\n\024OrderTrackingRequest\022\023\n\013orderNumber" +
-      "\030\001 \001(\005\"A\n\025OrderTrackingResponse\022\023\n\013order" +
-      "Number\030\001 \001(\005\022\023\n\013orderStatus\030\002 \001(\t2\313\001\n\017Or" +
-      "derManagement\022-\n\nstockCheck\022\r.StockReque" +
-      "st\032\016.StockResponse\"\000\022E\n\016replenishStock\022\026" +
-      ".StockReplenishRequest\032\027.StockReplenishR" +
-      "esponse\"\0000\001\022B\n\rorderTracking\022\025.OrderTrac" +
-      "kingRequest\032\026.OrderTrackingResponse\"\000(\001B" +
-      "D\n(ds.smartwarehouse.project.orderManagm" +
-      "entB\026NewOrderManagementImplP\001b\006proto3"
+      "\024\n\014stockMessage\030\001 \001(\t\"L\n\rStockResponse\022\023" +
+      "\n\013stockNumber\030\001 \001(\005\022\021\n\tstockType\030\002 \001(\t\022\023" +
+      "\n\013notFoundMsg\030\003 \001(\t\"1\n\025StockReplenishReq" +
+      "uest\022\030\n\020replenishMessage\030\001 \001(\t\"n\n\026StockR" +
+      "eplenishResponse\022\025\n\rreplenishType\030\001 \001(\t\022" +
+      "\020\n\010lowStock\030\002 \001(\005\022\021\n\thighStock\030\003 \001(\005\022\030\n\020" +
+      "stockReplenished\030\004 \001(\010\"+\n\024OrderTrackingR" +
+      "equest\022\023\n\013orderNumber\030\001 \001(\005\"A\n\025OrderTrac" +
+      "kingResponse\022\023\n\013orderNumber\030\001 \001(\005\022\023\n\013ord" +
+      "erStatus\030\002 \001(\t2\313\001\n\017OrderManagement\022-\n\nst" +
+      "ockCheck\022\r.StockRequest\032\016.StockResponse\"" +
+      "\000\022E\n\016replenishStock\022\026.StockReplenishRequ" +
+      "est\032\027.StockReplenishResponse\"\0000\001\022B\n\rorde" +
+      "rTracking\022\025.OrderTrackingRequest\032\026.Order" +
+      "TrackingResponse\"\000(\001BE\n)ds.smartwarehous" +
+      "e.project.orderManagementB\026NewOrderManag" +
+      "ementImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -94,7 +95,7 @@ public final class NewOrderManagementImpl {
     internal_static_StockResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StockResponse_descriptor,
-        new java.lang.String[] { "StockNumber", "StockType", });
+        new java.lang.String[] { "StockNumber", "StockType", "NotFoundMsg", });
     internal_static_StockReplenishRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_StockReplenishRequest_fieldAccessorTable = new

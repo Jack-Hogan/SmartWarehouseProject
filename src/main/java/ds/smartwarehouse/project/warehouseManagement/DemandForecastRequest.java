@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private DemandForecastRequest() {
     forecastMessage_ = "";
+    itemsSold_ = 0;
   }
 
   @java.lang.Override
@@ -47,6 +48,11 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             forecastMessage_ = s;
+            break;
+          }
+          case 16: {
+
+            itemsSold_ = input.readInt32();
             break;
           }
           default: {
@@ -115,6 +121,15 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int ITEMSSOLD_FIELD_NUMBER = 2;
+  private int itemsSold_;
+  /**
+   * <code>int32 itemsSold = 2;</code>
+   */
+  public int getItemsSold() {
+    return itemsSold_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +147,9 @@ private static final long serialVersionUID = 0L;
     if (!getForecastMessageBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, forecastMessage_);
     }
+    if (itemsSold_ != 0) {
+      output.writeInt32(2, itemsSold_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -143,6 +161,10 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!getForecastMessageBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, forecastMessage_);
+    }
+    if (itemsSold_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, itemsSold_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -162,6 +184,8 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getForecastMessage()
         .equals(other.getForecastMessage());
+    result = result && (getItemsSold()
+        == other.getItemsSold());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -175,6 +199,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + FORECASTMESSAGE_FIELD_NUMBER;
     hash = (53 * hash) + getForecastMessage().hashCode();
+    hash = (37 * hash) + ITEMSSOLD_FIELD_NUMBER;
+    hash = (53 * hash) + getItemsSold();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,6 +336,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       forecastMessage_ = "";
 
+      itemsSold_ = 0;
+
       return this;
     }
 
@@ -337,6 +365,7 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.warehouseManagement.DemandForecastRequest buildPartial() {
       ds.smartwarehouse.project.warehouseManagement.DemandForecastRequest result = new ds.smartwarehouse.project.warehouseManagement.DemandForecastRequest(this);
       result.forecastMessage_ = forecastMessage_;
+      result.itemsSold_ = itemsSold_;
       onBuilt();
       return result;
     }
@@ -388,6 +417,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getForecastMessage().isEmpty()) {
         forecastMessage_ = other.forecastMessage_;
         onChanged();
+      }
+      if (other.getItemsSold() != 0) {
+        setItemsSold(other.getItemsSold());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -483,6 +515,32 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       forecastMessage_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int itemsSold_ ;
+    /**
+     * <code>int32 itemsSold = 2;</code>
+     */
+    public int getItemsSold() {
+      return itemsSold_;
+    }
+    /**
+     * <code>int32 itemsSold = 2;</code>
+     */
+    public Builder setItemsSold(int value) {
+      
+      itemsSold_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 itemsSold = 2;</code>
+     */
+    public Builder clearItemsSold() {
+      
+      itemsSold_ = 0;
       onChanged();
       return this;
     }

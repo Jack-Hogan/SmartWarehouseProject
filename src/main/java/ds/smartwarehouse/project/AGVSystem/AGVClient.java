@@ -61,6 +61,9 @@ public class AGVClient {
 		
 		agvDiag();
 		
+		System.out.println("Client Shutting Down.");
+
+		
 		try {
 			channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {

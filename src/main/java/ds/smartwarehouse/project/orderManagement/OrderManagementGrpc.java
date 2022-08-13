@@ -162,7 +162,7 @@ public final class OrderManagementGrpc {
 
     /**
      * <pre>
-     *server-to-client streaming
+     *server streaming
      * </pre>
      */
     public void replenishStock(ds.smartwarehouse.project.orderManagement.StockReplenishRequest request,
@@ -172,7 +172,7 @@ public final class OrderManagementGrpc {
 
     /**
      * <pre>
-     *client-to-server streaming
+     *client streaming
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.orderManagement.OrderTrackingRequest> orderTracking(
@@ -238,7 +238,7 @@ public final class OrderManagementGrpc {
 
     /**
      * <pre>
-     *server-to-client streaming
+     *server streaming
      * </pre>
      */
     public void replenishStock(ds.smartwarehouse.project.orderManagement.StockReplenishRequest request,
@@ -249,7 +249,7 @@ public final class OrderManagementGrpc {
 
     /**
      * <pre>
-     *client-to-server streaming
+     *client streaming
      * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.orderManagement.OrderTrackingRequest> orderTracking(
@@ -289,7 +289,7 @@ public final class OrderManagementGrpc {
 
     /**
      * <pre>
-     *server-to-client streaming
+     *server streaming
      * </pre>
      */
     public java.util.Iterator<ds.smartwarehouse.project.orderManagement.StockReplenishResponse> replenishStock(

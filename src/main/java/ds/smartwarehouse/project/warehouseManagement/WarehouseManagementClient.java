@@ -3,6 +3,8 @@ package ds.smartwarehouse.project.warehouseManagement;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import javax.jmdns.JmDNS;
@@ -10,10 +12,18 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
+import ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest;
+import ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse;
+import ds.smartwarehouse.project.AGVSystem.VehicleTrackingRequest;
+import ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse;
+import ds.smartwarehouse.project.orderManagement.OrderManagementServer;
+import ds.smartwarehouse.project.orderManagement.OrderTrackingRequest;
+import ds.smartwarehouse.project.orderManagement.OrderTrackingResponse;
 import ds.smartwarehouse.project.warehouseManagement.WarehouseManagmentGrpc.WarehouseManagmentBlockingStub;
 import ds.smartwarehouse.project.warehouseManagement.WarehouseManagmentGrpc.WarehouseManagmentStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 
 public class WarehouseManagementClient {
 
@@ -41,11 +51,12 @@ public class WarehouseManagementClient {
 		blockingStub = WarehouseManagmentGrpc.newBlockingStub(channel);
 		asyncStub = WarehouseManagmentGrpc.newStub(channel);
 		
-//		vehicleTracking();
-//		
-//		agvProductivity();
-//		
-//		agvDiag();
+		productivityReport();
+		
+		demandForecast();
+		
+		realTimeOverview();
+		
 		
 		System.out.println("Client Shutting Down.");
 		
@@ -88,14 +99,14 @@ private void discoverAGV(String service_type) {
 				
 				@Override
 				public void serviceRemoved(ServiceEvent event) {
-					System.out.println("AGV Service removed: " + event.getInfo());
+					System.out.println("Warehouse Management Service removed: " + event.getInfo());
 
 					
 				}
 				
 				@Override
 				public void serviceAdded(ServiceEvent event) {
-					System.out.println("AGV Service added: " + event.getInfo());
+					System.out.println("Warehouse Management Service added: " + event.getInfo());
 
 					
 				}
@@ -117,4 +128,227 @@ private void discoverAGV(String service_type) {
 		
 		
 	}
+
+		//Unary
+		public static void productivityReport() {
+			
+			System.out.println("Productivity Report Unary Called!");
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Please enter earnings for Q1? ");
+		double q1 = input.nextDouble();		
+		
+		System.out.println("And for Q2? ");
+		double q2 = input.nextDouble();		
+		
+		System.out.println("And for Q3? ");
+		double q3 = input.nextDouble();		
+		
+		System.out.println("And for Q4? ");
+		double q4 = input.nextDouble();
+		
+		
+		ProductivityReportRequest request = ProductivityReportRequest.newBuilder()
+				.setProdReport("Full Productivity Overview Report required.\n")
+				.setQ1Earning(q1)
+				.setQ2Earning(q2)
+				.setQ3Earning(q3)
+				.setQ4Earning(q4)
+				.build();
+		
+		// Send the message via the blocking stub and store the response
+		ProductivityReportResponse response = blockingStub.productivityReport(request);
+
+		// Display the result
+		System.out.println("Productivity Overview Report is as follows: " + response.getProdReportService() + "\n\n");
+		System.out.println("Employee Count: " + response.getEmployeeCount());
+		System.out.println("AGV Performance: " + response.getAGVperformance());
+		System.out.println("Q1 Earnings: €" + response.getQ1Earning());
+		System.out.println("Q2 Earnings: €" + response.getQ2Earning());
+		System.out.println("Q3 Earnings: €" + response.getQ3Earning());
+		System.out.println("Q4 Earnings: €" + response.getQ4Earning());
+		System.out.println("Quarterly Average: €" + response.getQuartAvg());
+		System.out.println("Monthly Average: €" + response.getAnnualAvgEarning());
+		System.out.println("Total Earnings: €" + response.getTotalEarning());
+		
+		System.out.println("Productivity Report Unary call has finished.\n");
+		
+	}
+		
+		//Client Streaming
+		public static void demandForecast() {
+			System.out.println("demandForecast() has been called:");
+			
+			StreamObserver<DemandForecastResponse> responseObserver = new StreamObserver<DemandForecastResponse>() {
+
+				@Override
+				public void onNext(DemandForecastResponse value) {
+
+					// Receive Order Number returned from server
+					int inHighDemand = value.getHighDemand();
+					
+					//String variable to keep track if item is deemed high demand
+					String isItemHighDemand = "";
+					
+					String forecastReview = value.getForecastReview();
+					if(inHighDemand >=150) {
+						isItemHighDemand = "Product is in High demand, product selling over 150 units per annum.";
+					}
+					else if(inHighDemand >=80) {
+						isItemHighDemand = "Product is in Medium Demand, product selling over 80 units per annum.";
+					}
+					else {
+						isItemHighDemand = "Product is in Low Demand, product selling less than 80 units per annum.";
+					}
+					// Display sum
+					System.out.println("Items selling " + inHighDemand + " per annum. " + isItemHighDemand + " for Forecast Review: " + forecastReview);
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();				
+				}
+
+				@Override
+				public void onCompleted() {
+
+					// Stream is completed
+					System.out.println("demandForecast() client-streaming has finished\n\n");
+				}
+			};
+				
+				// Send the client data here
+				Scanner input = new Scanner(System.in);
+				StreamObserver<DemandForecastRequest> requestObserver = asyncStub.demandForecast(responseObserver);
+				
+				try {
+					System.out.println("How many electronics were sold in Q1? " );
+					int items = input.nextInt();
+					
+					DemandForecastRequest request = DemandForecastRequest.newBuilder()
+							.setItemsSold(items)
+							.setForecastMessage("Q1")
+							.build();
+					
+					requestObserver.onNext(request);
+					Thread.sleep(500);
+					
+					System.out.println("How many electronics were sold in Q2? " );
+					int items2 = input.nextInt();
+					request = DemandForecastRequest.newBuilder()
+							.setItemsSold(items2)
+							.setForecastMessage("Q2")
+							.build();
+					
+					requestObserver.onNext(request);
+					Thread.sleep(500);
+					
+					System.out.println("How many electronics were sold in Q3? " );
+					int items3 = input.nextInt();
+					request = DemandForecastRequest.newBuilder()
+							.setItemsSold(items3)
+							.setForecastMessage("Q3")
+							.build();
+					
+					requestObserver.onNext(request);
+					Thread.sleep(500);
+					
+					// The requests have ended
+					requestObserver.onCompleted();
+					
+					// Wait for 2 seconds
+					Thread.sleep(2000);
+			
+				}
+				  catch (RuntimeException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {			
+					e.printStackTrace();
+				}
+				input.close();
+
+		}
+		
+		//Bi-Directional
+		public static void realTimeOverview() {
+			
+			System.out.println("realTimeOverview() has been called:");
+			
+			StreamObserver<RealTimeOverviewResponse> responseObserver = new StreamObserver<RealTimeOverviewResponse>() {
+
+				@Override
+				public void onNext(RealTimeOverviewResponse value) {
+	 
+					// Display received number
+					System.out.println("Vehicle Overview: " + value.getVehicleOverview() + ". Warehouse Overview: " + value.getWarehouseOverview() +".");
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();	
+				}
+
+				@Override
+				public void onCompleted() {
+
+					// Bidirectional-streaming is completed
+					System.out.println("Bidirectional RealTime Overview streaming has finished.\n");	
+				}
+				
+			};
+			
+			// Client sends the requests here via the asynchronous stub
+			StreamObserver<RealTimeOverviewRequest> requestObserver = asyncStub.realTimeOverview(responseObserver);
+			try {
+				
+				// Sending 1st
+				
+				RealTimeOverviewRequest request = RealTimeOverviewRequest.newBuilder()
+						.setOverviewMessage("Employee")
+						.build();
+				
+				requestObserver.onNext(request);
+				
+				 //2nd
+				request = RealTimeOverviewRequest.newBuilder()
+						.setOverviewMessage("Finance")
+						.build();
+				
+				requestObserver.onNext(request);
+				
+				//3rd
+				request = RealTimeOverviewRequest.newBuilder()
+						.setOverviewMessage("Temperature")
+						.build();
+				requestObserver.onNext(request);
+				
+				// End the requests
+				requestObserver.onCompleted();
+				
+				// Sleep for a bit before sending the next one.
+				Thread.sleep(new Random().nextInt(1000) + 500);
+				
+				
+			} catch (RuntimeException e) { 
+				e.printStackTrace(); 
+			}  catch (InterruptedException e) { 
+				e.printStackTrace(); 
+			}
+			
+		}
+	
 }

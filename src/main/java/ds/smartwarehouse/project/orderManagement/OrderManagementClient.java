@@ -11,6 +11,7 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
+
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementBlockingStub;
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementStub;
 import io.grpc.ManagedChannel;
@@ -18,6 +19,8 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 public class OrderManagementClient {
+	
+	
 	private static OrderManagementBlockingStub blockingStub;
 	private static OrderManagementStub asyncStub;
 	
@@ -38,21 +41,19 @@ public class OrderManagementClient {
 				.usePlaintext()
 				.build();
 		
-		// Create stubs (generate from proto)
+		// Create stubs (generated from proto file)
 		blockingStub = OrderManagementGrpc.newBlockingStub(channel);
 		asyncStub = OrderManagementGrpc.newStub(channel);
 		
-		//Gets here
-		//crashes when method called 
 		
 		stockCheck();
 		
 		replenishStock();
-//		
-//		orderTracking();
+		
+		orderTracking();
 		
 		System.out.println("Client Shutting Down.");
-//		
+		
 		try {
 			channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
@@ -74,7 +75,7 @@ public class OrderManagementClient {
 				
 				@Override
 				public void serviceResolved(ServiceEvent event) {
-					System.out.println("AGV Service resolved: " + event.getInfo());
+					System.out.println("Order Management Service resolved: " + event.getInfo());
 
 					OMserverInfo = event.getInfo();
 
@@ -147,11 +148,16 @@ public class OrderManagementClient {
 		// Send the message via the blocking stub and store the response
 		StockResponse response = blockingStub.stockCheck(request);
 
-		// Display the result
-		System.out.println("Report is as follows: " + response.getStockType() + ". Stock number: " + response.getStockNumber() +"\n\n");
-		System.out.println("Would you like to check another item? Enter yes to check again");
-		answer = input.nextLine();
+		if(response.getStockNumber() <= 0) {
+			System.out.println("Error in file: " + response.getNotFoundMsg());
 		}
+		else {
+			// Display the result
+			System.out.println("Stock check complete. Item Requested: " + response.getStockType() + ". Current Stock Number: " + response.getStockNumber() +"\n");
+			}
+			System.out.println("Would you like to check another item? Enter yes to check again\n");
+			answer = input.nextLine();
+			}
 		while(answer.equalsIgnoreCase("yes"));
 	}
 	
@@ -162,7 +168,7 @@ public class OrderManagementClient {
 		System.out.println("Replenish Stock Called!");
 		
 		StockReplenishRequest request = StockReplenishRequest.newBuilder()
-				.setReplenishMessage("Full stock replensish requested.")
+				.setReplenishMessage("Full stock replenish requested.")
 				.build();
 		
 		StreamObserver<StockReplenishResponse> responseObserver = new StreamObserver<StockReplenishResponse>() {
@@ -172,8 +178,8 @@ public class OrderManagementClient {
 
 				// Display received number
 				System.out.println("Item: " + value.getReplenishType());
-				System.out.println("Highest Demand: " + value.getLowStock());
-				System.out.println("Stock: " + value.getHighStock());
+				System.out.println("Highest Order per month: " + value.getLowStock());
+				System.out.println("Current Stock: " + value.getHighStock());
 				System.out.println("Stock Replenished: " + value.getStockReplenished() + "\n");
 				
 			}
@@ -208,7 +214,84 @@ public class OrderManagementClient {
 	
 	//Client streaming
 	public static void orderTracking() {
-		
+		// Display a message to show what method has been called
+				System.out.println("orderTracking() has been called:");
+				
+				StreamObserver<OrderTrackingResponse> responseObserver = new StreamObserver<OrderTrackingResponse>() {
+
+					@Override
+					public void onNext(OrderTrackingResponse value) {
+
+						// Receive Order Number returned from server
+						int orderNum = value.getOrderNumber();
+						
+						String orderStatus = value.getOrderStatus();
+						
+						// Display sum
+						System.out.println("Order Number is: " + orderNum + ". Order Status: " + orderStatus);
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						t.printStackTrace();				
+					}
+
+					@Override
+					public void onCompleted() {
+
+						// Stream is completed
+						System.out.println("orderTracking() client-streaming has finished\n\n");
+					}
+				};
+					
+					// Send the client data here
+					StreamObserver<OrderTrackingRequest> requestObserver = asyncStub.orderTracking(responseObserver);
+					
+					try {
+						Scanner input = new Scanner(System.in);
+						
+						System.out.println("Can you please enter your order number?");
+						int orderNum = input.nextInt();
+						System.out.println("Order number:"+orderNum+" sent to server. Server will send back update when status has changed.");
+
+						OrderTrackingRequest request = OrderTrackingRequest.newBuilder()
+								.setOrderNumber(orderNum)
+								.build();
+						
+						requestObserver.onNext(request);
+						Thread.sleep(2000);
+						
+						request = OrderTrackingRequest.newBuilder()
+								.setOrderNumber(orderNum)
+								.build();
+						
+						requestObserver.onNext(request);
+						Thread.sleep(2000);
+						
+						request = OrderTrackingRequest.newBuilder()
+								.setOrderNumber(orderNum)
+								.build();
+						
+						requestObserver.onNext(request);
+						Thread.sleep(3000);
+						
+						// The requests have ended
+						requestObserver.onCompleted();
+						
+						//closing Scanner
+						input.close();
+						
+						// Wait for 3 seconds
+						Thread.sleep(3000);
+				
+					}
+					  catch (RuntimeException e) {
+						e.printStackTrace();
+					} catch (InterruptedException e) {			
+						e.printStackTrace();
+					}
+					
+			
 	}
 
 }

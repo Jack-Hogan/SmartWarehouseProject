@@ -1,7 +1,7 @@
 syntax = "proto3";
 //proto specifying service
 
-option java_package = "ds.smartwarehouse.project.orderManagment"; //this option DOES change
+option java_package = "ds.smartwarehouse.project.orderManagement"; //this option DOES change
 option java_multiple_files = true; //DOES NOT change
 option java_outer_classname = "NewOrderManagementImpl";
 
