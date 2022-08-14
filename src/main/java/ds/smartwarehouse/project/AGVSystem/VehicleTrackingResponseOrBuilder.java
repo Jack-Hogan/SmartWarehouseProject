@@ -8,21 +8,37 @@ public interface VehicleTrackingResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   java.lang.String getAGVtype();
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   com.google.protobuf.ByteString
       getAGVtypeBytes();
 
   /**
+   * <pre>
+   *Tracking information
+   * </pre>
+   *
    * <code>double AGVlatitude = 2;</code>
    */
   double getAGVlatitude();
 
   /**
+   * <pre>
+   *Tracking information
+   * </pre>
+   *
    * <code>double AGVlongitude = 3;</code>
    */
   double getAGVlongitude();

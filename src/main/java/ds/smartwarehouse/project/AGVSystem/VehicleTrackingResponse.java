@@ -96,6 +96,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVTYPE_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVtype_;
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   public java.lang.String getAGVtype() {
@@ -111,6 +115,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -130,6 +138,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVLATITUDE_FIELD_NUMBER = 2;
   private double aGVlatitude_;
   /**
+   * <pre>
+   *Tracking information
+   * </pre>
+   *
    * <code>double AGVlatitude = 2;</code>
    */
   public double getAGVlatitude() {
@@ -139,6 +151,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVLONGITUDE_FIELD_NUMBER = 3;
   private double aGVlongitude_;
   /**
+   * <pre>
+   *Tracking information
+   * </pre>
+   *
    * <code>double AGVlongitude = 3;</code>
    */
   public double getAGVlongitude() {
@@ -490,6 +506,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVtype_ = "";
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public java.lang.String getAGVtype() {
@@ -505,6 +525,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -521,6 +545,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder setAGVtype(
@@ -534,6 +562,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder clearAGVtype() {
@@ -543,6 +575,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder setAGVtypeBytes(
@@ -559,12 +595,20 @@ private static final long serialVersionUID = 0L;
 
     private double aGVlatitude_ ;
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlatitude = 2;</code>
      */
     public double getAGVlatitude() {
       return aGVlatitude_;
     }
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlatitude = 2;</code>
      */
     public Builder setAGVlatitude(double value) {
@@ -574,6 +618,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlatitude = 2;</code>
      */
     public Builder clearAGVlatitude() {
@@ -585,12 +633,20 @@ private static final long serialVersionUID = 0L;
 
     private double aGVlongitude_ ;
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlongitude = 3;</code>
      */
     public double getAGVlongitude() {
       return aGVlongitude_;
     }
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlongitude = 3;</code>
      */
     public Builder setAGVlongitude(double value) {
@@ -600,6 +656,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Tracking information
+     * </pre>
+     *
      * <code>double AGVlongitude = 3;</code>
      */
     public Builder clearAGVlongitude() {

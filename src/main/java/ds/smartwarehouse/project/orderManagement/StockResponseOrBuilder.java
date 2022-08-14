@@ -8,25 +8,45 @@ public interface StockResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Stock number
+   * </pre>
+   *
    * <code>int32 stockNumber = 1;</code>
    */
   int getStockNumber();
 
   /**
+   * <pre>
+   *type of stock
+   * </pre>
+   *
    * <code>string stockType = 2;</code>
    */
   java.lang.String getStockType();
   /**
+   * <pre>
+   *type of stock
+   * </pre>
+   *
    * <code>string stockType = 2;</code>
    */
   com.google.protobuf.ByteString
       getStockTypeBytes();
 
   /**
+   * <pre>
+   *if item not found error message
+   * </pre>
+   *
    * <code>string notFoundMsg = 3;</code>
    */
   java.lang.String getNotFoundMsg();
   /**
+   * <pre>
+   *if item not found error message
+   * </pre>
+   *
    * <code>string notFoundMsg = 3;</code>
    */
   com.google.protobuf.ByteString

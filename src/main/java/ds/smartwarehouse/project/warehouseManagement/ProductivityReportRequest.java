@@ -108,6 +108,10 @@ private static final long serialVersionUID = 0L;
   public static final int PRODREPORT_FIELD_NUMBER = 1;
   private volatile java.lang.Object prodReport_;
   /**
+   * <pre>
+   *report request
+   * </pre>
+   *
    * <code>string prodReport = 1;</code>
    */
   public java.lang.String getProdReport() {
@@ -123,6 +127,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *report request
+   * </pre>
+   *
    * <code>string prodReport = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -142,6 +150,10 @@ private static final long serialVersionUID = 0L;
   public static final int Q1EARNING_FIELD_NUMBER = 2;
   private double q1Earning_;
   /**
+   * <pre>
+   *Q1 earnings
+   * </pre>
+   *
    * <code>double Q1earning = 2;</code>
    */
   public double getQ1Earning() {
@@ -151,6 +163,10 @@ private static final long serialVersionUID = 0L;
   public static final int Q2EARNING_FIELD_NUMBER = 3;
   private double q2Earning_;
   /**
+   * <pre>
+   *Q2
+   * </pre>
+   *
    * <code>double Q2earning = 3;</code>
    */
   public double getQ2Earning() {
@@ -160,6 +176,10 @@ private static final long serialVersionUID = 0L;
   public static final int Q3EARNING_FIELD_NUMBER = 4;
   private double q3Earning_;
   /**
+   * <pre>
+   *Q3
+   * </pre>
+   *
    * <code>double Q3earning = 4;</code>
    */
   public double getQ3Earning() {
@@ -169,6 +189,10 @@ private static final long serialVersionUID = 0L;
   public static final int Q4EARNING_FIELD_NUMBER = 5;
   private double q4Earning_;
   /**
+   * <pre>
+   *Q4
+   * </pre>
+   *
    * <code>double Q4earning = 5;</code>
    */
   public double getQ4Earning() {
@@ -560,6 +584,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object prodReport_ = "";
     /**
+     * <pre>
+     *report request
+     * </pre>
+     *
      * <code>string prodReport = 1;</code>
      */
     public java.lang.String getProdReport() {
@@ -575,6 +603,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *report request
+     * </pre>
+     *
      * <code>string prodReport = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -591,6 +623,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *report request
+     * </pre>
+     *
      * <code>string prodReport = 1;</code>
      */
     public Builder setProdReport(
@@ -604,6 +640,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *report request
+     * </pre>
+     *
      * <code>string prodReport = 1;</code>
      */
     public Builder clearProdReport() {
@@ -613,6 +653,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *report request
+     * </pre>
+     *
      * <code>string prodReport = 1;</code>
      */
     public Builder setProdReportBytes(
@@ -629,12 +673,20 @@ private static final long serialVersionUID = 0L;
 
     private double q1Earning_ ;
     /**
+     * <pre>
+     *Q1 earnings
+     * </pre>
+     *
      * <code>double Q1earning = 2;</code>
      */
     public double getQ1Earning() {
       return q1Earning_;
     }
     /**
+     * <pre>
+     *Q1 earnings
+     * </pre>
+     *
      * <code>double Q1earning = 2;</code>
      */
     public Builder setQ1Earning(double value) {
@@ -644,6 +696,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Q1 earnings
+     * </pre>
+     *
      * <code>double Q1earning = 2;</code>
      */
     public Builder clearQ1Earning() {
@@ -655,12 +711,20 @@ private static final long serialVersionUID = 0L;
 
     private double q2Earning_ ;
     /**
+     * <pre>
+     *Q2
+     * </pre>
+     *
      * <code>double Q2earning = 3;</code>
      */
     public double getQ2Earning() {
       return q2Earning_;
     }
     /**
+     * <pre>
+     *Q2
+     * </pre>
+     *
      * <code>double Q2earning = 3;</code>
      */
     public Builder setQ2Earning(double value) {
@@ -670,6 +734,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Q2
+     * </pre>
+     *
      * <code>double Q2earning = 3;</code>
      */
     public Builder clearQ2Earning() {
@@ -681,12 +749,20 @@ private static final long serialVersionUID = 0L;
 
     private double q3Earning_ ;
     /**
+     * <pre>
+     *Q3
+     * </pre>
+     *
      * <code>double Q3earning = 4;</code>
      */
     public double getQ3Earning() {
       return q3Earning_;
     }
     /**
+     * <pre>
+     *Q3
+     * </pre>
+     *
      * <code>double Q3earning = 4;</code>
      */
     public Builder setQ3Earning(double value) {
@@ -696,6 +772,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Q3
+     * </pre>
+     *
      * <code>double Q3earning = 4;</code>
      */
     public Builder clearQ3Earning() {
@@ -707,12 +787,20 @@ private static final long serialVersionUID = 0L;
 
     private double q4Earning_ ;
     /**
+     * <pre>
+     *Q4
+     * </pre>
+     *
      * <code>double Q4earning = 5;</code>
      */
     public double getQ4Earning() {
       return q4Earning_;
     }
     /**
+     * <pre>
+     *Q4
+     * </pre>
+     *
      * <code>double Q4earning = 5;</code>
      */
     public Builder setQ4Earning(double value) {
@@ -722,6 +810,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Q4
+     * </pre>
+     *
      * <code>double Q4earning = 5;</code>
      */
     public Builder clearQ4Earning() {

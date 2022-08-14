@@ -90,6 +90,10 @@ private static final long serialVersionUID = 0L;
   public static final int FORECASTREVIEW_FIELD_NUMBER = 1;
   private volatile java.lang.Object forecastReview_;
   /**
+   * <pre>
+   *review in demand
+   * </pre>
+   *
    * <code>string forecastReview = 1;</code>
    */
   public java.lang.String getForecastReview() {
@@ -105,6 +109,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *review in demand
+   * </pre>
+   *
    * <code>string forecastReview = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -124,6 +132,10 @@ private static final long serialVersionUID = 0L;
   public static final int HIGHDEMAND_FIELD_NUMBER = 2;
   private int highDemand_;
   /**
+   * <pre>
+   *what item is in demand
+   * </pre>
+   *
    * <code>int32 highDemand = 2;</code>
    */
   public int getHighDemand() {
@@ -452,6 +464,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object forecastReview_ = "";
     /**
+     * <pre>
+     *review in demand
+     * </pre>
+     *
      * <code>string forecastReview = 1;</code>
      */
     public java.lang.String getForecastReview() {
@@ -467,6 +483,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *review in demand
+     * </pre>
+     *
      * <code>string forecastReview = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -483,6 +503,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *review in demand
+     * </pre>
+     *
      * <code>string forecastReview = 1;</code>
      */
     public Builder setForecastReview(
@@ -496,6 +520,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *review in demand
+     * </pre>
+     *
      * <code>string forecastReview = 1;</code>
      */
     public Builder clearForecastReview() {
@@ -505,6 +533,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *review in demand
+     * </pre>
+     *
      * <code>string forecastReview = 1;</code>
      */
     public Builder setForecastReviewBytes(
@@ -521,12 +553,20 @@ private static final long serialVersionUID = 0L;
 
     private int highDemand_ ;
     /**
+     * <pre>
+     *what item is in demand
+     * </pre>
+     *
      * <code>int32 highDemand = 2;</code>
      */
     public int getHighDemand() {
       return highDemand_;
     }
     /**
+     * <pre>
+     *what item is in demand
+     * </pre>
+     *
      * <code>int32 highDemand = 2;</code>
      */
     public Builder setHighDemand(int value) {
@@ -536,6 +576,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *what item is in demand
+     * </pre>
+     *
      * <code>int32 highDemand = 2;</code>
      */
     public Builder clearHighDemand() {

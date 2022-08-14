@@ -8,56 +8,100 @@ public interface ProductivityReportResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Report service response
+   * </pre>
+   *
    * <code>string prodReportService = 1;</code>
    */
   java.lang.String getProdReportService();
   /**
+   * <pre>
+   *Report service response
+   * </pre>
+   *
    * <code>string prodReportService = 1;</code>
    */
   com.google.protobuf.ByteString
       getProdReportServiceBytes();
 
   /**
+   * <pre>
+   *vehicle performance
+   * </pre>
+   *
    * <code>int32 AGVperformance = 2;</code>
    */
   int getAGVperformance();
 
   /**
+   * <pre>
+   *head count on employees
+   * </pre>
+   *
    * <code>int32 EmployeeCount = 3;</code>
    */
   int getEmployeeCount();
 
   /**
+   * <pre>
+   *Q1 earnings
+   * </pre>
+   *
    * <code>double Q1earning = 4;</code>
    */
   double getQ1Earning();
 
   /**
+   * <pre>
+   *Q2
+   * </pre>
+   *
    * <code>double Q2earning = 5;</code>
    */
   double getQ2Earning();
 
   /**
+   * <pre>
+   *Q3
+   * </pre>
+   *
    * <code>double Q3earning = 6;</code>
    */
   double getQ3Earning();
 
   /**
+   * <pre>
+   *Q4
+   * </pre>
+   *
    * <code>double Q4earning = 7;</code>
    */
   double getQ4Earning();
 
   /**
+   * <pre>
+   *Quarterly Average
+   * </pre>
+   *
    * <code>double QuartAvg = 8;</code>
    */
   double getQuartAvg();
 
   /**
+   * <pre>
+   *Average yearly earning
+   * </pre>
+   *
    * <code>double AnnualAvgEarning = 9;</code>
    */
   double getAnnualAvgEarning();
 
   /**
+   * <pre>
+   *total earning
+   * </pre>
+   *
    * <code>double totalEarning = 10;</code>
    */
   double getTotalEarning();

@@ -84,6 +84,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVTYPE_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVtype_;
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   public java.lang.String getAGVtype() {
@@ -99,6 +103,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *type of Automated Guided Vehicle
+   * </pre>
+   *
    * <code>string AGVtype = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -420,6 +428,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVtype_ = "";
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public java.lang.String getAGVtype() {
@@ -435,6 +447,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -451,6 +467,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder setAGVtype(
@@ -464,6 +484,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder clearAGVtype() {
@@ -473,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of Automated Guided Vehicle
+     * </pre>
+     *
      * <code>string AGVtype = 1;</code>
      */
     public Builder setAGVtypeBytes(

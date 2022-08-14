@@ -90,6 +90,10 @@ private static final long serialVersionUID = 0L;
   public static final int FORECASTMESSAGE_FIELD_NUMBER = 1;
   private volatile java.lang.Object forecastMessage_;
   /**
+   * <pre>
+   *forecast request
+   * </pre>
+   *
    * <code>string forecastMessage = 1;</code>
    */
   public java.lang.String getForecastMessage() {
@@ -105,6 +109,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *forecast request
+   * </pre>
+   *
    * <code>string forecastMessage = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -124,6 +132,10 @@ private static final long serialVersionUID = 0L;
   public static final int ITEMSSOLD_FIELD_NUMBER = 2;
   private int itemsSold_;
   /**
+   * <pre>
+   *items sold
+   * </pre>
+   *
    * <code>int32 itemsSold = 2;</code>
    */
   public int getItemsSold() {
@@ -452,6 +464,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object forecastMessage_ = "";
     /**
+     * <pre>
+     *forecast request
+     * </pre>
+     *
      * <code>string forecastMessage = 1;</code>
      */
     public java.lang.String getForecastMessage() {
@@ -467,6 +483,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *forecast request
+     * </pre>
+     *
      * <code>string forecastMessage = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -483,6 +503,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *forecast request
+     * </pre>
+     *
      * <code>string forecastMessage = 1;</code>
      */
     public Builder setForecastMessage(
@@ -496,6 +520,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *forecast request
+     * </pre>
+     *
      * <code>string forecastMessage = 1;</code>
      */
     public Builder clearForecastMessage() {
@@ -505,6 +533,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *forecast request
+     * </pre>
+     *
      * <code>string forecastMessage = 1;</code>
      */
     public Builder setForecastMessageBytes(
@@ -521,12 +553,20 @@ private static final long serialVersionUID = 0L;
 
     private int itemsSold_ ;
     /**
+     * <pre>
+     *items sold
+     * </pre>
+     *
      * <code>int32 itemsSold = 2;</code>
      */
     public int getItemsSold() {
       return itemsSold_;
     }
     /**
+     * <pre>
+     *items sold
+     * </pre>
+     *
      * <code>int32 itemsSold = 2;</code>
      */
     public Builder setItemsSold(int value) {
@@ -536,6 +576,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *items sold
+     * </pre>
+     *
      * <code>int32 itemsSold = 2;</code>
      */
     public Builder clearItemsSold() {

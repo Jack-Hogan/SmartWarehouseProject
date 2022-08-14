@@ -197,6 +197,7 @@ public class OrderManagementClient {
 
 		// Send the message via the blocking stub and store the response
 		//Deadline Exception Implementation
+		
 		try {
 		 response = blockingStub.withDeadlineAfter(2,TimeUnit.SECONDS).stockCheck(request);
 		}catch(StatusRuntimeException e) {

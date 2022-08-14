@@ -8,15 +8,27 @@ public interface OrderTrackingResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *order number response
+   * </pre>
+   *
    * <code>int32 orderNumber = 1;</code>
    */
   int getOrderNumber();
 
   /**
+   * <pre>
+   *order status
+   * </pre>
+   *
    * <code>string orderStatus = 2;</code>
    */
   java.lang.String getOrderStatus();
   /**
+   * <pre>
+   *order status
+   * </pre>
+   *
    * <code>string orderStatus = 2;</code>
    */
   com.google.protobuf.ByteString

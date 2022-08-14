@@ -97,6 +97,10 @@ private static final long serialVersionUID = 0L;
   public static final int STOCKNUMBER_FIELD_NUMBER = 1;
   private int stockNumber_;
   /**
+   * <pre>
+   *Stock number
+   * </pre>
+   *
    * <code>int32 stockNumber = 1;</code>
    */
   public int getStockNumber() {
@@ -106,6 +110,10 @@ private static final long serialVersionUID = 0L;
   public static final int STOCKTYPE_FIELD_NUMBER = 2;
   private volatile java.lang.Object stockType_;
   /**
+   * <pre>
+   *type of stock
+   * </pre>
+   *
    * <code>string stockType = 2;</code>
    */
   public java.lang.String getStockType() {
@@ -121,6 +129,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *type of stock
+   * </pre>
+   *
    * <code>string stockType = 2;</code>
    */
   public com.google.protobuf.ByteString
@@ -140,6 +152,10 @@ private static final long serialVersionUID = 0L;
   public static final int NOTFOUNDMSG_FIELD_NUMBER = 3;
   private volatile java.lang.Object notFoundMsg_;
   /**
+   * <pre>
+   *if item not found error message
+   * </pre>
+   *
    * <code>string notFoundMsg = 3;</code>
    */
   public java.lang.String getNotFoundMsg() {
@@ -155,6 +171,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *if item not found error message
+   * </pre>
+   *
    * <code>string notFoundMsg = 3;</code>
    */
   public com.google.protobuf.ByteString
@@ -510,12 +530,20 @@ private static final long serialVersionUID = 0L;
 
     private int stockNumber_ ;
     /**
+     * <pre>
+     *Stock number
+     * </pre>
+     *
      * <code>int32 stockNumber = 1;</code>
      */
     public int getStockNumber() {
       return stockNumber_;
     }
     /**
+     * <pre>
+     *Stock number
+     * </pre>
+     *
      * <code>int32 stockNumber = 1;</code>
      */
     public Builder setStockNumber(int value) {
@@ -525,6 +553,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Stock number
+     * </pre>
+     *
      * <code>int32 stockNumber = 1;</code>
      */
     public Builder clearStockNumber() {
@@ -536,6 +568,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object stockType_ = "";
     /**
+     * <pre>
+     *type of stock
+     * </pre>
+     *
      * <code>string stockType = 2;</code>
      */
     public java.lang.String getStockType() {
@@ -551,6 +587,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of stock
+     * </pre>
+     *
      * <code>string stockType = 2;</code>
      */
     public com.google.protobuf.ByteString
@@ -567,6 +607,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of stock
+     * </pre>
+     *
      * <code>string stockType = 2;</code>
      */
     public Builder setStockType(
@@ -580,6 +624,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of stock
+     * </pre>
+     *
      * <code>string stockType = 2;</code>
      */
     public Builder clearStockType() {
@@ -589,6 +637,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of stock
+     * </pre>
+     *
      * <code>string stockType = 2;</code>
      */
     public Builder setStockTypeBytes(
@@ -605,6 +657,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object notFoundMsg_ = "";
     /**
+     * <pre>
+     *if item not found error message
+     * </pre>
+     *
      * <code>string notFoundMsg = 3;</code>
      */
     public java.lang.String getNotFoundMsg() {
@@ -620,6 +676,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *if item not found error message
+     * </pre>
+     *
      * <code>string notFoundMsg = 3;</code>
      */
     public com.google.protobuf.ByteString
@@ -636,6 +696,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *if item not found error message
+     * </pre>
+     *
      * <code>string notFoundMsg = 3;</code>
      */
     public Builder setNotFoundMsg(
@@ -649,6 +713,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *if item not found error message
+     * </pre>
+     *
      * <code>string notFoundMsg = 3;</code>
      */
     public Builder clearNotFoundMsg() {
@@ -658,6 +726,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *if item not found error message
+     * </pre>
+     *
      * <code>string notFoundMsg = 3;</code>
      */
     public Builder setNotFoundMsgBytes(

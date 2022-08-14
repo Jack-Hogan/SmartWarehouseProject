@@ -83,6 +83,10 @@ private static final long serialVersionUID = 0L;
   public static final int ORDERNUMBER_FIELD_NUMBER = 1;
   private int orderNumber_;
   /**
+   * <pre>
+   *order number request
+   * </pre>
+   *
    * <code>int32 orderNumber = 1;</code>
    */
   public int getOrderNumber() {
@@ -394,12 +398,20 @@ private static final long serialVersionUID = 0L;
 
     private int orderNumber_ ;
     /**
+     * <pre>
+     *order number request
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public int getOrderNumber() {
       return orderNumber_;
     }
     /**
+     * <pre>
+     *order number request
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public Builder setOrderNumber(int value) {
@@ -409,6 +421,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *order number request
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public Builder clearOrderNumber() {

@@ -90,6 +90,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVDIAGREQUEST_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVdiagRequest_;
   /**
+   * <pre>
+   *Request from client for AVG diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagRequest = 1;</code>
    */
   public java.lang.String getAGVdiagRequest() {
@@ -105,6 +109,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Request from client for AVG diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagRequest = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -124,6 +132,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVFREQUENCY_FIELD_NUMBER = 2;
   private int aGVfrequency_;
   /**
+   * <pre>
+   *How many vehicles required for diagnosis messages
+   * </pre>
+   *
    * <code>int32 AGVfrequency = 2;</code>
    */
   public int getAGVfrequency() {
@@ -452,6 +464,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVdiagRequest_ = "";
     /**
+     * <pre>
+     *Request from client for AVG diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagRequest = 1;</code>
      */
     public java.lang.String getAGVdiagRequest() {
@@ -467,6 +483,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Request from client for AVG diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagRequest = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -483,6 +503,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Request from client for AVG diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagRequest = 1;</code>
      */
     public Builder setAGVdiagRequest(
@@ -496,6 +520,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Request from client for AVG diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagRequest = 1;</code>
      */
     public Builder clearAGVdiagRequest() {
@@ -505,6 +533,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Request from client for AVG diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagRequest = 1;</code>
      */
     public Builder setAGVdiagRequestBytes(
@@ -521,12 +553,20 @@ private static final long serialVersionUID = 0L;
 
     private int aGVfrequency_ ;
     /**
+     * <pre>
+     *How many vehicles required for diagnosis messages
+     * </pre>
+     *
      * <code>int32 AGVfrequency = 2;</code>
      */
     public int getAGVfrequency() {
       return aGVfrequency_;
     }
     /**
+     * <pre>
+     *How many vehicles required for diagnosis messages
+     * </pre>
+     *
      * <code>int32 AGVfrequency = 2;</code>
      */
     public Builder setAGVfrequency(int value) {
@@ -536,6 +576,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *How many vehicles required for diagnosis messages
+     * </pre>
+     *
      * <code>int32 AGVfrequency = 2;</code>
      */
     public Builder clearAGVfrequency() {

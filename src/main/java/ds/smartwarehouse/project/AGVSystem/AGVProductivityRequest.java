@@ -84,6 +84,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVREPORT_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVreport_;
   /**
+   * <pre>
+   *Report request
+   * </pre>
+   *
    * <code>string AGVreport = 1;</code>
    */
   public java.lang.String getAGVreport() {
@@ -99,6 +103,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Report request
+   * </pre>
+   *
    * <code>string AGVreport = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -420,6 +428,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVreport_ = "";
     /**
+     * <pre>
+     *Report request
+     * </pre>
+     *
      * <code>string AGVreport = 1;</code>
      */
     public java.lang.String getAGVreport() {
@@ -435,6 +447,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Report request
+     * </pre>
+     *
      * <code>string AGVreport = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -451,6 +467,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Report request
+     * </pre>
+     *
      * <code>string AGVreport = 1;</code>
      */
     public Builder setAGVreport(
@@ -464,6 +484,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Report request
+     * </pre>
+     *
      * <code>string AGVreport = 1;</code>
      */
     public Builder clearAGVreport() {
@@ -473,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Report request
+     * </pre>
+     *
      * <code>string AGVreport = 1;</code>
      */
     public Builder setAGVreportBytes(

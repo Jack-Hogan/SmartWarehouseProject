@@ -8,20 +8,36 @@ public interface RealTimeOverviewResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *vehicle overview
+   * </pre>
+   *
    * <code>string vehicleOverview = 1;</code>
    */
   java.lang.String getVehicleOverview();
   /**
+   * <pre>
+   *vehicle overview
+   * </pre>
+   *
    * <code>string vehicleOverview = 1;</code>
    */
   com.google.protobuf.ByteString
       getVehicleOverviewBytes();
 
   /**
+   * <pre>
+   *overview of warehouse operations response
+   * </pre>
+   *
    * <code>string warehouseOverview = 2;</code>
    */
   java.lang.String getWarehouseOverview();
   /**
+   * <pre>
+   *overview of warehouse operations response
+   * </pre>
+   *
    * <code>string warehouseOverview = 2;</code>
    */
   com.google.protobuf.ByteString

@@ -8,16 +8,28 @@ public interface DemandForecastResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *review in demand
+   * </pre>
+   *
    * <code>string forecastReview = 1;</code>
    */
   java.lang.String getForecastReview();
   /**
+   * <pre>
+   *review in demand
+   * </pre>
+   *
    * <code>string forecastReview = 1;</code>
    */
   com.google.protobuf.ByteString
       getForecastReviewBytes();
 
   /**
+   * <pre>
+   *what item is in demand
+   * </pre>
+   *
    * <code>int32 highDemand = 2;</code>
    */
   int getHighDemand();

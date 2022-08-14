@@ -8,10 +8,18 @@ public interface StockRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Stock request message
+   * </pre>
+   *
    * <code>string stockMessage = 1;</code>
    */
   java.lang.String getStockMessage();
   /**
+   * <pre>
+   *Stock request message
+   * </pre>
+   *
    * <code>string stockMessage = 1;</code>
    */
   com.google.protobuf.ByteString

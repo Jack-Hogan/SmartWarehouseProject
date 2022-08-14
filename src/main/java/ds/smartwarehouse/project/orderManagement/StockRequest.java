@@ -84,6 +84,10 @@ private static final long serialVersionUID = 0L;
   public static final int STOCKMESSAGE_FIELD_NUMBER = 1;
   private volatile java.lang.Object stockMessage_;
   /**
+   * <pre>
+   *Stock request message
+   * </pre>
+   *
    * <code>string stockMessage = 1;</code>
    */
   public java.lang.String getStockMessage() {
@@ -99,6 +103,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Stock request message
+   * </pre>
+   *
    * <code>string stockMessage = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -420,6 +428,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object stockMessage_ = "";
     /**
+     * <pre>
+     *Stock request message
+     * </pre>
+     *
      * <code>string stockMessage = 1;</code>
      */
     public java.lang.String getStockMessage() {
@@ -435,6 +447,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Stock request message
+     * </pre>
+     *
      * <code>string stockMessage = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -451,6 +467,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Stock request message
+     * </pre>
+     *
      * <code>string stockMessage = 1;</code>
      */
     public Builder setStockMessage(
@@ -464,6 +484,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Stock request message
+     * </pre>
+     *
      * <code>string stockMessage = 1;</code>
      */
     public Builder clearStockMessage() {
@@ -473,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Stock request message
+     * </pre>
+     *
      * <code>string stockMessage = 1;</code>
      */
     public Builder setStockMessageBytes(

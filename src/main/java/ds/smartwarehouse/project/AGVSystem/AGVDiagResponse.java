@@ -90,6 +90,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVDIAGTYPE_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVdiagType_;
   /**
+   * <pre>
+   *Type of AGV and details of diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagType = 1;</code>
    */
   public java.lang.String getAGVdiagType() {
@@ -105,6 +109,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Type of AGV and details of diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagType = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -124,6 +132,10 @@ private static final long serialVersionUID = 0L;
   public static final int SYSTEMPERFORMANCE_FIELD_NUMBER = 2;
   private int systemPerformance_;
   /**
+   * <pre>
+   *Performance of AGV
+   * </pre>
+   *
    * <code>int32 systemPerformance = 2;</code>
    */
   public int getSystemPerformance() {
@@ -452,6 +464,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVdiagType_ = "";
     /**
+     * <pre>
+     *Type of AGV and details of diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagType = 1;</code>
      */
     public java.lang.String getAGVdiagType() {
@@ -467,6 +483,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Type of AGV and details of diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagType = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -483,6 +503,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Type of AGV and details of diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagType = 1;</code>
      */
     public Builder setAGVdiagType(
@@ -496,6 +520,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Type of AGV and details of diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagType = 1;</code>
      */
     public Builder clearAGVdiagType() {
@@ -505,6 +533,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Type of AGV and details of diagnosis
+     * </pre>
+     *
      * <code>string AGVdiagType = 1;</code>
      */
     public Builder setAGVdiagTypeBytes(
@@ -521,12 +553,20 @@ private static final long serialVersionUID = 0L;
 
     private int systemPerformance_ ;
     /**
+     * <pre>
+     *Performance of AGV
+     * </pre>
+     *
      * <code>int32 systemPerformance = 2;</code>
      */
     public int getSystemPerformance() {
       return systemPerformance_;
     }
     /**
+     * <pre>
+     *Performance of AGV
+     * </pre>
+     *
      * <code>int32 systemPerformance = 2;</code>
      */
     public Builder setSystemPerformance(int value) {
@@ -536,6 +576,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Performance of AGV
+     * </pre>
+     *
      * <code>int32 systemPerformance = 2;</code>
      */
     public Builder clearSystemPerformance() {

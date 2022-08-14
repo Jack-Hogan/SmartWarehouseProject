@@ -91,6 +91,10 @@ private static final long serialVersionUID = 0L;
   public static final int VEHICLEOVERVIEW_FIELD_NUMBER = 1;
   private volatile java.lang.Object vehicleOverview_;
   /**
+   * <pre>
+   *vehicle overview
+   * </pre>
+   *
    * <code>string vehicleOverview = 1;</code>
    */
   public java.lang.String getVehicleOverview() {
@@ -106,6 +110,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *vehicle overview
+   * </pre>
+   *
    * <code>string vehicleOverview = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -125,6 +133,10 @@ private static final long serialVersionUID = 0L;
   public static final int WAREHOUSEOVERVIEW_FIELD_NUMBER = 2;
   private volatile java.lang.Object warehouseOverview_;
   /**
+   * <pre>
+   *overview of warehouse operations response
+   * </pre>
+   *
    * <code>string warehouseOverview = 2;</code>
    */
   public java.lang.String getWarehouseOverview() {
@@ -140,6 +152,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *overview of warehouse operations response
+   * </pre>
+   *
    * <code>string warehouseOverview = 2;</code>
    */
   public com.google.protobuf.ByteString
@@ -478,6 +494,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object vehicleOverview_ = "";
     /**
+     * <pre>
+     *vehicle overview
+     * </pre>
+     *
      * <code>string vehicleOverview = 1;</code>
      */
     public java.lang.String getVehicleOverview() {
@@ -493,6 +513,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *vehicle overview
+     * </pre>
+     *
      * <code>string vehicleOverview = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -509,6 +533,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *vehicle overview
+     * </pre>
+     *
      * <code>string vehicleOverview = 1;</code>
      */
     public Builder setVehicleOverview(
@@ -522,6 +550,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *vehicle overview
+     * </pre>
+     *
      * <code>string vehicleOverview = 1;</code>
      */
     public Builder clearVehicleOverview() {
@@ -531,6 +563,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *vehicle overview
+     * </pre>
+     *
      * <code>string vehicleOverview = 1;</code>
      */
     public Builder setVehicleOverviewBytes(
@@ -547,6 +583,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object warehouseOverview_ = "";
     /**
+     * <pre>
+     *overview of warehouse operations response
+     * </pre>
+     *
      * <code>string warehouseOverview = 2;</code>
      */
     public java.lang.String getWarehouseOverview() {
@@ -562,6 +602,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *overview of warehouse operations response
+     * </pre>
+     *
      * <code>string warehouseOverview = 2;</code>
      */
     public com.google.protobuf.ByteString
@@ -578,6 +622,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *overview of warehouse operations response
+     * </pre>
+     *
      * <code>string warehouseOverview = 2;</code>
      */
     public Builder setWarehouseOverview(
@@ -591,6 +639,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *overview of warehouse operations response
+     * </pre>
+     *
      * <code>string warehouseOverview = 2;</code>
      */
     public Builder clearWarehouseOverview() {
@@ -600,6 +652,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *overview of warehouse operations response
+     * </pre>
+     *
      * <code>string warehouseOverview = 2;</code>
      */
     public Builder setWarehouseOverviewBytes(

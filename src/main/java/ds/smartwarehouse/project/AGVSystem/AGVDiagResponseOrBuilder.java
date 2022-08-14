@@ -8,16 +8,28 @@ public interface AGVDiagResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Type of AGV and details of diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagType = 1;</code>
    */
   java.lang.String getAGVdiagType();
   /**
+   * <pre>
+   *Type of AGV and details of diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagType = 1;</code>
    */
   com.google.protobuf.ByteString
       getAGVdiagTypeBytes();
 
   /**
+   * <pre>
+   *Performance of AGV
+   * </pre>
+   *
    * <code>int32 systemPerformance = 2;</code>
    */
   int getSystemPerformance();

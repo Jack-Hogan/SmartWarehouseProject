@@ -8,26 +8,46 @@ public interface StockReplenishResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *type of stock needed
+   * </pre>
+   *
    * <code>string replenishType = 1;</code>
    */
   java.lang.String getReplenishType();
   /**
+   * <pre>
+   *type of stock needed
+   * </pre>
+   *
    * <code>string replenishType = 1;</code>
    */
   com.google.protobuf.ByteString
       getReplenishTypeBytes();
 
   /**
+   * <pre>
+   *low stock if required
+   * </pre>
+   *
    * <code>int32 lowStock = 2;</code>
    */
   int getLowStock();
 
   /**
+   * <pre>
+   *check if stock is high or in high demand
+   * </pre>
+   *
    * <code>int32 highStock = 3;</code>
    */
   int getHighStock();
 
   /**
+   * <pre>
+   *boolean value to decide if stock needs replenishing
+   * </pre>
+   *
    * <code>bool stockReplenished = 4;</code>
    */
   boolean getStockReplenished();

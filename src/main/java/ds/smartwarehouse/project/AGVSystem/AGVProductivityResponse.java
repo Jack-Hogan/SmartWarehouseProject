@@ -105,6 +105,10 @@ private static final long serialVersionUID = 0L;
   public static final int AGVREPORTREPLY_FIELD_NUMBER = 1;
   private volatile java.lang.Object aGVreportReply_;
   /**
+   * <pre>
+   *Report Response
+   * </pre>
+   *
    * <code>string AGVreportReply = 1;</code>
    */
   public java.lang.String getAGVreportReply() {
@@ -120,6 +124,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Report Response
+   * </pre>
+   *
    * <code>string AGVreportReply = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -139,6 +147,10 @@ private static final long serialVersionUID = 0L;
   public static final int STOCK_FIELD_NUMBER = 2;
   private volatile java.lang.Object stock_;
   /**
+   * <pre>
+   *stock track
+   * </pre>
+   *
    * <code>string stock = 2;</code>
    */
   public java.lang.String getStock() {
@@ -154,6 +166,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *stock track
+   * </pre>
+   *
    * <code>string stock = 2;</code>
    */
   public com.google.protobuf.ByteString
@@ -173,6 +189,10 @@ private static final long serialVersionUID = 0L;
   public static final int PERFORMANCE_FIELD_NUMBER = 3;
   private volatile java.lang.Object performance_;
   /**
+   * <pre>
+   *performance of AGVs
+   * </pre>
+   *
    * <code>string performance = 3;</code>
    */
   public java.lang.String getPerformance() {
@@ -188,6 +208,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *performance of AGVs
+   * </pre>
+   *
    * <code>string performance = 3;</code>
    */
   public com.google.protobuf.ByteString
@@ -207,6 +231,10 @@ private static final long serialVersionUID = 0L;
   public static final int MAINTENANCE_FIELD_NUMBER = 4;
   private volatile java.lang.Object maintenance_;
   /**
+   * <pre>
+   *maintenance of AGVs
+   * </pre>
+   *
    * <code>string maintenance = 4;</code>
    */
   public java.lang.String getMaintenance() {
@@ -222,6 +250,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *maintenance of AGVs
+   * </pre>
+   *
    * <code>string maintenance = 4;</code>
    */
   public com.google.protobuf.ByteString
@@ -594,6 +626,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object aGVreportReply_ = "";
     /**
+     * <pre>
+     *Report Response
+     * </pre>
+     *
      * <code>string AGVreportReply = 1;</code>
      */
     public java.lang.String getAGVreportReply() {
@@ -609,6 +645,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Report Response
+     * </pre>
+     *
      * <code>string AGVreportReply = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -625,6 +665,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Report Response
+     * </pre>
+     *
      * <code>string AGVreportReply = 1;</code>
      */
     public Builder setAGVreportReply(
@@ -638,6 +682,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Report Response
+     * </pre>
+     *
      * <code>string AGVreportReply = 1;</code>
      */
     public Builder clearAGVreportReply() {
@@ -647,6 +695,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Report Response
+     * </pre>
+     *
      * <code>string AGVreportReply = 1;</code>
      */
     public Builder setAGVreportReplyBytes(
@@ -663,6 +715,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object stock_ = "";
     /**
+     * <pre>
+     *stock track
+     * </pre>
+     *
      * <code>string stock = 2;</code>
      */
     public java.lang.String getStock() {
@@ -678,6 +734,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *stock track
+     * </pre>
+     *
      * <code>string stock = 2;</code>
      */
     public com.google.protobuf.ByteString
@@ -694,6 +754,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *stock track
+     * </pre>
+     *
      * <code>string stock = 2;</code>
      */
     public Builder setStock(
@@ -707,6 +771,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *stock track
+     * </pre>
+     *
      * <code>string stock = 2;</code>
      */
     public Builder clearStock() {
@@ -716,6 +784,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *stock track
+     * </pre>
+     *
      * <code>string stock = 2;</code>
      */
     public Builder setStockBytes(
@@ -732,6 +804,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object performance_ = "";
     /**
+     * <pre>
+     *performance of AGVs
+     * </pre>
+     *
      * <code>string performance = 3;</code>
      */
     public java.lang.String getPerformance() {
@@ -747,6 +823,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *performance of AGVs
+     * </pre>
+     *
      * <code>string performance = 3;</code>
      */
     public com.google.protobuf.ByteString
@@ -763,6 +843,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *performance of AGVs
+     * </pre>
+     *
      * <code>string performance = 3;</code>
      */
     public Builder setPerformance(
@@ -776,6 +860,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *performance of AGVs
+     * </pre>
+     *
      * <code>string performance = 3;</code>
      */
     public Builder clearPerformance() {
@@ -785,6 +873,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *performance of AGVs
+     * </pre>
+     *
      * <code>string performance = 3;</code>
      */
     public Builder setPerformanceBytes(
@@ -801,6 +893,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object maintenance_ = "";
     /**
+     * <pre>
+     *maintenance of AGVs
+     * </pre>
+     *
      * <code>string maintenance = 4;</code>
      */
     public java.lang.String getMaintenance() {
@@ -816,6 +912,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *maintenance of AGVs
+     * </pre>
+     *
      * <code>string maintenance = 4;</code>
      */
     public com.google.protobuf.ByteString
@@ -832,6 +932,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *maintenance of AGVs
+     * </pre>
+     *
      * <code>string maintenance = 4;</code>
      */
     public Builder setMaintenance(
@@ -845,6 +949,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *maintenance of AGVs
+     * </pre>
+     *
      * <code>string maintenance = 4;</code>
      */
     public Builder clearMaintenance() {
@@ -854,6 +962,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *maintenance of AGVs
+     * </pre>
+     *
      * <code>string maintenance = 4;</code>
      */
     public Builder setMaintenanceBytes(

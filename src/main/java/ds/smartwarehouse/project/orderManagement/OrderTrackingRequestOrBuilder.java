@@ -8,6 +8,10 @@ public interface OrderTrackingRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *order number request
+   * </pre>
+   *
    * <code>int32 orderNumber = 1;</code>
    */
   int getOrderNumber();

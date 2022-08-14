@@ -8,10 +8,18 @@ public interface StockReplenishRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *stock replenish request message
+   * </pre>
+   *
    * <code>string replenishMessage = 1;</code>
    */
   java.lang.String getReplenishMessage();
   /**
+   * <pre>
+   *stock replenish request message
+   * </pre>
+   *
    * <code>string replenishMessage = 1;</code>
    */
   com.google.protobuf.ByteString

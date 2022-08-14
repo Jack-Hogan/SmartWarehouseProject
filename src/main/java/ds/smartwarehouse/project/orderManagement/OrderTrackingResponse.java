@@ -90,6 +90,10 @@ private static final long serialVersionUID = 0L;
   public static final int ORDERNUMBER_FIELD_NUMBER = 1;
   private int orderNumber_;
   /**
+   * <pre>
+   *order number response
+   * </pre>
+   *
    * <code>int32 orderNumber = 1;</code>
    */
   public int getOrderNumber() {
@@ -99,6 +103,10 @@ private static final long serialVersionUID = 0L;
   public static final int ORDERSTATUS_FIELD_NUMBER = 2;
   private volatile java.lang.Object orderStatus_;
   /**
+   * <pre>
+   *order status
+   * </pre>
+   *
    * <code>string orderStatus = 2;</code>
    */
   public java.lang.String getOrderStatus() {
@@ -114,6 +122,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *order status
+   * </pre>
+   *
    * <code>string orderStatus = 2;</code>
    */
   public com.google.protobuf.ByteString
@@ -452,12 +464,20 @@ private static final long serialVersionUID = 0L;
 
     private int orderNumber_ ;
     /**
+     * <pre>
+     *order number response
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public int getOrderNumber() {
       return orderNumber_;
     }
     /**
+     * <pre>
+     *order number response
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public Builder setOrderNumber(int value) {
@@ -467,6 +487,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *order number response
+     * </pre>
+     *
      * <code>int32 orderNumber = 1;</code>
      */
     public Builder clearOrderNumber() {
@@ -478,6 +502,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object orderStatus_ = "";
     /**
+     * <pre>
+     *order status
+     * </pre>
+     *
      * <code>string orderStatus = 2;</code>
      */
     public java.lang.String getOrderStatus() {
@@ -493,6 +521,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *order status
+     * </pre>
+     *
      * <code>string orderStatus = 2;</code>
      */
     public com.google.protobuf.ByteString
@@ -509,6 +541,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *order status
+     * </pre>
+     *
      * <code>string orderStatus = 2;</code>
      */
     public Builder setOrderStatus(
@@ -522,6 +558,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *order status
+     * </pre>
+     *
      * <code>string orderStatus = 2;</code>
      */
     public Builder clearOrderStatus() {
@@ -531,6 +571,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *order status
+     * </pre>
+     *
      * <code>string orderStatus = 2;</code>
      */
     public Builder setOrderStatusBytes(

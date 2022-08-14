@@ -84,6 +84,10 @@ private static final long serialVersionUID = 0L;
   public static final int REPLENISHMESSAGE_FIELD_NUMBER = 1;
   private volatile java.lang.Object replenishMessage_;
   /**
+   * <pre>
+   *stock replenish request message
+   * </pre>
+   *
    * <code>string replenishMessage = 1;</code>
    */
   public java.lang.String getReplenishMessage() {
@@ -99,6 +103,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *stock replenish request message
+   * </pre>
+   *
    * <code>string replenishMessage = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -420,6 +428,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object replenishMessage_ = "";
     /**
+     * <pre>
+     *stock replenish request message
+     * </pre>
+     *
      * <code>string replenishMessage = 1;</code>
      */
     public java.lang.String getReplenishMessage() {
@@ -435,6 +447,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *stock replenish request message
+     * </pre>
+     *
      * <code>string replenishMessage = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -451,6 +467,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *stock replenish request message
+     * </pre>
+     *
      * <code>string replenishMessage = 1;</code>
      */
     public Builder setReplenishMessage(
@@ -464,6 +484,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *stock replenish request message
+     * </pre>
+     *
      * <code>string replenishMessage = 1;</code>
      */
     public Builder clearReplenishMessage() {
@@ -473,6 +497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *stock replenish request message
+     * </pre>
+     *
      * <code>string replenishMessage = 1;</code>
      */
     public Builder setReplenishMessageBytes(

@@ -102,6 +102,10 @@ private static final long serialVersionUID = 0L;
   public static final int REPLENISHTYPE_FIELD_NUMBER = 1;
   private volatile java.lang.Object replenishType_;
   /**
+   * <pre>
+   *type of stock needed
+   * </pre>
+   *
    * <code>string replenishType = 1;</code>
    */
   public java.lang.String getReplenishType() {
@@ -117,6 +121,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *type of stock needed
+   * </pre>
+   *
    * <code>string replenishType = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -136,6 +144,10 @@ private static final long serialVersionUID = 0L;
   public static final int LOWSTOCK_FIELD_NUMBER = 2;
   private int lowStock_;
   /**
+   * <pre>
+   *low stock if required
+   * </pre>
+   *
    * <code>int32 lowStock = 2;</code>
    */
   public int getLowStock() {
@@ -145,6 +157,10 @@ private static final long serialVersionUID = 0L;
   public static final int HIGHSTOCK_FIELD_NUMBER = 3;
   private int highStock_;
   /**
+   * <pre>
+   *check if stock is high or in high demand
+   * </pre>
+   *
    * <code>int32 highStock = 3;</code>
    */
   public int getHighStock() {
@@ -154,6 +170,10 @@ private static final long serialVersionUID = 0L;
   public static final int STOCKREPLENISHED_FIELD_NUMBER = 4;
   private boolean stockReplenished_;
   /**
+   * <pre>
+   *boolean value to decide if stock needs replenishing
+   * </pre>
+   *
    * <code>bool stockReplenished = 4;</code>
    */
   public boolean getStockReplenished() {
@@ -517,6 +537,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object replenishType_ = "";
     /**
+     * <pre>
+     *type of stock needed
+     * </pre>
+     *
      * <code>string replenishType = 1;</code>
      */
     public java.lang.String getReplenishType() {
@@ -532,6 +556,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of stock needed
+     * </pre>
+     *
      * <code>string replenishType = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -548,6 +576,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *type of stock needed
+     * </pre>
+     *
      * <code>string replenishType = 1;</code>
      */
     public Builder setReplenishType(
@@ -561,6 +593,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of stock needed
+     * </pre>
+     *
      * <code>string replenishType = 1;</code>
      */
     public Builder clearReplenishType() {
@@ -570,6 +606,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *type of stock needed
+     * </pre>
+     *
      * <code>string replenishType = 1;</code>
      */
     public Builder setReplenishTypeBytes(
@@ -586,12 +626,20 @@ private static final long serialVersionUID = 0L;
 
     private int lowStock_ ;
     /**
+     * <pre>
+     *low stock if required
+     * </pre>
+     *
      * <code>int32 lowStock = 2;</code>
      */
     public int getLowStock() {
       return lowStock_;
     }
     /**
+     * <pre>
+     *low stock if required
+     * </pre>
+     *
      * <code>int32 lowStock = 2;</code>
      */
     public Builder setLowStock(int value) {
@@ -601,6 +649,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *low stock if required
+     * </pre>
+     *
      * <code>int32 lowStock = 2;</code>
      */
     public Builder clearLowStock() {
@@ -612,12 +664,20 @@ private static final long serialVersionUID = 0L;
 
     private int highStock_ ;
     /**
+     * <pre>
+     *check if stock is high or in high demand
+     * </pre>
+     *
      * <code>int32 highStock = 3;</code>
      */
     public int getHighStock() {
       return highStock_;
     }
     /**
+     * <pre>
+     *check if stock is high or in high demand
+     * </pre>
+     *
      * <code>int32 highStock = 3;</code>
      */
     public Builder setHighStock(int value) {
@@ -627,6 +687,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *check if stock is high or in high demand
+     * </pre>
+     *
      * <code>int32 highStock = 3;</code>
      */
     public Builder clearHighStock() {
@@ -638,12 +702,20 @@ private static final long serialVersionUID = 0L;
 
     private boolean stockReplenished_ ;
     /**
+     * <pre>
+     *boolean value to decide if stock needs replenishing
+     * </pre>
+     *
      * <code>bool stockReplenished = 4;</code>
      */
     public boolean getStockReplenished() {
       return stockReplenished_;
     }
     /**
+     * <pre>
+     *boolean value to decide if stock needs replenishing
+     * </pre>
+     *
      * <code>bool stockReplenished = 4;</code>
      */
     public Builder setStockReplenished(boolean value) {
@@ -653,6 +725,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *boolean value to decide if stock needs replenishing
+     * </pre>
+     *
      * <code>bool stockReplenished = 4;</code>
      */
     public Builder clearStockReplenished() {

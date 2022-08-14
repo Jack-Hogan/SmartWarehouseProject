@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
@@ -210,10 +211,16 @@ public class WarehouseManagementClient {
 				.setQ3Earning(q3)
 				.setQ4Earning(q4)
 				.build();
+		ProductivityReportResponse response;
 		
 		// Send the message via the blocking stub and store the response
-		ProductivityReportResponse response = blockingStub.productivityReport(request);
-
+		CallOptions.Key<String> metaDataKey = CallOptions.Key.create("my_key");
+		try {
+			response = blockingStub.withOption(metaDataKey, "bar").productivityReport(request);
+		}catch (StatusRuntimeException e) {
+	         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+	         return;
+		}
 		// Display the result from server
 		System.out.println("Productivity Overview Report is as follows: " + response.getProdReportService() + "\n\n");
 		System.out.println("Employee Count: " + response.getEmployeeCount());

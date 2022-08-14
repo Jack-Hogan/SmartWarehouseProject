@@ -151,6 +151,9 @@ public final class WarehouseManagmentGrpc {
   public static abstract class WarehouseManagmentImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public void productivityReport(ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse> responseObserver) {
@@ -158,6 +161,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Client Streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.DemandForecastRequest> demandForecast(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.DemandForecastResponse> responseObserver) {
@@ -165,6 +171,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Bi-Directional
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.RealTimeOverviewRequest> realTimeOverview(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.RealTimeOverviewResponse> responseObserver) {
@@ -217,6 +226,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public void productivityReport(ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest request,
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse> responseObserver) {
@@ -225,6 +237,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Client Streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.DemandForecastRequest> demandForecast(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.DemandForecastResponse> responseObserver) {
@@ -233,6 +248,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Bi-Directional
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.RealTimeOverviewRequest> realTimeOverview(
         io.grpc.stub.StreamObserver<ds.smartwarehouse.project.warehouseManagement.RealTimeOverviewResponse> responseObserver) {
@@ -260,6 +278,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse productivityReport(ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest request) {
       return blockingUnaryCall(
@@ -286,6 +307,9 @@ public final class WarehouseManagmentGrpc {
     }
 
     /**
+     * <pre>
+     *Unary
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<ds.smartwarehouse.project.warehouseManagement.ProductivityReportResponse> productivityReport(
         ds.smartwarehouse.project.warehouseManagement.ProductivityReportRequest request) {

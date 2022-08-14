@@ -8,16 +8,28 @@ public interface AGVDiagRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Request from client for AVG diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagRequest = 1;</code>
    */
   java.lang.String getAGVdiagRequest();
   /**
+   * <pre>
+   *Request from client for AVG diagnosis
+   * </pre>
+   *
    * <code>string AGVdiagRequest = 1;</code>
    */
   com.google.protobuf.ByteString
       getAGVdiagRequestBytes();
 
   /**
+   * <pre>
+   *How many vehicles required for diagnosis messages
+   * </pre>
+   *
    * <code>int32 AGVfrequency = 2;</code>
    */
   int getAGVfrequency();

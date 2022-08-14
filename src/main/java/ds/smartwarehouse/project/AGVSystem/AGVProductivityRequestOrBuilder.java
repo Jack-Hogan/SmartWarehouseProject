@@ -8,10 +8,18 @@ public interface AGVProductivityRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *Report request
+   * </pre>
+   *
    * <code>string AGVreport = 1;</code>
    */
   java.lang.String getAGVreport();
   /**
+   * <pre>
+   *Report request
+   * </pre>
+   *
    * <code>string AGVreport = 1;</code>
    */
   com.google.protobuf.ByteString
