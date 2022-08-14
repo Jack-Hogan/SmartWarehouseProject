@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
@@ -14,12 +15,32 @@ import java.util.Properties;
 
 import ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse.Builder;
 import ds.smartwarehouse.project.AGVSystem.AGVSystemGrpc.AGVSystemImplBase;
+import ds.smartwarehouse.project.orderManagement.OrderManagementServer;
+import io.grpc.Metadata;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerCall;
+import io.grpc.ServerCallHandler;
+import io.grpc.ServerInterceptor;
+import io.grpc.ServerCall.Listener;
 import io.grpc.stub.StreamObserver;
 
 public class AGVServer extends AGVSystemImplBase {
 	
+	private static final Logger logger = Logger.getLogger(AGVServer.class.getName());
+
+	/*Metadata reading client*/
+	class AGVInterceptor implements ServerInterceptor{
+	      @Override
+	      public <ReqT, RespT> Listener<ReqT> 
+	      interceptCall(ServerCall<ReqT, RespT> call, Metadata headers, ServerCallHandler<ReqT, RespT> next) {
+	 
+	         logger.info("Recieved following metadata: " + headers);
+	         return next.startCall(call, headers);
+	      }
+
+	   }
+
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
@@ -54,7 +75,7 @@ public class AGVServer extends AGVSystemImplBase {
 		
 		String RandomAGV;
 		Random rand = new Random();
-		int index = rand.nextInt((4) + 1);
+		int index = rand.nextInt(4);
 		
 		RandomAGV = list.get(index);
 		return RandomAGV;
@@ -69,15 +90,10 @@ public class AGVServer extends AGVSystemImplBase {
 			StreamObserver<VehicleTrackingResponse> responseObserver) {
 
 		return new StreamObserver<VehicleTrackingRequest>(){
-
-			 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-
-			 
+		 
 			@Override
 			public void onNext(VehicleTrackingRequest value) {
 				 Date date = new Date(); 
-				 Random rand = new Random();
-
 				 
 				 String type = value.getAGVtype();
 				 
@@ -127,7 +143,7 @@ public class AGVServer extends AGVSystemImplBase {
 	@Override
 	public void agvProductivity(AGVProductivityRequest request,
 			StreamObserver<AGVProductivityResponse> responseObserver) {
-		int counter = 1;
+
 		Random rand = new Random();
 		Date date = new Date();
 		
@@ -148,11 +164,19 @@ public class AGVServer extends AGVSystemImplBase {
 		//build response
 		
 		AGVProductivityResponse response = AGVProductivityResponse.newBuilder()
-				.setAGVreportReply("\nReport no." + id + " for " + date + " for AGV is as follows: \n"
-						+ "Performance Over 85%: " + perform + ".\nMost Effcient AGV: "+AGV +" no." +agvSerial2 +"\n"
-						+ "Low Stock Capacity Alert: " + stock +"\n"
-						+ "Maintence team working on software update for: " + AGV2 + " no." + agvSerial)//" + counter + "
+				.setAGVreportReply("\nReport no." + id + " for " + date + " for AGV is as follows: \n")
+				.setPerformance("Performance Over 85%: " + perform + ".\nMost Effcient AGV: "+AGV +" no." +agvSerial2 +"\n")
+				.setStock("Low Stock Capacity Alert: " + stock +"\n")
+				.setMaintenance("Maintence team working on software update for: " + AGV2 + " no." + agvSerial)
 				.build();
+		
+//		/*Deadline Exceeded Exception Example*/
+//		try {
+//			Thread.sleep(4000);
+//		}
+//		catch(InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		
 		//send response message
 		responseObserver.onNext(response);

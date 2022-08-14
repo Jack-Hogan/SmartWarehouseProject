@@ -6,18 +6,39 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.IllegalFormatException;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
 
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementImplBase;
+import ds.smartwarehouse.project.warehouseManagement.WarehouseManagementServer;
+import io.grpc.Metadata;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerCall;
+import io.grpc.ServerCallHandler;
+import io.grpc.ServerInterceptor;
 import io.grpc.Status;
+import io.grpc.ServerCall.Listener;
 import io.grpc.stub.StreamObserver;
 
 public class OrderManagementServer extends OrderManagementImplBase{
+
+	private static final Logger logger = Logger.getLogger(OrderManagementServer.class.getName());
+	
+	/*Metadata reading client*/
+	class OrderManagementInterceptor implements ServerInterceptor{
+	      @Override
+	      public <ReqT, RespT> Listener<ReqT> 
+	      interceptCall(ServerCall<ReqT, RespT> call, Metadata headers, ServerCallHandler<ReqT, RespT> next) {
+	 
+	         logger.info("Recieved following metadata: " + headers);
+	         return next.startCall(call, headers);
+	      }
+
+	   }
 
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
@@ -118,11 +139,18 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		
 		//receive request
 		
-		//String type = stockType();
-		
 		System.out.println("Request Message from Client: " + request.getStockMessage());
 		boolean itemFound = false;
 
+//		/*Deadline Exceeded Example*/
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		
 		try {
 			StockResponse response;
 		for(int i = 0; i <array().size(); i++) {
@@ -142,7 +170,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 				responseObserver.onCompleted();
 			}
 			else {
-				System.out.println("Client item does not match stock number:" + i+1 + ".");
+				System.out.println("Client item does not match stock number:" + i + ".");
 			}
 
 		}
@@ -151,7 +179,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 //	            responseObserver.onError(status.asRuntimeException());
 //	            //return;
 			response = StockResponse.newBuilder()
-					.setNotFoundMsg("Item not found, please try again!!")
+					.setNotFoundMsg("Item not found, please try again!")
 					.build();
 			
 			//send response
@@ -185,11 +213,19 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		//build response 
 		for(int i = 0 ; i <array().size(); i++) {
 			
-		boolean stockReplen = rand.nextBoolean();
+		boolean stockReplen;
+		int stockCheck = randomNum();
+		
+		if(stockCheck <40) {
+			stockReplen = true;
+		}
+		else {
+			stockReplen = false;
+		}
 
 		StockReplenishResponse response = StockReplenishResponse.newBuilder()
 				.setLowStock(randomNum())
-				.setHighStock(randomNum())
+				.setHighStock(stockCheck)
 				.setReplenishType(array().get(i))
 				.setStockReplenished(stockReplen)
 				.build();
@@ -235,7 +271,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 				 System.out.println("Order tracking request for order: " + value.getOrderNumber() + " "+ date + "\n");
 				 
 				 try {
-					Thread.sleep(1500);
+					Thread.sleep(2500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -251,9 +287,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 			@Override
 			public void onCompleted() {
 				
-
-
-				System.out.println("List: " + list);
+				
 				 OrderTrackingResponse response = OrderTrackingResponse.newBuilder()
 						.setOrderNumber(orderNo)
 						.setOrderStatus(delivery)

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
@@ -17,12 +18,32 @@ import ds.smartwarehouse.project.orderManagement.OrderManagementServer;
 import ds.smartwarehouse.project.orderManagement.OrderTrackingRequest;
 import ds.smartwarehouse.project.orderManagement.OrderTrackingResponse;
 import ds.smartwarehouse.project.warehouseManagement.WarehouseManagmentGrpc.WarehouseManagmentImplBase;
+import io.grpc.Metadata;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerCall;
+import io.grpc.ServerCall.Listener;
+import io.grpc.ServerCallHandler;
+import io.grpc.ServerInterceptor;
 import io.grpc.stub.StreamObserver;
 
 
 public class WarehouseManagementServer extends WarehouseManagmentImplBase {
+	
+	private static final Logger logger = Logger.getLogger(WarehouseManagementServer.class.getName());
+	
+	/*Metadata reading client*/
+	class WarehouseManagementInterceptor implements ServerInterceptor{
+	      @Override
+	      public <ReqT, RespT> Listener<ReqT> 
+	      interceptCall(ServerCall<ReqT, RespT> call, Metadata headers, ServerCallHandler<ReqT, RespT> next) {
+	 
+	         logger.info("Recieved following metadata: " + headers);
+	         return next.startCall(call, headers);
+	      }
+
+	   }
+
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		//create object of the Server class
@@ -91,8 +112,6 @@ public class WarehouseManagementServer extends WarehouseManagmentImplBase {
 		OrderManagementServer OSserver = new OrderManagementServer();
 		Date date = new Date(); 
 
-
-
 		//receive
 		System.out.println("Receiving productivity message: " + request.getProdReport());
 		double q1 = request.getQ1Earning();
@@ -145,6 +164,7 @@ public class WarehouseManagementServer extends WarehouseManagmentImplBase {
 				 int items = value.getItemsSold();
 				 
 				 System.out.println("Forecast Request from client: " + forecastRequest + " on " + date);
+
 				 
 				 list.add(items);
 
@@ -198,16 +218,32 @@ public class WarehouseManagementServer extends WarehouseManagmentImplBase {
 			public void onNext(RealTimeOverviewRequest value) {
 				 Date date = new Date(); 
 				 Random rand = new Random();
+				 String reply;
 
 				 
 				 String OViewMsg = value.getOverviewMessage();
 				 
-				 System.out.println("Overview Message message request: " + OViewMsg);
+				 if(OViewMsg.equalsIgnoreCase("Employee")) {
+					 reply = ("Employee Head Count " + rand.nextInt(100) + ". Production Line fully operational.");
+				 }
+				 else if (OViewMsg.equalsIgnoreCase("AGV Overview")) {
+					 reply = ("AGV systems online: " + rand.nextBoolean() + ". Awaiting instructions.");
+
+				 }
+				 else if (OViewMsg.equalsIgnoreCase("Temperature Control")) {
+					 reply = ("Temperature Control Stream. Warehouse Temp: " + rand.nextInt(10, 30)+ " degrees Celcius. Temperature is optimal: " + rand.nextBoolean() +".");
+
+				 }
+				 else {
+					 reply = "Could not interpret request, please try again.";
+				 }
+				 
+				 System.out.println("Overview Message Request from client: " + OViewMsg + " at " + date);
 				 
 				 
 				 RealTimeOverviewResponse response = RealTimeOverviewResponse.newBuilder()
-						 .setVehicleOverview("Vehicle Overview")
-						 .setWarehouseOverview("WH Overview")
+						 .setWarehouseOverview(reply)
+						 .setVehicleOverview("Testing " + OViewMsg + " Systems: ")
 						 .build();
 				 
 				 responseObserver.onNext(response);

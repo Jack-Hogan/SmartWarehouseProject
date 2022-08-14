@@ -17,6 +17,9 @@ private static final long serialVersionUID = 0L;
   }
   private AGVProductivityResponse() {
     aGVreportReply_ = "";
+    stock_ = "";
+    performance_ = "";
+    maintenance_ = "";
   }
 
   @java.lang.Override
@@ -47,6 +50,24 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             aGVreportReply_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            stock_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            performance_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            maintenance_ = s;
             break;
           }
           default: {
@@ -115,6 +136,108 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int STOCK_FIELD_NUMBER = 2;
+  private volatile java.lang.Object stock_;
+  /**
+   * <code>string stock = 2;</code>
+   */
+  public java.lang.String getStock() {
+    java.lang.Object ref = stock_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      stock_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string stock = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStockBytes() {
+    java.lang.Object ref = stock_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      stock_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PERFORMANCE_FIELD_NUMBER = 3;
+  private volatile java.lang.Object performance_;
+  /**
+   * <code>string performance = 3;</code>
+   */
+  public java.lang.String getPerformance() {
+    java.lang.Object ref = performance_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      performance_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string performance = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPerformanceBytes() {
+    java.lang.Object ref = performance_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      performance_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MAINTENANCE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object maintenance_;
+  /**
+   * <code>string maintenance = 4;</code>
+   */
+  public java.lang.String getMaintenance() {
+    java.lang.Object ref = maintenance_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      maintenance_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string maintenance = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getMaintenanceBytes() {
+    java.lang.Object ref = maintenance_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      maintenance_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +255,15 @@ private static final long serialVersionUID = 0L;
     if (!getAGVreportReplyBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, aGVreportReply_);
     }
+    if (!getStockBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, stock_);
+    }
+    if (!getPerformanceBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, performance_);
+    }
+    if (!getMaintenanceBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, maintenance_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -143,6 +275,15 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!getAGVreportReplyBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, aGVreportReply_);
+    }
+    if (!getStockBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, stock_);
+    }
+    if (!getPerformanceBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, performance_);
+    }
+    if (!getMaintenanceBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, maintenance_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -162,6 +303,12 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getAGVreportReply()
         .equals(other.getAGVreportReply());
+    result = result && getStock()
+        .equals(other.getStock());
+    result = result && getPerformance()
+        .equals(other.getPerformance());
+    result = result && getMaintenance()
+        .equals(other.getMaintenance());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -175,6 +322,12 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + AGVREPORTREPLY_FIELD_NUMBER;
     hash = (53 * hash) + getAGVreportReply().hashCode();
+    hash = (37 * hash) + STOCK_FIELD_NUMBER;
+    hash = (53 * hash) + getStock().hashCode();
+    hash = (37 * hash) + PERFORMANCE_FIELD_NUMBER;
+    hash = (53 * hash) + getPerformance().hashCode();
+    hash = (37 * hash) + MAINTENANCE_FIELD_NUMBER;
+    hash = (53 * hash) + getMaintenance().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -310,6 +463,12 @@ private static final long serialVersionUID = 0L;
       super.clear();
       aGVreportReply_ = "";
 
+      stock_ = "";
+
+      performance_ = "";
+
+      maintenance_ = "";
+
       return this;
     }
 
@@ -337,6 +496,9 @@ private static final long serialVersionUID = 0L;
     public ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse buildPartial() {
       ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse result = new ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse(this);
       result.aGVreportReply_ = aGVreportReply_;
+      result.stock_ = stock_;
+      result.performance_ = performance_;
+      result.maintenance_ = maintenance_;
       onBuilt();
       return result;
     }
@@ -387,6 +549,18 @@ private static final long serialVersionUID = 0L;
       if (other == ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse.getDefaultInstance()) return this;
       if (!other.getAGVreportReply().isEmpty()) {
         aGVreportReply_ = other.aGVreportReply_;
+        onChanged();
+      }
+      if (!other.getStock().isEmpty()) {
+        stock_ = other.stock_;
+        onChanged();
+      }
+      if (!other.getPerformance().isEmpty()) {
+        performance_ = other.performance_;
+        onChanged();
+      }
+      if (!other.getMaintenance().isEmpty()) {
+        maintenance_ = other.maintenance_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -483,6 +657,213 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       aGVreportReply_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object stock_ = "";
+    /**
+     * <code>string stock = 2;</code>
+     */
+    public java.lang.String getStock() {
+      java.lang.Object ref = stock_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        stock_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string stock = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStockBytes() {
+      java.lang.Object ref = stock_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stock_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string stock = 2;</code>
+     */
+    public Builder setStock(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      stock_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string stock = 2;</code>
+     */
+    public Builder clearStock() {
+      
+      stock_ = getDefaultInstance().getStock();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string stock = 2;</code>
+     */
+    public Builder setStockBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      stock_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object performance_ = "";
+    /**
+     * <code>string performance = 3;</code>
+     */
+    public java.lang.String getPerformance() {
+      java.lang.Object ref = performance_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        performance_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string performance = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPerformanceBytes() {
+      java.lang.Object ref = performance_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        performance_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string performance = 3;</code>
+     */
+    public Builder setPerformance(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      performance_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string performance = 3;</code>
+     */
+    public Builder clearPerformance() {
+      
+      performance_ = getDefaultInstance().getPerformance();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string performance = 3;</code>
+     */
+    public Builder setPerformanceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      performance_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object maintenance_ = "";
+    /**
+     * <code>string maintenance = 4;</code>
+     */
+    public java.lang.String getMaintenance() {
+      java.lang.Object ref = maintenance_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        maintenance_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string maintenance = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMaintenanceBytes() {
+      java.lang.Object ref = maintenance_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        maintenance_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string maintenance = 4;</code>
+     */
+    public Builder setMaintenance(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      maintenance_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string maintenance = 4;</code>
+     */
+    public Builder clearMaintenance() {
+      
+      maintenance_ = getDefaultInstance().getMaintenance();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string maintenance = 4;</code>
+     */
+    public Builder setMaintenanceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      maintenance_ = value;
       onChanged();
       return this;
     }

@@ -1,10 +1,14 @@
 package ds.smartwarehouse.project.orderManagement;
 
+import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
@@ -14,16 +18,45 @@ import javax.jmdns.ServiceListener;
 
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementBlockingStub;
 import ds.smartwarehouse.project.orderManagement.OrderManagementGrpc.OrderManagementStub;
+import ds.smartwarehouse.project.warehouseManagement.WarehouseManagementClient;
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
+import io.grpc.StatusRuntimeException;
+import io.grpc.ClientCall.Listener;
 import io.grpc.stub.StreamObserver;
 
 public class OrderManagementClient {
 	
+	private static final Logger logger = Logger.getLogger(OrderManagementClient.class.getName());
+
 	
 	private static OrderManagementBlockingStub blockingStub;
 	private static OrderManagementStub asyncStub;
 	
+	static class OrderManagementInterceptor implements ClientInterceptor{
+		   @Override
+		   public <ReqT, RespT> ClientCall<ReqT, RespT>
+		   interceptCall(
+				   MethodDescriptor<ReqT, RespT> method, CallOptions callOptions, Channel next) {
+		      return new 
+		      ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
+		         @Override
+		         public void start(Listener<RespT>responseListener, Metadata headers) {
+		            logger.info("Added metadata");
+		            headers.put(Metadata.Key.of("_http._tcp.local.", ASCII_STRING_MARSHALLER), "MY_HOST");
+		            super.start(responseListener, headers);
+		         }
+		      };
+		   }
+
+		}
 	
 	private ServiceInfo OMserverInfo;
 
@@ -48,10 +81,15 @@ public class OrderManagementClient {
 		
 		stockCheck();
 		
-		replenishStock();
+//		replenishStock();
+//		
+//		orderTracking();
 		
-		orderTracking();
-		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		System.out.println("Client Shutting Down.");
 		
 		try {
@@ -130,12 +168,15 @@ public class OrderManagementClient {
 		String answer = "";
 		
 		System.out.println("Stock Check Unary Called!");
+		
 		try {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		do {
 		//user input to enter item for stock checking
 		System.out.println("What item would you like to check stock for?");
@@ -144,10 +185,17 @@ public class OrderManagementClient {
 		StockRequest request = StockRequest.newBuilder()
 				.setStockMessage(item)
 				.build();
+		StockResponse response;
 		
 		// Send the message via the blocking stub and store the response
-		StockResponse response = blockingStub.stockCheck(request);
-
+		//Deadline Exception Implementation 
+		try {
+		 response = blockingStub.withDeadlineAfter(2,TimeUnit.SECONDS).stockCheck(request);
+		}catch(StatusRuntimeException e) {
+	         logger.log(Level.WARNING, "RPC failed: {0}",e.getStatus());
+	         return;
+		}
+		
 		if(response.getStockNumber() <= 0) {
 			System.out.println("Error in file: " + response.getNotFoundMsg());
 		}
@@ -216,7 +264,7 @@ public class OrderManagementClient {
 	public static void orderTracking() {
 		// Display a message to show what method has been called
 				System.out.println("orderTracking() has been called:");
-				
+
 				StreamObserver<OrderTrackingResponse> responseObserver = new StreamObserver<OrderTrackingResponse>() {
 
 					@Override
@@ -229,6 +277,14 @@ public class OrderManagementClient {
 						
 						// Display sum
 						System.out.println("Order Number is: " + orderNum + ". Order Status: " + orderStatus);
+								
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+
+
 					}
 
 					@Override
@@ -241,7 +297,15 @@ public class OrderManagementClient {
 
 						// Stream is completed
 						System.out.println("orderTracking() client-streaming has finished\n\n");
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+
 					}
+
+				
 				};
 					
 					// Send the client data here
@@ -252,29 +316,33 @@ public class OrderManagementClient {
 						
 						System.out.println("Can you please enter your order number?");
 						int orderNum = input.nextInt();
+						int orderCheck= 8;
+						
 						System.out.println("Order number:"+orderNum+" sent to server. Server will send back update when status has changed.");
 
+						for(int i = 0; i <= orderCheck; i++) {
 						OrderTrackingRequest request = OrderTrackingRequest.newBuilder()
 								.setOrderNumber(orderNum)
 								.build();
 						
 						requestObserver.onNext(request);
 						Thread.sleep(2000);
+						}
 						
-						request = OrderTrackingRequest.newBuilder()
-								.setOrderNumber(orderNum)
-								.build();
-						
-						requestObserver.onNext(request);
-						Thread.sleep(2000);
-						
-						request = OrderTrackingRequest.newBuilder()
-								.setOrderNumber(orderNum)
-								.build();
-						
-						requestObserver.onNext(request);
-						Thread.sleep(3000);
-						
+//						request = OrderTrackingRequest.newBuilder()
+//								.setOrderNumber(orderNum)
+//								.build();
+//						
+//						requestObserver.onNext(request);
+//						Thread.sleep(2000);
+//						
+//						request = OrderTrackingRequest.newBuilder()
+//								.setOrderNumber(orderNum)
+//								.build();
+//						
+//						requestObserver.onNext(request);
+//						Thread.sleep(3000);
+//						
 						// The requests have ended
 						requestObserver.onCompleted();
 						

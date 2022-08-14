@@ -34,6 +34,9 @@ message AGVProductivityRequest {
 
 message AGVProductivityResponse {
 	string AGVreportReply = 1;
+	string stock = 2;
+	string performance = 3;
+	string maintenance =4;
 }
 
 message AGVDiagRequest {

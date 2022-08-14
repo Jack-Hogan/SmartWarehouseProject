@@ -1,5 +1,7 @@
 package ds.smartwarehouse.project.AGVSystem;
 
+import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
@@ -21,15 +25,45 @@ import ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse;
 import ds.smartwarehouse.project.AGVSystem.AGVSystemGrpc;
 import ds.smartwarehouse.project.AGVSystem.AGVSystemGrpc.AGVSystemBlockingStub;
 import ds.smartwarehouse.project.AGVSystem.AGVSystemGrpc.AGVSystemStub;
-
+import ds.smartwarehouse.project.orderManagement.OrderManagementClient;
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
+import io.grpc.StatusRuntimeException;
+import io.grpc.ClientCall.Listener;
 import io.grpc.stub.StreamObserver;
 
 public class AGVClient {
 	
+	private static final Logger logger = Logger.getLogger(AGVClient.class.getName());
+
+	
 	private static AGVSystemBlockingStub blockingStub;
 	private static AGVSystemStub asyncStub;
+	
+	static class AGVClientInterceptor implements ClientInterceptor{
+		   @Override
+		   public <ReqT, RespT> ClientCall<ReqT, RespT>
+		   interceptCall(
+				   MethodDescriptor<ReqT, RespT> method, CallOptions callOptions, Channel next) {
+		      return new 
+		      ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
+		         @Override
+		         public void start(Listener<RespT>responseListener, Metadata headers) {
+		            logger.info("Added metadata");
+		            headers.put(Metadata.Key.of("_http._tcp.local.", ASCII_STRING_MARSHALLER), "MY_HOST");
+		            super.start(responseListener, headers);
+		         }
+		      };
+		   }
+
+		}
 	
 	
 	private ServiceInfo AGVInfo;
@@ -60,6 +94,12 @@ public class AGVClient {
 		agvProductivity();
 		
 		agvDiag();
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		
 		System.out.println("Client Shutting Down.");
 
@@ -133,7 +173,7 @@ public class AGVClient {
 		
 	}
 	
-	public String AGVarray() {
+	public static String AGVarray() {
 		ArrayList<String> list = new ArrayList<>();
 		list.add("Automated Guided Carts");
 		list.add("Heavy Burden Carriers");
@@ -155,8 +195,8 @@ public class AGVClient {
 	// *** BIDIRECTIONAL RPC ***
 	public static void vehicleTracking() {
 		Random rand = new Random();
-		AGVClient test = new AGVClient();
-		test.AGVarray();
+//		AGVClient test = new AGVClient();
+//		test.AGVarray();
 		
 		// Display a message to show what method has been called
 		System.out.println("Vehicle Tracking() has been called:");
@@ -197,31 +237,41 @@ public class AGVClient {
 		
 		try {
 			
-			// Sending 1st
-			
+			//Sending 1st			
 			VehicleTrackingRequest request = VehicleTrackingRequest.newBuilder()
-					.setAGVtype("Automated Guided Carts")
+					.setAGVtype(AGVarray())
 					.build();
 			
 			requestObserver.onNext(request);
 			
 			 //2nd
 			request = VehicleTrackingRequest.newBuilder()
-				.setAGVtype("Heavy Burden Carriers")
+				.setAGVtype(AGVarray())
 				.build();
 			
 			requestObserver.onNext(request);
 			
 			//3rd
 			request = VehicleTrackingRequest.newBuilder()
-					.setAGVtype("Autonomous Mobile Robots")
+					.setAGVtype(AGVarray())
+					.build();
+			requestObserver.onNext(request);			
+			
+			//4th
+			request = VehicleTrackingRequest.newBuilder()
+					.setAGVtype(AGVarray())
+					.build();
+			requestObserver.onNext(request);			
+			
+			//5th
+			request = VehicleTrackingRequest.newBuilder()
+					.setAGVtype(AGVarray())
 					.build();
 			requestObserver.onNext(request);
 			
 			// End the requests
 			requestObserver.onCompleted();
 			
-			// Sleep for a bit before sending the next one.
 			Thread.sleep(new Random().nextInt(1000) + 500);
 			
 		} catch (RuntimeException e) { 
@@ -259,10 +309,20 @@ public class AGVClient {
 				.build();
 		
 		// Send the message via the blocking stub and store the response
-		AGVProductivityResponse response = blockingStub.agvProductivity(request);
-
+		AGVProductivityResponse response;
+		try {
+			response = blockingStub.withDeadlineAfter(3, TimeUnit.SECONDS).agvProductivity(request);
+		}
+		catch(StatusRuntimeException e) {
+	         logger.log(Level.WARNING, "RPC failed: {0}",e.getStatus());
+	         return;
+		}
 		// Display the result
-		System.out.println("Report is as follows: " + response.getAGVreportReply() + "\n\n");
+		System.out.println("Report is as follows: " 
+				+response.getAGVreportReply() + "\n"
+				+response.getPerformance() + "\n"
+				+response.getStock() + "\n"
+				+response.getMaintenance() + "\n");
 		System.out.println("Productivity Report Unary call has finished.\n");
 		
 	}
@@ -270,11 +330,13 @@ public class AGVClient {
 	//Server Streaming
 	public static void agvDiag() {
 		Scanner input = new Scanner(System.in);
+		int freq;
 
 		System.out.println("AGV Diagnosis Called!");
 		System.out.println("How many Vehicles would you like to check diagnostics for? ");
-		int freq = input.nextInt();
-		
+
+		 freq = input.nextInt();
+
 		AGVDiagRequest request = AGVDiagRequest.newBuilder()
 				.setAGVdiagRequest("Full diagnosis required")
 				.setAGVfrequency(freq)

@@ -6,30 +6,53 @@ import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
-import ds.smartwarehouse.project.AGVSystem.AGVProductivityRequest;
-import ds.smartwarehouse.project.AGVSystem.AGVProductivityResponse;
-import ds.smartwarehouse.project.AGVSystem.VehicleTrackingRequest;
-import ds.smartwarehouse.project.AGVSystem.VehicleTrackingResponse;
 import ds.smartwarehouse.project.orderManagement.OrderManagementServer;
-import ds.smartwarehouse.project.orderManagement.OrderTrackingRequest;
-import ds.smartwarehouse.project.orderManagement.OrderTrackingResponse;
 import ds.smartwarehouse.project.warehouseManagement.WarehouseManagmentGrpc.WarehouseManagmentBlockingStub;
 import ds.smartwarehouse.project.warehouseManagement.WarehouseManagmentGrpc.WarehouseManagmentStub;
+import io.grpc.CallOptions;
+import io.grpc.Channel;
+import io.grpc.ClientCall;
+import io.grpc.ClientInterceptor;
+import io.grpc.Metadata;
+import static io.grpc.Metadata.ASCII_STRING_MARSHALLER;
+
+import io.grpc.ForwardingClientCall;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.MethodDescriptor;
 import io.grpc.stub.StreamObserver;
 
 public class WarehouseManagementClient {
 
+	private static final Logger logger = Logger.getLogger(WarehouseManagementClient.class.getName());
+	
 	private static WarehouseManagmentBlockingStub blockingStub;
 	private static WarehouseManagmentStub asyncStub;
 	
+	static class WarehouseManagementInterceptor implements ClientInterceptor{
+		   @Override
+		   public <ReqT, RespT> ClientCall<ReqT, RespT>
+		   interceptCall(
+				   MethodDescriptor<ReqT, RespT> method, CallOptions callOptions, Channel next) {
+		      return new 
+		      ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
+		         @Override
+		         public void start(Listener<RespT>responseListener, Metadata headers) {
+		            logger.info("Added metadata");
+		            headers.put(Metadata.Key.of("_http._tcp.local.", ASCII_STRING_MARSHALLER), "MY_HOST");
+		            super.start(responseListener, headers);
+		         }
+		      };
+		   }
+
+		}
 	
 	private ServiceInfo WMinfo;
 
@@ -57,6 +80,12 @@ public class WarehouseManagementClient {
 		
 		realTimeOverview();
 		
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		
 		System.out.println("Client Shutting Down.");
 		
@@ -187,8 +216,14 @@ private void discoverAGV(String service_type) {
 		public static void demandForecast() {
 			System.out.println("demandForecast() has been called:");
 			
+			Random rand = new Random();
+			
+			OrderManagementServer OMServer = new OrderManagementServer();
+			String newItem = OMServer.array().get(rand.nextInt(8));
+			
 			StreamObserver<DemandForecastResponse> responseObserver = new StreamObserver<DemandForecastResponse>() {
 
+				
 				@Override
 				public void onNext(DemandForecastResponse value) {
 
@@ -200,7 +235,7 @@ private void discoverAGV(String service_type) {
 					
 					String forecastReview = value.getForecastReview();
 					if(inHighDemand >=150) {
-						isItemHighDemand = "Product is in High demand, product selling over 150 units per annum.";
+						isItemHighDemand = "Product is in High demand, product selling over 150 units per annum. ";
 					}
 					else if(inHighDemand >=80) {
 						isItemHighDemand = "Product is in Medium Demand, product selling over 80 units per annum.";
@@ -208,8 +243,8 @@ private void discoverAGV(String service_type) {
 					else {
 						isItemHighDemand = "Product is in Low Demand, product selling less than 80 units per annum.";
 					}
-					// Display sum
-					System.out.println("Items selling " + inHighDemand + " per annum. " + isItemHighDemand + " for Forecast Review: " + forecastReview);
+
+					System.out.println(newItem+" selling " + inHighDemand + " per annum. " + isItemHighDemand + " for Forecast Review: " + forecastReview);
 				}
 
 				@Override
@@ -227,39 +262,51 @@ private void discoverAGV(String service_type) {
 				
 				// Send the client data here
 				Scanner input = new Scanner(System.in);
+
+				
 				StreamObserver<DemandForecastRequest> requestObserver = asyncStub.demandForecast(responseObserver);
 				
 				try {
-					System.out.println("How many electronics were sold in Q1? " );
+					System.out.println("How many " +newItem+ " were sold in Q1? " );
 					int items = input.nextInt();
 					
 					DemandForecastRequest request = DemandForecastRequest.newBuilder()
 							.setItemsSold(items)
-							.setForecastMessage("Q1")
+							.setForecastMessage(newItem + " forecast")
 							.build();
 					
 					requestObserver.onNext(request);
 					Thread.sleep(500);
 					
-					System.out.println("How many electronics were sold in Q2? " );
+					System.out.println("How many " +newItem+ " were sold in Q2? " );
 					int items2 = input.nextInt();
 					request = DemandForecastRequest.newBuilder()
 							.setItemsSold(items2)
-							.setForecastMessage("Q2")
+							.setForecastMessage(newItem + " forecast")
 							.build();
 					
 					requestObserver.onNext(request);
 					Thread.sleep(500);
 					
-					System.out.println("How many electronics were sold in Q3? " );
+					System.out.println("How many " +newItem+ " were sold in Q3? " );
 					int items3 = input.nextInt();
 					request = DemandForecastRequest.newBuilder()
 							.setItemsSold(items3)
-							.setForecastMessage("Q3")
+							.setForecastMessage(newItem + " forecast")
 							.build();
 					
 					requestObserver.onNext(request);
-					Thread.sleep(500);
+					Thread.sleep(500);					
+					
+					System.out.println("How many " +newItem+ " were sold in Q4? " );
+					int items4 = input.nextInt();
+					request = DemandForecastRequest.newBuilder()
+							.setItemsSold(items4)
+							.setForecastMessage(newItem + " forecast")
+							.build();
+					
+					requestObserver.onNext(request);
+					Thread.sleep(1000);
 					
 					// The requests have ended
 					requestObserver.onCompleted();
@@ -288,7 +335,7 @@ private void discoverAGV(String service_type) {
 				public void onNext(RealTimeOverviewResponse value) {
 	 
 					// Display received number
-					System.out.println("Vehicle Overview: " + value.getVehicleOverview() + ". Warehouse Overview: " + value.getWarehouseOverview() +".");
+					System.out.println("Realtime Overview: "+value.getVehicleOverview() + value.getWarehouseOverview() +".");
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
@@ -307,6 +354,12 @@ private void discoverAGV(String service_type) {
 
 					// Bidirectional-streaming is completed
 					System.out.println("Bidirectional RealTime Overview streaming has finished.\n");	
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			};
@@ -325,14 +378,14 @@ private void discoverAGV(String service_type) {
 				
 				 //2nd
 				request = RealTimeOverviewRequest.newBuilder()
-						.setOverviewMessage("Finance")
+						.setOverviewMessage("AGV Overview")
 						.build();
 				
 				requestObserver.onNext(request);
 				
 				//3rd
 				request = RealTimeOverviewRequest.newBuilder()
-						.setOverviewMessage("Temperature")
+						.setOverviewMessage("Temperature Control")
 						.build();
 				requestObserver.onNext(request);
 				
