@@ -19,32 +19,32 @@ service AGVSystem {
 }
 
 message VehicleTrackingRequest {
-	string AGVtype = 1;
+	string AGVtype = 1;//type of Automated Guided Vehicle
 }
 
 message VehicleTrackingResponse {
-	string AGVtype = 1;
-	double AGVlatitude = 2;
-	double AGVlongitude = 3;
+	string AGVtype = 1;//type of Automated Guided Vehicle
+	double AGVlatitude = 2;//Tracking information
+	double AGVlongitude = 3;//Tracking information
 }
 
 message AGVProductivityRequest {
-	string AGVreport = 1;
+	string AGVreport = 1;//Report request
 }
 
 message AGVProductivityResponse {
-	string AGVreportReply = 1;
-	string stock = 2;
-	string performance = 3;
-	string maintenance =4;
+	string AGVreportReply = 1;//Report Response
+	string stock = 2;//stock track
+	string performance = 3;//performance of AGVs
+	string maintenance =4;//maintenance of AGVs
 }
 
 message AGVDiagRequest {
-	string AGVdiagRequest = 1;
-	int32 AGVfrequency = 2;
+	string AGVdiagRequest = 1;//Request from client for AVG diagnosis
+	int32 AGVfrequency = 2;//How many vehicles required for diagnosis messages
 }
 
 message AGVDiagResponse {
-	string AGVdiagType = 1;
-	int32 systemPerformance =2;
+	string AGVdiagType = 1;//Type of AGV and details of diagnosis
+	int32 systemPerformance =2;//Performance of AGV
 }

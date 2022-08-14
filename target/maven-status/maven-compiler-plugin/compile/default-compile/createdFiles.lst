@@ -110,6 +110,7 @@ ds\smartwarehouse\project\warehouseManagement\DemandForecastResponse.class
 ds\smartwarehouse\project\orderManagement\OrderManagementGrpc$OrderManagementBlockingStub.class
 ds\smartwarehouse\project\warehouseManagement\DemandForecastResponseOrBuilder.class
 ds\smartwarehouse\project\orderManagement\OrderManagementClient$1.class
+ds\smartwarehouse\project\AGVSystem\Constants.class
 ds\smartwarehouse\project\AGVSystem\VehicleTrackingRequest$Builder.class
 ds\smartwarehouse\project\orderManagement\StockResponse$1.class
 ds\smartwarehouse\project\AGVSystem\VehicleTrackingResponse$Builder.class

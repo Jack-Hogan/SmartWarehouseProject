@@ -26,6 +26,7 @@ import io.grpc.stub.StreamObserver;
 
 public class OrderManagementServer extends OrderManagementImplBase{
 
+	//logger to log metadata 
 	private static final Logger logger = Logger.getLogger(OrderManagementServer.class.getName());
 	
 	/*Metadata reading client*/
@@ -40,17 +41,19 @@ public class OrderManagementServer extends OrderManagementImplBase{
 
 	   }
 
-	
+	//main method
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
 		//create object of the Server class
 		OrderManagementServer orderServer = new OrderManagementServer();
 		
+		//call register service on server
 		orderServer.registerService();
 
-		
+		//port number
 		int port = 50051;
 		
+		//build server and start
 		Server server = ServerBuilder.forPort(port)
 				.addService(orderServer)
 				.build()
@@ -61,7 +64,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		server.awaitTermination();
 	
 	}
-	
+	//jmDNS register service
 	private  void registerService() {
 		
 		 try {
@@ -101,6 +104,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 			}
 	}
 	
+	//array to choose or display warehouse inventory items
 	public ArrayList<String> array() {
 		ArrayList<String> list = new ArrayList<>();
 		
@@ -117,15 +121,16 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		return list;
 	}
 	
+	//method for random item checking 
 	public String stockType() {
-		
 		
 		Random rand = new Random();
 		int index = rand.nextInt(8);
 		
-		return array().get(index);
+		return array().get(index);//return random item from arraylist
 	}
 	
+	//method for random number up to 100
 	public int randomNum() {
 		Random rand = new Random();
 
@@ -133,7 +138,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		return num;
 	}
 
-	//Unary
+	/*Unary*/
 	@Override
 	public void stockCheck(StockRequest request, StreamObserver<StockResponse> responseObserver) {
 		
@@ -155,7 +160,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 			StockResponse response;
 		for(int i = 0; i <array().size(); i++) {
 			
-		
+			//if item sent by client matches item from inventory then build response
 			if(array().get(i).equalsIgnoreCase(request.getStockMessage())) {
 				itemFound = true;
 				response = StockResponse.newBuilder()
@@ -169,15 +174,12 @@ public class OrderManagementServer extends OrderManagementImplBase{
 				//complete
 				responseObserver.onCompleted();
 			}
-			else {
+			else {//server message to display mismatch 
 				System.out.println("Client item does not match stock number:" + i + ".");
 			}
 
-		}
-		if(itemFound == false) {
-//	           Status status = Status.FAILED_PRECONDITION.withDescription("Not between 2 and 20");
-//	            responseObserver.onError(status.asRuntimeException());
-//	            //return;
+		}//return error to client if no item matches inventory
+		if(itemFound == false) {//error handling 
 			response = StockResponse.newBuilder()
 					.setNotFoundMsg("Item not found, please try again!")
 					.build();
@@ -194,69 +196,67 @@ public class OrderManagementServer extends OrderManagementImplBase{
 		    System.out.println(status.getCode() + " : " + status.getDescription());
 		}
 
-		
-		//build response
-		
-
-
 
 	}
 
-	//Server Streaming
+	/*Server Streaming*/
 	@Override
 	public void replenishStock(StockReplenishRequest request, StreamObserver<StockReplenishResponse> responseObserver) {
 
-		Random rand = new Random();
 		//receive request
 		System.out.println("\nReceiving request message from Client: " + request.getReplenishMessage());
 		
 		//build response 
+		//for loop to display stock of all items in inventory for warehouse 
 		for(int i = 0 ; i <array().size(); i++) {
 			
-		boolean stockReplen;
-		int stockCheck = randomNum();
-		
-		if(stockCheck <40) {
-			stockReplen = true;
-		}
-		else {
-			stockReplen = false;
-		}
-
-		StockReplenishResponse response = StockReplenishResponse.newBuilder()
-				.setLowStock(randomNum())
-				.setHighStock(stockCheck)
-				.setReplenishType(array().get(i))
-				.setStockReplenished(stockReplen)
-				.build();
-
-			responseObserver.onNext(response);
-			try {
-				Thread.sleep(1200);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			//variable to track stock levels and boolean to see if stock needs replenished 
+			boolean stockReplen;
+			int stockCheck = randomNum();
+			
+			//if stock is under 40, stock will be replenished
+			if(stockCheck <40) {
+				stockReplen = true;
 			}
+			else {
+				stockReplen = false;
+			}
+			//build response to client accordingly 
+			StockReplenishResponse response = StockReplenishResponse.newBuilder()
+					.setLowStock(randomNum())
+					.setHighStock(stockCheck)
+					.setReplenishType(array().get(i))
+					.setStockReplenished(stockReplen)
+					.build();
+	
+				responseObserver.onNext(response);
+				try {
+					Thread.sleep(1200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		
 		}	
-			
+		//response completed
 		responseObserver.onCompleted();
 		
 	}
 	
 
-	//Client Streaming
+	/*Client Streaming*/
 	@Override
 	public StreamObserver<OrderTrackingRequest> orderTracking(StreamObserver<OrderTrackingResponse> responseObserver) {
 		
 		return new StreamObserver<OrderTrackingRequest>(){
 
-
+			//date class used to display date 
 			Date date = new Date();
 			
-			ArrayList <Integer> list = new ArrayList<>();
+			//String array to determine status of order tracking
 			String[] status = new String[]{"Delivered","Undelivered", "Leaving Warehouse", "Out For Delivery","Ready for Collection"};
 			Random rand = new Random();
+			//random delivery assigned 
 			String delivery = status[rand.nextInt(4)];
 			
 			int orderNo;
@@ -265,9 +265,9 @@ public class OrderManagementServer extends OrderManagementImplBase{
 			@Override
 			public void onNext(OrderTrackingRequest value) {
 				
-
+				//get order number from client 
 				 orderNo = value.getOrderNumber();
-				 
+				 //order number and date stamp
 				 System.out.println("Order tracking request for order: " + value.getOrderNumber() + " "+ date + "\n");
 				 
 				 try {
@@ -287,7 +287,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 			@Override
 			public void onCompleted() {
 				
-				
+				//build response to client 
 				 OrderTrackingResponse response = OrderTrackingResponse.newBuilder()
 						.setOrderNumber(orderNo)
 						.setOrderStatus(delivery)
@@ -295,6 +295,7 @@ public class OrderManagementServer extends OrderManagementImplBase{
 				 
 					responseObserver.onNext(response);
 	 
+				//finished bi-directional
 				System.out.println("Finished Bi-Directional order tracking service.\n");
 							
 				responseObserver.onCompleted();

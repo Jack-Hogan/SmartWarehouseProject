@@ -20,31 +20,31 @@ service OrderManagement {
 }
 
 message StockRequest {
-	string stockMessage = 1;
+	string stockMessage = 1;//Stock request message
 }
 
 message StockResponse {
-	int32 stockNumber = 1;
-	string stockType = 2;
-	string notFoundMsg = 3;
+	int32 stockNumber = 1;//Stock number
+	string stockType = 2;//type of stock
+	string notFoundMsg = 3;//if item not found error message
 }
 
 message StockReplenishRequest {
-	string replenishMessage = 1;
+	string replenishMessage = 1;//stock replenish request message
 }
 
 message StockReplenishResponse {
-	string replenishType = 1;
-	int32 lowStock = 2;
-	int32 highStock = 3;
-	bool stockReplenished = 4;
+	string replenishType = 1;//type of stock needed
+	int32 lowStock = 2;//low stock if required
+	int32 highStock = 3;//check if stock is high or in high demand
+	bool stockReplenished = 4;//boolean value to decide if stock needs replenishing
 }
 
 message OrderTrackingRequest {
-	int32 orderNumber = 1;
+	int32 orderNumber = 1;//order number request
 }
 
 message OrderTrackingResponse {
-	int32 orderNumber = 1;
-	string orderStatus = 2;
+	int32 orderNumber = 1;//order number response
+	string orderStatus = 2;//order status
 }

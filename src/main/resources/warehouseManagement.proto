@@ -7,52 +7,55 @@ option java_outer_classname = "NewWarehouseManagementImpl";
 
 service WarehouseManagment {
 
+	//Unary
 	rpc productivityReport (ProductivityReportRequest) returns (ProductivityReportResponse){};
 
+	//Client Streaming
 	rpc demandForecast (stream DemandForecastRequest) returns (DemandForecastResponse){};
 
+	//Bi-Directional
 	rpc realTimeOverview (stream RealTimeOverviewRequest) returns (stream RealTimeOverviewResponse) {};
 
 }
 
 message ProductivityReportRequest {
-	string prodReport = 1;
-	double Q1earning = 2;
-	double Q2earning = 3;
-	double Q3earning = 4;
-	double Q4earning = 5;
+	string prodReport = 1;//report request
+	double Q1earning = 2;//Q1 earnings
+	double Q2earning = 3;//Q2
+	double Q3earning = 4;//Q3
+	double Q4earning = 5;//Q4
 
 	}
 
 message ProductivityReportResponse {
-	string prodReportService = 1;
-	int32 AGVperformance = 2;
-	int32 EmployeeCount =3;
-	double Q1earning = 4;
-	double Q2earning = 5;
-	double Q3earning = 6;
-	double Q4earning = 7;
-	double QuartAvg = 8;
-	double AnnualAvgEarning = 9;
-	double totalEarning =10;
+	string prodReportService = 1;//Report service response
+	int32 AGVperformance = 2;//vehicle performance
+	int32 EmployeeCount =3;//head count on employees
+	double Q1earning = 4;//Q1 earnings
+	double Q2earning = 5;//Q2
+	double Q3earning = 6;//Q3
+	double Q4earning = 7;//Q4
+	double QuartAvg = 8;//Quarterly Average
+	double AnnualAvgEarning = 9; //Average yearly earning
+	double totalEarning =10;//total earning
 }
 
 message DemandForecastRequest {
-	string forecastMessage =1;
-	int32 itemsSold = 2;
+	string forecastMessage =1;//forecast request
+	int32 itemsSold = 2;//items sold
 }
 
 message DemandForecastResponse{
-	string forecastReview = 1;
-	int32 highDemand = 2;
+	string forecastReview = 1;//review in demand
+	int32 highDemand = 2;//what item is in demand
 }
 
 message RealTimeOverviewRequest {
-	string overviewMessage = 1;
+	string overviewMessage = 1;//overview of warehouse operations request
 
 }
 
 message RealTimeOverviewResponse {
-	string vehicleOverview = 1;
-	string warehouseOverview = 2;
+	string vehicleOverview = 1;//vehicle overview
+	string warehouseOverview = 2;//overview of warehouse operations response
 }
